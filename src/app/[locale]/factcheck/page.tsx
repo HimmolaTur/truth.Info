@@ -1,4 +1,4 @@
-import { ShieldAlert, CheckCircle, Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { ShieldAlert, CheckCircle, Search, ChevronLeft, ChevronRight, LayoutList, LayoutGrid, AlignJustify } from "lucide-react";
 import { query } from "@/lib/db";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { getTranslations } from "next-intl/server";
@@ -17,12 +17,13 @@ type FactcheckRow = {
 export default async function FactcheckPage({
   searchParams,
 }: {
-  searchParams: { q?: string; page?: string; limit?: string };
+  searchParams: { q?: string; page?: string; limit?: string; view?: string };
 }) {
   const t = await getTranslations("Factcheck");
   const q = searchParams.q || "";
   const page = parseInt(searchParams.page || "1", 10);
   const limit = parseInt(searchParams.limit || "10", 10);
+  const view = searchParams.view || "list"; // list, grid, compact
   const offset = (page - 1) * limit;
 
   let factcheckQuery = "SELECT * FROM factchecks";
@@ -54,6 +55,7 @@ export default async function FactcheckPage({
     if (q) urlParams.set("q", q);
     if (limit !== 10) urlParams.set("limit", limit.toString());
     if (page !== 1) urlParams.set("page", page.toString());
+    if (view !== "list") urlParams.set("view", view);
 
     Object.entries(newParams).forEach(([key, value]) => {
       if (value === null || value === undefined || value === "") {
@@ -79,10 +81,11 @@ export default async function FactcheckPage({
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto w-full py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto w-full py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-4 mb-10">
           <form method="GET" action="/factcheck" className="flex-1 flex flex-col sm:flex-row gap-3">
             {limit !== 10 && <input type="hidden" name="limit" value={limit} />}
+            {view !== "list" && <input type="hidden" name="view" value={view} />}
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -100,51 +103,86 @@ export default async function FactcheckPage({
               Найти
             </button>
           </form>
-          <div className="flex items-center gap-3 shrink-0 bg-white dark:bg-neutral-900 border rounded-md px-4 py-2 shadow-sm">
-            <span className="text-sm text-gray-500">Показывать:</span>
-            <div className="flex gap-2">
-              {[5, 10, 20].map(l => (
-                <Link 
-                  key={l} 
-                  href={buildUrl({ limit: l, page: 1 })}
-                  className={`px-2 py-1 text-sm rounded transition ${limit === l ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 font-bold' : 'hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-600 dark:text-gray-400'}`}
-                >
-                  {l}
-                </Link>
-              ))}
+          
+          <div className="flex flex-wrap items-center gap-4 shrink-0">
+            {/* View Toggle */}
+            <div className="flex bg-gray-100 dark:bg-neutral-800 p-1 rounded-lg shadow-sm">
+              <Link 
+                href={buildUrl({ view: 'list', page: 1 })}
+                className={`p-2 rounded-md transition ${view === 'list' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
+                title="Список"
+              >
+                <AlignJustify className="w-5 h-5" />
+              </Link>
+              <Link 
+                href={buildUrl({ view: 'grid', page: 1 })}
+                className={`p-2 rounded-md transition ${view === 'grid' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
+                title="Сетка"
+              >
+                <LayoutGrid className="w-5 h-5" />
+              </Link>
+              <Link 
+                href={buildUrl({ view: 'compact', page: 1 })}
+                className={`p-2 rounded-md transition ${view === 'compact' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
+                title="Компактный"
+              >
+                <LayoutList className="w-5 h-5" />
+              </Link>
+            </div>
+
+            {/* Limit Selector */}
+            <div className="flex items-center gap-3 bg-white dark:bg-neutral-900 border rounded-md px-4 py-2 shadow-sm h-full">
+              <span className="text-sm text-gray-500 hidden sm:inline">Показывать:</span>
+              <div className="flex gap-2">
+                {[5, 10, 20].map(l => (
+                  <Link 
+                    key={l} 
+                    href={buildUrl({ limit: l, page: 1 })}
+                    className={`px-2 py-1 text-sm rounded transition ${limit === l ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 font-bold' : 'hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-600 dark:text-gray-400'}`}
+                  >
+                    {l}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="space-y-10">
+        <div className={
+          view === 'grid' 
+            ? "grid grid-cols-1 md:grid-cols-2 gap-6" 
+            : view === 'compact' 
+              ? "space-y-4" 
+              : "space-y-10"
+        }>
           {factchecks.length === 0 ? (
-            <div className="text-center text-gray-500 py-8">{t("noFactchecks")}</div>
+            <div className="text-center text-gray-500 py-8 col-span-full">{t("noFactchecks")}</div>
           ) : (
             factchecks.map((item) => (
-            <div key={item.id} className="bg-white dark:bg-neutral-900 rounded-xl border overflow-hidden shadow-sm">
-              <div className="bg-red-50 dark:bg-red-900/20 p-6 border-b border-red-100 dark:border-red-900/30">
-                <div className="flex items-center gap-2 text-red-600 dark:text-red-400 font-bold mb-2">
-                  <ShieldAlert className="w-5 h-5" />
+            <div key={item.id} className={`bg-white dark:bg-neutral-900 rounded-xl border overflow-hidden shadow-sm ${view === 'grid' ? 'flex flex-col h-full' : ''}`}>
+              <div className={`bg-red-50 dark:bg-red-900/20 border-b border-red-100 dark:border-red-900/30 ${view === 'compact' ? 'p-4' : 'p-6'}`}>
+                <div className={`flex items-center gap-2 text-red-600 dark:text-red-400 font-bold ${view === 'compact' ? 'mb-1 text-sm' : 'mb-2'}`}>
+                  <ShieldAlert className={view === 'compact' ? 'w-4 h-4' : 'w-5 h-5'} />
                   {t("fake")}
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 font-medium">
+                <p className={`text-gray-700 dark:text-gray-300 font-medium ${view === 'compact' ? 'text-sm line-clamp-2' : ''}`}>
                   {item.claim}
                 </p>
               </div>
-              <div className="bg-green-50 dark:bg-green-900/10 p-6">
-                <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-bold mb-2">
-                  <CheckCircle className="w-5 h-5" />
+              <div className={`bg-green-50 dark:bg-green-900/10 ${view === 'compact' ? 'p-4' : 'p-6'} ${view === 'grid' ? 'flex-1 flex flex-col' : ''}`}>
+                <div className={`flex items-center gap-2 text-green-600 dark:text-green-400 font-bold ${view === 'compact' ? 'mb-1 text-sm' : 'mb-2'}`}>
+                  <CheckCircle className={view === 'compact' ? 'w-4 h-4' : 'w-5 h-5'} />
                   {t("refutation")}
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 whitespace-pre-wrap">
+                <p className={`text-gray-700 dark:text-gray-300 whitespace-pre-wrap ${view === 'compact' ? 'text-sm line-clamp-3 mb-0' : 'mb-4'} ${view === 'grid' ? 'flex-1' : ''}`}>
                   {item.truth}
                 </p>
-                {item.sources && item.sources.length > 0 && (
+                {item.sources && item.sources.length > 0 && view !== 'compact' && (
                   <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-900/30">
                     <h4 className="font-bold text-sm mb-2">{t("sources")}</h4>
                     <ul className="list-disc list-inside text-sm text-blue-600 dark:text-blue-400 ml-4">
                       {item.sources.map((source: string, idx: number) => (
-                        <li key={idx}>
+                        <li key={idx} className="truncate">
                           {source.startsWith('http') ? (
                             <a href={source} target="_blank" rel="noreferrer" className="hover:underline">{source}</a>
                           ) : (
