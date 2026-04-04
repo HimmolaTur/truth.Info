@@ -1,3 +1,5 @@
+-- ЧАСТЬ 1: СХЕМА БАЗЫ ДАННЫХ
+
 -- 1. Таблица пользователей (авторизация)
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
@@ -176,26 +178,22 @@ CREATE TABLE IF NOT EXISTS map_events (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Заполнение начальными данными
-INSERT INTO news (title, content, category, tags, is_important) VALUES
-('Запуск независимой платформы Правда.Инфо', 'Сегодня состоялся запуск новой платформы для сбора и проверки информации. Наша цель — предоставить объективную картину происходящего.', 'Общество', '{"запуск", "платформа"}', true),
-('Новый закон о цифровой безопасности: что нужно знать', 'Разбираем основные положения нового законопроекта и как он повлияет на обычных пользователей интернета.', 'Политика', '{"законы", "интернет"}', false),
-('Волонтеры организовали новую точку сбора помощи', 'В центре города открылся новый пункт приема гуманитарной помощи. Требуются медикаменты и теплые вещи.', 'Общество', '{"волонтеры", "помощь"}', false)
-ON CONFLICT DO NOTHING;
 
-INSERT INTO factchecks (claim, truth, sources) VALUES
-('В социальных сетях массово распространяется видео, на котором якобы запечатлены недавние события в городе N.', 'На самом деле это видео было снято в 2018 году в совершенно другом регионе. Анализ метаданных и обратный поиск по изображениям это подтверждают.', '{"https://example.com/original-video-2018", "Анализ независимых экспертов Bellingcat"}'),
-('Появилась информация о закрытии всех выездов из города.', 'Официальные источники и очевидцы на местах подтверждают, что трассы М-4 и А-105 открыты для движения гражданского транспорта.', '{"Трансляции с дорожных камер", "Свидетельства волонтеров на местах"}')
-ON CONFLICT DO NOTHING;
 
-INSERT INTO timeline_events (date_str, title, description, event_date) VALUES
-('Апрель 2026', 'Запуск платформы', 'Команда представила первую версию антивоенного сайта для агрегации проверенной информации.', '2026-04-03'),
-('Март 2026', 'Подготовка к проекту', 'Сбор данных, интервью с экспертами по цифровой безопасности и планирование архитектуры.', '2026-03-15'),
-('Февраль 2026', 'Идея создания', 'Возникла необходимость в единой платформе для фактчекинга на фоне роста дезинформации.', '2026-02-10')
-ON CONFLICT DO NOTHING;
-
-INSERT INTO map_events (title, description, lat, lng) VALUES
-('Пункт сбора помощи', 'Работает ежедневно с 10:00 до 20:00. Нужны медикаменты.', 55.7558, 37.6173),
-('Перекрытая трасса', 'Движение временно ограничено из-за ремонтных работ.', 55.8000, 37.5000),
-('Центр координации волонтеров', 'Главный штаб распределения задач.', 55.7000, 37.7000)
-ON CONFLICT DO NOTHING;
+-- Очистка таблиц перед вставкой (на всякий случай)
+TRUNCATE TABLE map_events CASCADE;
+TRUNCATE TABLE user_stories CASCADE;
+TRUNCATE TABLE timeline_events CASCADE;
+TRUNCATE TABLE factchecks CASCADE;
+TRUNCATE TABLE news CASCADE;
+TRUNCATE TABLE forum_subscriptions CASCADE;
+TRUNCATE TABLE forum_notifications CASCADE;
+TRUNCATE TABLE forum_reports CASCADE;
+TRUNCATE TABLE forum_poll_votes CASCADE;
+TRUNCATE TABLE forum_poll_options CASCADE;
+TRUNCATE TABLE forum_polls CASCADE;
+TRUNCATE TABLE forum_comments CASCADE;
+TRUNCATE TABLE forum_topics CASCADE;
+TRUNCATE TABLE forum_categories CASCADE;
+TRUNCATE TABLE user_profiles CASCADE;
+TRUNCATE TABLE users CASCADE;

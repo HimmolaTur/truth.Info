@@ -73,9 +73,6 @@ export default function RegisterPage() {
               className="w-full border rounded-lg px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 focus:ring-2 focus:ring-blue-500 outline-none"
               placeholder="Придумайте логин"
             />
-            <p className="text-xs text-gray-500 mt-1">
-              Логин будет виден другим пользователям, но пароль никто не узнает.
-            </p>
           </div>
           
           <div>
