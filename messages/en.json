@@ -1,0 +1,168 @@
+{
+  "Navbar": {
+    "title": "Truth.Info",
+    "news": "News",
+    "factcheck": "Factchecking",
+    "map": "Map",
+    "timeline": "Timeline",
+    "forum": "Forum",
+    "share": "Share Story"
+  },
+  "Metadata": {
+    "title": "Truth.Info | Verified Information and Factchecking",
+    "description": "Platform for getting verified information about events, timeline, geography, and factchecking."
+  },
+  "Footer": {
+    "copyright": "© 2026 Truth.Info.",
+    "adminLogin": "Editor Login",
+    "description": "Platform for getting verified information about events, timeline, geography, and factchecking. We help you see the real picture of what is happening.",
+    "navigation": "Navigation",
+    "legal": "Legal Information",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookie": "Cookie Usage"
+  },
+  "Home": {
+    "heroTitle1": "Verified Information",
+    "heroTitle2": "without fakes and censorship",
+    "heroDesc": "A platform for gathering facts, event timelines, and exposing disinformation. We help you see the real picture.",
+    "readNews": "Read News",
+    "factcheck": "Factcheck",
+    "mainTopics": "Main Topics",
+    "allNews": "All News",
+    "toolsTitle": "Platform Tools",
+    "toolsDesc": "Everything you need to find the truth in one place.",
+    "toolFactcheckTitle": "Factchecking",
+    "toolFactcheckDesc": "We verify dubious news, find original sources, and publish refutations with evidence.",
+    "toolMapTitle": "Event Map",
+    "toolMapDesc": "Geography of events in real-time. Points on the map with verified photo and video materials.",
+    "toolTimelineTitle": "Timeline",
+    "toolTimelineDesc": "Structured feed of events by days and months to understand cause-and-effect relationships.",
+    "toolSubmitTitle": "Stories",
+    "toolSubmitDesc": "A platform for safely publishing personal stories with the option of anonymity.",
+    "latestEvents": "Latest Events",
+    "important": "Important",
+    "ctaTitle": "Become part of the community",
+    "ctaDesc": "Help us gather truthful information. If you witnessed important events, share your story anonymously.",
+    "shareStory": "Share Story"
+  },
+  "NewsCarousel": {
+    "urgent": "Urgent",
+    "readMore": "Read more"
+  },
+  "News": {
+    "title": "News Feed",
+    "desc": "Up-to-date and verified information about events in real-time.",
+    "searchPlaceholder": "Search news by title or text...",
+    "searchBtn": "Search",
+    "noResults": "Nothing found for your query.",
+    "important": "Important",
+    "back": "Back",
+    "forward": "Forward",
+    "page": "Page {page} of {totalPages}",
+    "backToNews": "Back to news",
+    "tags": "Tags:"
+  },
+  "Forum": {
+    "title": "Forum and Community",
+    "desc": "A safe space for discussions, mutual assistance, and finding answers.",
+    "createTopic": "Create Topic",
+    "latestTopics": "Latest Discussions",
+    "noTopics": "No topics yet. Be the first!",
+    "author": "Author: {name}",
+    "answersCount": "answers",
+    "backToTopics": "Back to topic list",
+    "authorLabel": "{name} (Author)",
+    "answers": "Answers ({count})",
+    "noAnswers": "No answers yet. Be the first!",
+    "writeAnswer": "Write an answer",
+    "commentPlaceholder": "Your comment...",
+    "namePlaceholder": "Your name (Anonymous)",
+    "send": "Send",
+    "newTopicTitle": "Create new topic",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Select a category...",
+    "topicTitleLabel": "Topic Title",
+    "topicTitlePlaceholder": "What do you want to talk about?",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Describe your question or situation in detail...",
+    "nameLabel": "Your name (optional)",
+    "publishTopic": "Publish topic",
+    "anonymous": "Anonymous",
+    "resetFilter": "Reset filter",
+    "searchPlaceholder": "Search topics...",
+    "searchBtn": "Search",
+    "views": "Views",
+    "allTopics": "All topics",
+    "allTopicsDesc": "Discussions on all topics"
+  },
+  "Timeline": {
+    "title": "Event Timeline",
+    "desc": "Structured feed of events to understand cause-and-effect relationships.",
+    "noEvents": "No events yet."
+  },
+  "Submit": {
+    "successTitle": "Thank you for your story!",
+    "successDesc": "It has been successfully submitted and is currently under moderation. We will verify the information and publish it soon.",
+    "backHome": "Return to Home",
+    "title": "Share a Story",
+    "desc": "Your story is important. We guarantee anonymity if you wish. All materials are verified before publication.",
+    "titleLabel": "Title (brief summary)",
+    "titlePlaceholder": "What happened?",
+    "storyLabel": "Your story",
+    "storyPlaceholder": "Describe the events in as much detail as possible...",
+    "linksLabel": "Links to photos/videos or sources",
+    "anonLabel": "Publish anonymously",
+    "send": "Send for review"
+  },
+  "Map": {
+    "loading": "Loading map...",
+    "title": "Interactive Map",
+    "desc": "Geography of events tied to locations"
+  },
+  "Factcheck": {
+    "title": "Factchecking",
+    "desc": "Analysis of popular fakes and disinformation with evidence and links to original sources.",
+    "noFactchecks": "No factchecks yet.",
+    "fake": "Fake",
+    "refutation": "Refutation",
+    "sources": "Sources:"
+  },
+  "Admin": {
+    "title": "Editor Panel",
+    "desc": "Access only for verified authors and factcheckers.",
+    "loginTitle": "Login",
+    "passwordPlaceholder": "Password",
+    "loginBtn": "Login (Supabase Auth)"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "p1": "Your privacy is very important to us. We are committed to protecting your personal information and your right to privacy.",
+    "p2": "We only collect information that you voluntarily provide to us when using the platform, including anonymous stories and materials.",
+    "p3": "We do not share your data with third parties without your explicit consent, except as required by law."
+  },
+  "Terms": {
+    "title": "Terms of Use",
+    "p1": "By using the Truth.Info platform, you agree to these terms. The platform is designed for sharing verified information and factchecking.",
+    "p2": "Users agree not to publish knowingly false information, spam, or materials that violate the law.",
+    "p3": "The administration reserves the right to moderate, modify, or remove any content that violates community guidelines."
+  },
+  "Cookie": {
+    "title": "Cookie Policy",
+    "p1": "We use cookies to improve our website and enhance user experience.",
+    "p2": "Cookies help us analyze traffic, remember your language preferences, and theme settings (light/dark).",
+    "p3": "You can disable cookies in your browser settings, but this may affect the functionality of some site elements."
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "desc": "It might have been removed, moved, or you entered the wrong address.",
+    "backHome": "Return to Home",
+    "search": "Search on site"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "desc": "An unexpected error occurred on the server. We are already working on fixing it.",
+    "tryAgain": "Try again",
+    "backHome": "Return to Home"
+  }
+}

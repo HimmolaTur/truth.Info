@@ -1,0 +1,168 @@
+{
+  "Navbar": {
+    "title": "Wahrheit.Info",
+    "news": "Nachrichten",
+    "factcheck": "Faktencheck",
+    "map": "Karte",
+    "timeline": "Chronik",
+    "forum": "Forum",
+    "share": "Geschichte teilen"
+  },
+  "Metadata": {
+    "title": "Wahrheit.Info | Verifizierte Informationen und Faktencheck",
+    "description": "Plattform für verifizierte Informationen über Ereignisse, Chronologie, Geografie und Faktencheck."
+  },
+  "Footer": {
+    "copyright": "© 2026 Wahrheit.Info.",
+    "adminLogin": "Redakteurs-Login",
+    "description": "Plattform für verifizierte Informationen über Ereignisse, Chronologie, Geografie und Faktencheck. Wir helfen Ihnen, das wahre Bild der Geschehnisse zu sehen.",
+    "navigation": "Navigation",
+    "legal": "Rechtliche Informationen",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "cookie": "Cookie-Nutzung"
+  },
+  "Home": {
+    "heroTitle1": "Verifizierte Informationen",
+    "heroTitle2": "ohne Fakes und Zensur",
+    "heroDesc": "Eine Plattform zum Sammeln von Fakten, Ereignischroniken und zur Aufdeckung von Desinformation. Wir helfen Ihnen, das wahre Bild zu sehen.",
+    "readNews": "Nachrichten lesen",
+    "factcheck": "Faktencheck",
+    "mainTopics": "Hauptthemen",
+    "allNews": "Alle Nachrichten",
+    "toolsTitle": "Plattform-Tools",
+    "toolsDesc": "Alles, was Sie brauchen, um die Wahrheit an einem Ort zu finden.",
+    "toolFactcheckTitle": "Faktencheck",
+    "toolFactcheckDesc": "Wir überprüfen zweifelhafte Nachrichten, finden Originalquellen und veröffentlichen Widerlegungen mit Beweisen.",
+    "toolMapTitle": "Ereigniskarte",
+    "toolMapDesc": "Geografie der Ereignisse in Echtzeit. Punkte auf der Karte mit verifizierten Foto- und Videomaterialien.",
+    "toolTimelineTitle": "Chronik",
+    "toolTimelineDesc": "Strukturierter Feed von Ereignissen nach Tagen und Monaten, um Ursache-Wirkungs-Beziehungen zu verstehen.",
+    "toolSubmitTitle": "Geschichten",
+    "toolSubmitDesc": "Eine Plattform zur sicheren Veröffentlichung persönlicher Geschichten mit der Option auf Anonymität.",
+    "latestEvents": "Neueste Ereignisse",
+    "important": "Wichtig",
+    "ctaTitle": "Werden Sie Teil der Gemeinschaft",
+    "ctaDesc": "Helfen Sie uns, wahrheitsgemäße Informationen zu sammeln. Wenn Sie Zeuge wichtiger Ereignisse wurden, teilen Sie Ihre Geschichte anonym.",
+    "shareStory": "Geschichte teilen"
+  },
+  "NewsCarousel": {
+    "urgent": "Dringend",
+    "readMore": "Mehr lesen"
+  },
+  "News": {
+    "title": "Nachrichten-Feed",
+    "desc": "Aktuelle und verifizierte Informationen über Ereignisse in Echtzeit.",
+    "searchPlaceholder": "Nachrichten nach Titel oder Text durchsuchen...",
+    "searchBtn": "Suchen",
+    "noResults": "Nichts zu Ihrer Anfrage gefunden.",
+    "important": "Wichtig",
+    "back": "Zurück",
+    "forward": "Vorwärts",
+    "page": "Seite {page} von {totalPages}",
+    "backToNews": "Zurück zu den Nachrichten",
+    "tags": "Tags:"
+  },
+  "Forum": {
+    "title": "Forum und Gemeinschaft",
+    "desc": "Ein sicherer Raum für Diskussionen, gegenseitige Hilfe und die Suche nach Antworten.",
+    "createTopic": "Thema erstellen",
+    "latestTopics": "Neueste Diskussionen",
+    "noTopics": "Noch keine Themen. Seien Sie der Erste!",
+    "author": "Autor: {name}",
+    "answersCount": "Antworten",
+    "backToTopics": "Zurück zur Themenliste",
+    "authorLabel": "{name} (Autor)",
+    "answers": "Antworten ({count})",
+    "noAnswers": "Noch keine Antworten. Seien Sie der Erste!",
+    "writeAnswer": "Antwort schreiben",
+    "commentPlaceholder": "Ihr Kommentar...",
+    "namePlaceholder": "Ihr Name (Anonym)",
+    "send": "Senden",
+    "newTopicTitle": "Neues Thema erstellen",
+    "categoryLabel": "Kategorie",
+    "categoryPlaceholder": "Wählen Sie eine Kategorie...",
+    "topicTitleLabel": "Thementitel",
+    "topicTitlePlaceholder": "Worüber möchten Sie sprechen?",
+    "messageLabel": "Nachricht",
+    "messagePlaceholder": "Beschreiben Sie Ihre Frage oder Situation im Detail...",
+    "nameLabel": "Ihr Name (optional)",
+    "publishTopic": "Thema veröffentlichen",
+    "anonymous": "Anonym",
+    "resetFilter": "Filter zurücksetzen",
+    "searchPlaceholder": "Themen durchsuchen...",
+    "searchBtn": "Suchen",
+    "views": "Aufrufe",
+    "allTopics": "Alle Themen",
+    "allTopicsDesc": "Diskussionen zu allen Themen"
+  },
+  "Timeline": {
+    "title": "Ereignischronik",
+    "desc": "Strukturierter Feed von Ereignissen, um Ursache-Wirkungs-Beziehungen zu verstehen.",
+    "noEvents": "Noch keine Ereignisse."
+  },
+  "Submit": {
+    "successTitle": "Danke für Ihre Geschichte!",
+    "successDesc": "Sie wurde erfolgreich eingereicht und wird derzeit moderiert. Wir werden die Informationen überprüfen und bald veröffentlichen.",
+    "backHome": "Zurück zur Startseite",
+    "title": "Geschichte teilen",
+    "desc": "Ihre Geschichte ist wichtig. Wir garantieren Anonymität, wenn Sie dies wünschen. Alle Materialien werden vor der Veröffentlichung überprüft.",
+    "titleLabel": "Titel (kurze Zusammenfassung)",
+    "titlePlaceholder": "Was ist passiert?",
+    "storyLabel": "Ihre Geschichte",
+    "storyPlaceholder": "Beschreiben Sie die Ereignisse so detailliert wie möglich...",
+    "linksLabel": "Links zu Fotos/Videos oder Quellen",
+    "anonLabel": "Anonym veröffentlichen",
+    "send": "Zur Überprüfung senden"
+  },
+  "Map": {
+    "loading": "Karte wird geladen...",
+    "title": "Interaktive Karte",
+    "desc": "Geografie der Ereignisse mit Ortsbezug"
+  },
+  "Factcheck": {
+    "title": "Faktencheck",
+    "desc": "Analyse beliebter Fakes und Desinformation mit Beweisen und Links zu Originalquellen.",
+    "noFactchecks": "Noch keine Faktenchecks.",
+    "fake": "Fake",
+    "refutation": "Widerlegung",
+    "sources": "Quellen:"
+  },
+  "Admin": {
+    "title": "Redakteurs-Panel",
+    "desc": "Zugang nur für verifizierte Autoren und Faktenchecker.",
+    "loginTitle": "Anmeldung",
+    "passwordPlaceholder": "Passwort",
+    "loginBtn": "Anmelden (Supabase Auth)"
+  },
+  "Privacy": {
+    "title": "Datenschutzrichtlinie",
+    "p1": "Ihre Privatsphäre ist uns sehr wichtig. Wir verpflichten uns, Ihre persönlichen Daten und Ihr Recht auf Privatsphäre zu schützen.",
+    "p2": "Wir erfassen nur Informationen, die Sie uns bei der Nutzung der Plattform freiwillig zur Verfügung stellen, einschließlich anonymer Geschichten und Materialien.",
+    "p3": "Wir geben Ihre Daten nicht ohne Ihre ausdrückliche Zustimmung an Dritte weiter, es sei denn, dies ist gesetzlich vorgeschrieben."
+  },
+  "Terms": {
+    "title": "Nutzungsbedingungen",
+    "p1": "Durch die Nutzung der Wahrheit.Info-Plattform stimmen Sie diesen Bedingungen zu. Die Plattform ist für den Austausch verifizierter Informationen und Faktenchecks vorgesehen.",
+    "p2": "Die Nutzer verpflichten sich, keine wissentlich falschen Informationen, Spam oder rechtswidrigen Materialien zu veröffentlichen.",
+    "p3": "Die Verwaltung behält sich das Recht vor, Inhalte zu moderieren, zu ändern oder zu entfernen, die gegen die Community-Richtlinien verstoßen."
+  },
+  "Cookie": {
+    "title": "Cookie-Nutzung",
+    "p1": "Wir verwenden Cookies, um unsere Website zu verbessern und die Benutzererfahrung zu optimieren.",
+    "p2": "Cookies helfen uns, den Datenverkehr zu analysieren, Ihre Spracheinstellungen und das Thema (hell/dunkel) zu speichern.",
+    "p3": "Sie können Cookies in Ihren Browsereinstellungen deaktivieren, dies kann sich jedoch auf die Funktionalität einiger Website-Elemente auswirken."
+  },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "desc": "Möglicherweise wurde sie gelöscht, verschoben oder Sie haben die falsche Adresse eingegeben.",
+    "backHome": "Zurück zur Startseite",
+    "search": "Auf der Website suchen"
+  },
+  "Error": {
+    "title": "Etwas ist schief gelaufen",
+    "desc": "Ein unerwarteter Fehler ist auf dem Server aufgetreten. Wir arbeiten bereits an der Behebung.",
+    "tryAgain": "Erneut versuchen",
+    "backHome": "Zurück zur Startseite"
+  }
+}
