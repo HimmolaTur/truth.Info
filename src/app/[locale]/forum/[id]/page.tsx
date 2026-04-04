@@ -585,22 +585,22 @@ export default async function ForumThreadPage({ params, searchParams }: { params
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-0 gap-4">
           <h3 className="text-xl font-bold">{t("answers", { count: allComments.length })}</h3>
           {allComments.length > 0 && (
-            <div className="flex bg-gray-100 dark:bg-neutral-800 p-1 rounded-lg">
+            <div className="flex flex-wrap w-full sm:w-auto bg-gray-100 dark:bg-neutral-800 p-1 rounded-lg">
               <Link 
                 href={`/forum/${topicId}-${slugify(topic.title)}?sort=oldest`} 
-                className={`px-3 py-1.5 text-sm rounded-md transition ${sort === 'oldest' ? 'bg-white dark:bg-neutral-700 shadow-sm font-medium' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
+                className={`flex-1 text-center px-2 sm:px-3 py-1.5 text-xs sm:text-sm rounded-md transition ${sort === 'oldest' ? 'bg-white dark:bg-neutral-700 shadow-sm font-medium' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
               >
-                Сначала старые
+                Старые
               </Link>
               <Link 
                 href={`/forum/${topicId}-${slugify(topic.title)}?sort=newest`} 
-                className={`px-3 py-1.5 text-sm rounded-md transition ${sort === 'newest' ? 'bg-white dark:bg-neutral-700 shadow-sm font-medium' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
+                className={`flex-1 text-center px-2 sm:px-3 py-1.5 text-xs sm:text-sm rounded-md transition ${sort === 'newest' ? 'bg-white dark:bg-neutral-700 shadow-sm font-medium' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
               >
-                Сначала новые
+                Новые
               </Link>
               <Link 
                 href={`/forum/${topicId}-${slugify(topic.title)}?sort=popular`} 
-                className={`px-3 py-1.5 text-sm rounded-md transition ${sort === 'popular' ? 'bg-white dark:bg-neutral-700 shadow-sm font-medium' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
+                className={`flex-1 text-center px-2 sm:px-3 py-1.5 text-xs sm:text-sm rounded-md transition ${sort === 'popular' ? 'bg-white dark:bg-neutral-700 shadow-sm font-medium' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
               >
                 Популярные
               </Link>
