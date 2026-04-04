@@ -176,7 +176,7 @@ export default async function ForumThreadPage({ params, searchParams }: { params
     const session = await getSession();
     if (!session) {
       const locale = await getLocale();
-      redirect({ href: "/forum/login", locale: locale as any });
+      redirect(`/${locale}/forum/login`);
     }
 
     const content = formData.get("content") as string;
