@@ -17,7 +17,8 @@ export default async function NewTopicPage() {
   const userSession = await getSession();
 
   if (!userSession) {
-    redirect("/forum/login");
+    const locale = await getLocale();
+    redirect({ href: "/forum/login", locale: locale as any });
   }
 
   const categoriesResult = await query('SELECT * FROM forum_categories ORDER BY id');

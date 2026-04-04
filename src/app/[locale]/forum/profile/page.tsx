@@ -2,6 +2,7 @@ import { query } from "@/lib/db";
 import { redirect } from "@/navigation";
 import { Link } from "@/navigation";
 import { getSession } from "@/lib/auth";
+import { getLocale } from "next-intl/server";
 import { ArrowLeft, User, Calendar, MessageSquare, ThumbsUp, Layers, LogOut, Shield, Plus, Bell } from "lucide-react";
 import Image from "next/image";
 import { slugify } from "@/lib/utils";
@@ -10,13 +11,15 @@ export default async function ProfilePage() {
   const session = await getSession();
   
   if (!session) {
-    redirect("/forum/login");
+    const locale = await getLocale();
+    redirect({ href: "/forum/login", locale: locale as any });
   }
 
   // Получаем полные данные пользователя
   const userRes = await query('SELECT * FROM users WHERE id = $1', [session.id]);
   if (userRes.rows.length === 0) {
-    redirect("/api/auth/logout"); // Если пользователя удалили, разлогиниваем
+    const locale = await getLocale();
+    redirect({ href: "/api/auth/logout", locale: locale as any }); // Если пользователя удалили, разлогиниваем
   }
   const user = userRes.rows[0];
 
