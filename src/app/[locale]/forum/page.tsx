@@ -9,7 +9,7 @@ import { getSession } from "@/lib/auth";
 import Image from "next/image";
 
 const FORUM_HERO_IMG =
-  "https://images.unsplash.com/photo-1580130281320-0ef0754f2bf7?q=80&w=2500&auto=format&fit=crop";
+  "/images/photo-1580130281320-0ef0754f2bf7.svg";
 
 type ForumCategoryRow = {
   id: number;

@@ -17,7 +17,7 @@ export function NewsCarousel({ news }: { news: any[] }) {
         {news.map((item) => (
           <div key={item.id} className="flex-[0_0_100%] min-w-0 relative h-[400px] md:h-[500px]">
             <img 
-              src={item.image_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1000&auto=format&fit=crop'} 
+              src={item.image_url || '/images/photo-1504711434969-e33886168f5c.svg'} 
               alt={item.title}
               className="absolute inset-0 w-full h-full object-cover"
             />

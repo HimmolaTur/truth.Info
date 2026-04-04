@@ -4,7 +4,7 @@ import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { getTranslations } from "next-intl/server";
 
 const MAP_HERO_IMG =
-  "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=2500&auto=format&fit=crop";
+  "/images/photo-1495020689067-958852a7765e.svg";
 
 // MapComponent uses window object, so we must load it dynamically with SSR disabled
 const MapComponent = dynamic(() => import("@/components/MapComponent"), {

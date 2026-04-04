@@ -6,11 +6,11 @@ import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { getTranslations } from "next-intl/server";
 
 const IMG_HERO =
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2500&auto=format&fit=crop";
+  "/images/photo-1451187580459-43490279c0fa.svg";
 const IMG_FEATURES =
-  "https://images.unsplash.com/photo-1529245005535-6af5195155f1?q=80&w=2500&auto=format&fit=crop";
+  "/images/photo-1529245005535-6af5195155f1.svg";
 const IMG_CTA =
-  "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=2500&auto=format&fit=crop";
+  "/images/photo-1532375810709-75b1da00537c.svg";
 
 type HomeNewsRow = {
   id: number;
@@ -132,7 +132,7 @@ export default async function Home() {
               <Link href={`/news/${item.id}`} key={item.id} className="bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-neutral-800 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer flex flex-col">
                 <div className="h-64 bg-gray-200 dark:bg-neutral-800 w-full relative overflow-hidden">
                   <img 
-                    src={item.image_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1000&auto=format&fit=crop'} 
+                    src={item.image_url || '/images/photo-1504711434969-e33886168f5c.svg'} 
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />

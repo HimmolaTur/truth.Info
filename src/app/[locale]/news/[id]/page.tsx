@@ -35,7 +35,7 @@ export default async function NewsArticlePage({ params }: { params: { id: string
         
         <div className="w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-10 shadow-lg">
           <img 
-            src={article.image_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1000&auto=format&fit=crop'} 
+            src={article.image_url || '/images/photo-1504711434969-e33886168f5c.svg'} 
             alt={article.title}
             className="w-full h-full object-cover"
           />

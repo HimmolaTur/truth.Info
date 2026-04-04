@@ -4,7 +4,7 @@ import { Search, ChevronLeft, ChevronRight, LayoutList, LayoutGrid, AlignJustify
 import { getTranslations } from "next-intl/server";
 
 const NEWS_HERO_IMAGE =
-  "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?q=80&w=2500&auto=format&fit=crop";
+  "/images/photo-1584483766114-2cea6facdf57.svg";
 
 type NewsRow = {
   id: number;
@@ -194,7 +194,7 @@ export default async function NewsPage({
                       <img
                         src={
                           item.image_url ||
-                          "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1000&auto=format&fit=crop"
+                          "/images/photo-1504711434969-e33886168f5c.svg"
                         }
                         alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

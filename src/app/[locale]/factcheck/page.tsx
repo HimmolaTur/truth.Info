@@ -5,7 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/navigation";
 
 const FACTCHECK_HERO_IMG =
-  "https://images.unsplash.com/photo-1503694978374-8a2fa686963a?q=80&w=2500&auto=format&fit=crop";
+  "/images/photo-1503694978374-8a2fa686963a.svg";
 
 type FactcheckRow = {
   id: number;
