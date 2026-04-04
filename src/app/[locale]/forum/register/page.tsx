@@ -98,7 +98,7 @@ export default function RegisterPage() {
                   className={`relative rounded-full overflow-hidden border-2 transition-all ${
                     selectedAvatar === avatar 
                       ? "border-blue-500 scale-110 shadow-md" 
-                      : "border-transparent hover:border-gray-300"
+                      : "border-transparent hover:border-blue-400 hover:scale-105"
                   }`}
                 >
                   <Image 
