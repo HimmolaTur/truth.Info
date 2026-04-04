@@ -16,7 +16,7 @@ export default async function ProfilePage() {
   }
 
   // Получаем полные данные пользователя
-  const userRes = await query('SELECT * FROM users WHERE id = $1', [session.id]);
+  const userRes = await query('SELECT * FROM users WHERE id = $1', [session?.id]);
   if (userRes.rows.length === 0) {
     const locale = await getLocale();
     redirect({ href: "/api/auth/logout", locale: locale as any }); // Если пользователя удалили, разлогиниваем
@@ -31,7 +31,7 @@ export default async function ProfilePage() {
     LEFT JOIN forum_categories c ON t.category_id = c.id
     WHERE t.user_id = $1
     ORDER BY t.created_at DESC
-  `, [session.id]);
+  `, [session?.id]);
   const topics = topicsRes.rows;
 
   // Получаем комментарии пользователя
@@ -41,7 +41,7 @@ export default async function ProfilePage() {
     JOIN forum_topics t ON c.topic_id = t.id
     WHERE c.user_id = $1
     ORDER BY c.created_at DESC
-  `, [session.id]);
+  `, [session?.id]);
   const comments = commentsRes.rows;
 
   // Получаем уведомления пользователя
@@ -51,7 +51,7 @@ export default async function ProfilePage() {
     LEFT JOIN forum_topics t ON n.topic_id = t.id
     WHERE n.user_id = $1 OR n.session_id = $2
     ORDER BY n.created_at DESC LIMIT 20
-  `, [session.id, String(session.id)]);
+  `, [session?.id, String(session?.id)]);
   const notifications = notifRes.rows;
 
   // Считаем общую карму (лайки за темы + лайки за комментарии)
@@ -61,7 +61,7 @@ export default async function ProfilePage() {
 
   // Помечаем уведомления прочитанными
   if (notifications.some(n => !n.is_read)) {
-    await query('UPDATE forum_notifications SET is_read = true WHERE user_id = $1 OR session_id = $2', [session.id, String(session.id)]);
+    await query('UPDATE forum_notifications SET is_read = true WHERE user_id = $1 OR session_id = $2', [session?.id, String(session?.id)]);
   }
 
   return (
