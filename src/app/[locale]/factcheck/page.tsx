@@ -1,11 +1,12 @@
 import { ShieldAlert, CheckCircle, Search, ChevronLeft, ChevronRight, LayoutList, LayoutGrid, AlignJustify } from "lucide-react";
-import { query } from "@/lib/db";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
+import { LocaleGetSearchForm } from "@/components/LocaleGetSearchForm";
+import { query } from "@/lib/db";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/navigation";
 
 const FACTCHECK_HERO_IMG =
-  "/images/photo-1503694978374-8a2fa686963a.svg";
+  "/images/photo-1503694978374-8a2fa686963a.jpg";
 
 type FactcheckRow = {
   id: number;
@@ -20,6 +21,7 @@ export default async function FactcheckPage({
   searchParams: { q?: string; page?: string; limit?: string; view?: string };
 }) {
   const t = await getTranslations("Factcheck");
+  const tc = await getTranslations("Common");
   const q = searchParams.q || "";
   const page = parseInt(searchParams.page || "1", 10);
   const limit = parseInt(searchParams.limit || "10", 10);
@@ -83,7 +85,7 @@ export default async function FactcheckPage({
 
       <div className="max-w-5xl mx-auto w-full py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-4 mb-10">
-          <form method="GET" action="/factcheck" className="flex-1 flex flex-col sm:flex-row gap-3">
+          <LocaleGetSearchForm basePath="/factcheck" className="flex-1 flex flex-col sm:flex-row gap-3">
             {limit !== 10 && <input type="hidden" name="limit" value={limit} />}
             {view !== "list" && <input type="hidden" name="view" value={view} />}
             <div className="relative flex-1">
@@ -92,7 +94,7 @@ export default async function FactcheckPage({
                 type="text"
                 name="q"
                 defaultValue={q}
-                placeholder="Поиск по разборам фейков..."
+                placeholder={t("searchPlaceholder")}
                 className="w-full border rounded-md pl-10 pr-4 py-3 bg-white dark:bg-neutral-900 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
               />
             </div>
@@ -100,9 +102,9 @@ export default async function FactcheckPage({
               type="submit"
               className="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition shadow-sm w-full sm:w-auto"
             >
-              Найти
+              {t("searchBtn")}
             </button>
-          </form>
+          </LocaleGetSearchForm>
           
           <div className="flex flex-wrap items-center gap-4 shrink-0">
             {/* View Toggle */}
@@ -110,21 +112,21 @@ export default async function FactcheckPage({
               <Link 
                 href={buildUrl({ view: 'list', page: 1 })}
                 className={`p-2 rounded-md transition ${view === 'list' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
-                title="Список"
+                title={tc("viewList")}
               >
                 <AlignJustify className="w-5 h-5" />
               </Link>
               <Link 
                 href={buildUrl({ view: 'grid', page: 1 })}
                 className={`p-2 rounded-md transition ${view === 'grid' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
-                title="Сетка"
+                title={tc("viewGrid")}
               >
                 <LayoutGrid className="w-5 h-5" />
               </Link>
               <Link 
                 href={buildUrl({ view: 'compact', page: 1 })}
                 className={`p-2 rounded-md transition ${view === 'compact' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
-                title="Компактный"
+                title={tc("viewCompact")}
               >
                 <LayoutList className="w-5 h-5" />
               </Link>
@@ -132,7 +134,7 @@ export default async function FactcheckPage({
 
             {/* Limit Selector */}
             <div className="flex items-center gap-3 bg-white dark:bg-neutral-900 border rounded-md px-4 py-2 shadow-sm h-full">
-              <span className="text-sm text-gray-500 hidden sm:inline">Показывать:</span>
+              <span className="text-sm text-gray-500 hidden sm:inline">{tc("showAs")}</span>
               <div className="flex gap-2">
                 {[5, 10, 20].map(l => (
                   <Link 
@@ -206,16 +208,16 @@ export default async function FactcheckPage({
                 href={buildUrl({ page: page - 1 })}
                 className="flex items-center gap-1 px-4 py-2 border rounded-md hover:bg-gray-50 dark:hover:bg-neutral-800 transition bg-white dark:bg-neutral-900"
               >
-                <ChevronLeft className="w-4 h-4" /> Назад
+                <ChevronLeft className="w-4 h-4" /> {tc("paginationPrev")}
               </Link>
             ) : (
               <div className="flex items-center gap-1 px-4 py-2 border rounded-md opacity-50 cursor-not-allowed bg-white dark:bg-neutral-900">
-                <ChevronLeft className="w-4 h-4" /> Назад
+                <ChevronLeft className="w-4 h-4" /> {tc("paginationPrev")}
               </div>
             )}
 
             <span className="text-sm font-medium text-gray-500">
-              Страница {page} из {totalPages}
+              {tc("paginationPage", { page, totalPages })}
             </span>
 
             {page < totalPages ? (
@@ -223,11 +225,11 @@ export default async function FactcheckPage({
                 href={buildUrl({ page: page + 1 })}
                 className="flex items-center gap-1 px-4 py-2 border rounded-md hover:bg-gray-50 dark:hover:bg-neutral-800 transition bg-white dark:bg-neutral-900"
               >
-                Вперед <ChevronRight className="w-4 h-4" />
+                {tc("paginationNext")} <ChevronRight className="w-4 h-4" />
               </Link>
             ) : (
               <div className="flex items-center gap-1 px-4 py-2 border rounded-md opacity-50 cursor-not-allowed bg-white dark:bg-neutral-900">
-                Вперед <ChevronRight className="w-4 h-4" />
+                {tc("paginationNext")} <ChevronRight className="w-4 h-4" />
               </div>
             )}
           </div>

@@ -1,60 +1,29 @@
-import { SignJWT, jwtVerify } from 'jose';
-import { cookies } from 'next/headers';
-
-const secretKey = process.env.JWT_SECRET || 'super-secret-key-for-hacaton-forum-12345';
-const key = new TextEncoder().encode(secretKey);
+import { getServerSession } from "next-auth";
+import authOptions from "@/lib/authOptions";
 
 export type UserSession = {
   id: number;
   username: string;
   display_name: string;
   avatar_url: string | null;
+  preferred_locale: string | null;
+  role: string;
+  permissions: string[];
 };
 
-export async function encrypt(payload: any) {
-  return await new SignJWT(payload)
-    .setProtectedHeader({ alg: 'HS256' })
-    .setIssuedAt()
-    .setExpirationTime('30d')
-    .sign(key);
-}
-
-export async function decrypt(input: string): Promise<any> {
-  try {
-    const { payload } = await jwtVerify(input, key, {
-      algorithms: ['HS256'],
-    });
-    return payload;
-  } catch (error) {
-    return null;
-  }
-}
-
+/** Forum / app user from NextAuth JWT session (server components & route handlers). */
 export async function getSession(): Promise<UserSession | null> {
-  const session = cookies().get('session')?.value;
-  if (!session) return null;
-  return await decrypt(session);
-}
-
-export async function setSession(user: UserSession) {
-  const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
-  const session = await encrypt({ ...user, expires });
-  
-  cookies().set('session', session, {
-    expires,
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    path: '/',
-  });
-}
-
-export function clearSession() {
-  cookies().set('session', '', {
-    expires: new Date(0),
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    path: '/',
-  });
+  const s = await getServerSession(authOptions);
+  if (!s?.user?.id) return null;
+  const id = Number(s.user.id);
+  if (!Number.isFinite(id)) return null;
+  return {
+    id,
+    username: s.user.name || "",
+    display_name: s.user.display_name ?? "",
+    avatar_url: s.user.avatar_url,
+    preferred_locale: s.user.preferred_locale ?? null,
+    role: s.user.role || "user",
+    permissions: Array.isArray(s.user.permissions) ? s.user.permissions.map(String) : [],
+  };
 }

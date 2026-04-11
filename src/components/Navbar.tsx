@@ -6,18 +6,26 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 export function Navbar() {
   const t = useTranslations("Navbar");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
-  const navLinks = [
+  const navLinks: Array<{ href: string; icon: any; label: string }> = [
     { href: "/news", icon: FileText, label: t("news") },
     { href: "/factcheck", icon: Shield, label: t("factcheck") },
     { href: "/map", icon: Map, label: t("map") },
     { href: "/timeline", icon: Clock, label: t("timeline") },
     { href: "/forum", icon: MessageSquare, label: t("forum") },
   ];
+
+  const perms = session?.user?.permissions;
+  const isStaff = Array.isArray(perms) && perms.includes("panel.access");
+  if (isStaff) {
+    navLinks.push({ href: "/admin", icon: Shield, label: "Admin" });
+  }
 
   return (
     <nav className="border-b border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 sticky top-0 z-50">

@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/navigation";
 import { Globe } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const locales = [
   { code: "ru", name: "Русский" },
@@ -15,9 +16,19 @@ export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const { status, update } = useSession();
 
-  const changeLanguage = (nextLocale: string) => {
-    router.replace(pathname, { locale: nextLocale as any });
+  const changeLanguage = async (nextLocale: string) => {
+    router.replace(pathname, { locale: nextLocale as typeof locale });
+    if (status === "authenticated") {
+      const res = await fetch("/api/forum/profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ action: "set_locale", locale: nextLocale }),
+      });
+      if (res.ok) await update({ preferred_locale: nextLocale });
+    }
   };
 
   return (

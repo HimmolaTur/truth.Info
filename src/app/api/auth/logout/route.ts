@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
-import { clearSession } from "@/lib/auth";
+import { clearNextAuthCookies } from "@/lib/nextAuthCookies";
 
 export async function POST(req: Request) {
-  clearSession();
-  
-  // Если запрос пришел из формы (x-www-form-urlencoded), делаем редирект
+  const res = NextResponse.json({ success: true });
+  clearNextAuthCookies(res);
+
   if (req.headers.get("content-type")?.includes("application/x-www-form-urlencoded")) {
     const url = new URL(req.url);
-    return NextResponse.redirect(new URL("/forum", url.origin), 303);
+    const redirectRes = NextResponse.redirect(new URL("/forum", url.origin), 303);
+    clearNextAuthCookies(redirectRes);
+    return redirectRes;
   }
-  
-  return NextResponse.json({ success: true });
+
+  return res;
 }

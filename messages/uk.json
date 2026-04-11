@@ -6,7 +6,8 @@
     "map": "Карта",
     "timeline": "Хронологія",
     "forum": "Форум",
-    "share": "Поділитися історією"
+    "share": "Поділитися історією",
+    "signOut": "Вийти"
   },
   "Metadata": {
     "title": "Правда.Інфо | Перевірена інформація та фактчекінг",
@@ -29,6 +30,7 @@
     "readNews": "Читати новини",
     "factcheck": "Розбір фейків",
     "mainTopics": "Головні теми",
+    "mainTopicsEmpty": "Поки немає новин з позначкою «головна тема». Увімкніть її в адмінці під час редагування.",
     "allNews": "Всі новини",
     "toolsTitle": "Інструменти платформи",
     "toolsDesc": "Все необхідне для пошуку правди в одному місці.",
@@ -41,6 +43,7 @@
     "toolSubmitTitle": "Історії",
     "toolSubmitDesc": "Платформа для безпечної публікації особистих історій з можливістю анонімності.",
     "latestEvents": "Останні події",
+    "latestEventsEmpty": "Новин ще немає.",
     "important": "Важливе",
     "ctaTitle": "Станьте частиною спільноти",
     "ctaDesc": "Допоможіть нам збирати правдиву інформацію. Якщо ви стали свідком важливих подій, поділіться своєю історією анонімно.",
@@ -94,7 +97,144 @@
     "searchBtn": "Знайти",
     "views": "Перегляди",
     "allTopics": "Всі теми",
-    "allTopicsDesc": "Обговорення на всі теми"
+    "allTopicsDesc": "Обговорення на всі теми",
+    "profileAvatarTitle": "Аватар",
+    "profileAvatarError": "Не вдалося оновити аватар.",
+    "profileLanguageTitle": "Мова інтерфейсу",
+    "profileLanguageHint": "Зберігається в акаунті — після входу відкриється обрана мова.",
+    "profileLanguageError": "Не вдалося зберегти мову.",
+    "profilePasswordTitle": "Зміна пароля",
+    "profilePasswordCurrent": "Поточний пароль",
+    "profilePasswordNew": "Новий пароль (мінімум 6 символів)",
+    "profilePasswordSubmit": "Оновити пароль",
+    "profilePwdWrongCurrent": "Невірний поточний пароль.",
+    "profilePwdTooShort": "Пароль занадто короткий.",
+    "profilePwdError": "Не вдалося змінити пароль.",
+    "profilePwdSuccess": "Пароль оновлено.",
+    "profileSaved": "Збережено.",
+    "profileRevealTitle": "Дані акаунта (конфіденційно)",
+    "profileRevealHint": "Логін і дату реєстрації приховано, доки ви не введете поточний пароль. Адміністратори ці дані не бачать.",
+    "profileRevealPasswordLabel": "Ваш пароль",
+    "profileRevealSubmit": "Показати логін і дату",
+    "profileRevealWrongPassword": "Невірний пароль.",
+    "profileRevealError": "Не вдалося перевірити. Спробуйте ще раз.",
+    "profileRevealLogin": "Логін",
+    "profileRevealCreated": "Дата реєстрації",
+    "profilePublicNameHint": "Публічне ім'я на форумі",
+    "profileBackToForum": "Повернутися на форум",
+    "profileKarma": "Карма",
+    "profilePostsLabel": "Публікацій",
+    "profileNotificationsTitle": "Мої сповіщення",
+    "profileNotificationsNew": "Нові",
+    "profileNotificationsEmpty": "У вас поки немає сповіщень.",
+    "profileMyTopics": "Мої теми ({count})",
+    "profileCreateShort": "Створити",
+    "profileTopicsEmpty": "Ви ще не створили жодної теми.",
+    "profileMyReplies": "Мої відповіді ({count})",
+    "profileRepliesEmpty": "Ви ще не залишали коментарів.",
+    "profileInTopic": "У темі:",
+    "profileBestAnswer": "Найкраща відповідь",
+    "profileSignOut": "Вийти з акаунта",
+    "forumHeroYourCipher": "Ваш шифр",
+    "authLogin": "Увійти",
+    "authRegister": "Реєстрація",
+    "authLoginTitle": "Вхід на форум",
+    "authRegisterTitle": "Реєстрація на форумі",
+    "authUsername": "Логін",
+    "authPassword": "Пароль",
+    "authUsernamePlaceholderRegister": "Придумайте логін",
+    "authPasswordPlaceholderRegister": "Придумайте пароль",
+    "authUsernamePlaceholderLogin": "Ваш логін",
+    "authPasswordPlaceholderLogin": "Ваш пароль",
+    "authSubmitLogin": "Увійти",
+    "authSubmittingLogin": "Вхід…",
+    "authSubmitRegister": "Зареєструватися",
+    "authSubmittingRegister": "Реєстрація…",
+    "authNoAccount": "Немає акаунта?",
+    "authHasAccount": "Вже є акаунт?",
+    "authInvalidCredentials": "Невірний логін або пароль.",
+    "authErrorGeneric": "Помилка входу.",
+    "authRegisterError": "Помилка реєстрації.",
+    "registerRequiredFields": "Логін і пароль обов'язкові.",
+    "registerUsernameShort": "Логін має бути не менше 3 символів.",
+    "registerPasswordShort": "Пароль має бути не менше 6 символів.",
+    "registerUsernameTaken": "Користувач з таким логіном уже існує.",
+    "registerServerError": "Внутрішня помилка сервера.",
+    "authCreatedSignInManually": "Акаунт створено. Увійдіть вручну на сторінці входу.",
+    "authPickAvatar": "Оберіть аватар",
+    "authAvatarAuto": "Або він буде призначений автоматично",
+    "forumSortNewest": "Нові",
+    "forumSortPopular": "Популярні",
+    "forumSortLikes": "За оцінками",
+    "forumPerPageLabel": "Показувати:",
+    "forumSelected": "Обрано",
+    "forumPageOf": "Сторінка {page} з {totalPages}",
+    "forumPrev": "Назад",
+    "forumNext": "Вперед",
+    "forumUsersOnline": "Користувачів онлайн:",
+    "forumRssLink": "RSS-стрічка форуму",
+    "threadTopicNotFound": "Тему не знайдено",
+    "threadMetaSuffix": "Анонімний форум",
+    "markdownSupported": " (підтримується Markdown)",
+    "threadCrumbForum": "Форум",
+    "threadNotifyUnsubscribeTitle": "Відписатися від сповіщень",
+    "threadNotifySubscribeTitle": "Підписатися на сповіщення",
+    "threadSubscribedLabel": "Ви підписані",
+    "threadSubscribeLabel": "Підписатися",
+    "threadPinToggleTitle": "Закріпити / зняти закріплення",
+    "threadCloseToggleTitle": "Закрити / відкрити",
+    "threadEditTitle": "Редагувати тему",
+    "threadMoveTitle": "Перенести тему",
+    "threadMoveToLabel": "Перенести в:",
+    "threadMoveSubmit": "Перенести",
+    "threadPinned": "Закріплена",
+    "threadClosed": "Закрита",
+    "threadPollTotalVotes": "Усього голосів: {count}",
+    "threadKarmaTitle": "Карма",
+    "threadReportTopicLabel": "Скарга на тему:",
+    "threadReportReasonPlaceholder": "Причина скарги…",
+    "threadReportSubmit": "Надіслати скаргу",
+    "threadSortCommentsOldest": "Спочатку старі",
+    "threadSortCommentsNewest": "Спочатку нові",
+    "threadSortCommentsPopular": "Популярні",
+    "threadBestAnswer": "Найкраща відповідь",
+    "threadSolutionBadge": "Рішення",
+    "threadMarkSolution": "Позначити як рішення",
+    "threadReportCommentLabel": "Скарга на коментар:",
+    "threadReportReplyLabel": "Скарга на відповідь:",
+    "threadIgnoreUser": "Заблокувати користувача",
+    "threadDeleteTitle": "Видалити",
+    "threadReplyToggle": "Відповісти",
+    "threadReplyPlaceholder": "Ваша відповідь…",
+    "threadLoginLink": "Увійдіть",
+    "threadLoginToReplySuffix": ", щоб відповісти.",
+    "threadLoginToComment": "Увійдіть, щоб залишити коментар",
+    "threadSignIn": "Увійти",
+    "threadTopicClosedReplies": "Тему закрито для нових відповідей.",
+    "newTopicTagsLabel": "Теги (через кому)",
+    "newTopicTagsPlaceholder": "новини, обговорення, питання",
+    "newTopicPollSection": "Опитування (необов’язково)",
+    "newTopicPollQuestion": "Питання",
+    "newTopicPollQuestionPlaceholder": "наприклад: Який фреймворк кращий?",
+    "newTopicPollOptions": "Варіанти відповідей (по одному в рядку)",
+    "newTopicPollOptionsPlaceholder": "React\nVue\nAngular",
+    "editTopicBack": "До теми",
+    "editTopicTitle": "Редагування теми",
+    "editTopicHeading": "Заголовок",
+    "editTopicBody": "Текст",
+    "editTopicContent": "Зміст",
+    "editTopicTags": "Теги (через кому)",
+    "editTopicSave": "Зберегти зміни"
+  },
+  "Common": {
+    "showAs": "Показувати:",
+    "viewList": "Список",
+    "viewGrid": "Плитка",
+    "viewCompact": "Компактно",
+    "perPage": "На сторінці:",
+    "paginationPrev": "Назад",
+    "paginationNext": "Вперед",
+    "paginationPage": "Сторінка {page} з {totalPages}"
   },
   "Timeline": {
     "title": "Хронологія подій",
@@ -126,14 +266,171 @@
     "noFactchecks": "Розборів поки немає.",
     "fake": "Фейк",
     "refutation": "Спростування",
-    "sources": "Джерела:"
+    "sources": "Джерела:",
+    "searchPlaceholder": "Пошук розборів…",
+    "searchBtn": "Знайти"
   },
   "Admin": {
     "title": "Панель редактора",
     "desc": "Доступ тільки для верифікованих авторів та фактчекерів.",
+    "adminLogin": "Вхід для редакторів",
+    "adminLoginError": "Невірний логін, пароль або немає прав редактора.",
+    "adminUsername": "Логін",
+    "adminPassword": "Пароль",
+    "adminLoginHint": "Той самий логін, що на форумі. Потрібне право «доступ до панелі» (зазвичай через роль Адміністратор).",
     "loginTitle": "Вхід в систему",
     "passwordPlaceholder": "Пароль",
     "loginBtn": "Увійти (Supabase Auth)"
+    ,"login": "Увійти"
+    ,"news": "Керування новинами"
+    ,"newsDesc": "Створення, редагування та видалення новин."
+    ,"factcheck": "Керування фактчекінгом"
+    ,"factcheckDesc": "Додавання та редагування розборів."
+    ,"forum": "Модерація форуму"
+    ,"forumDesc": "Перегляд скарг і керування темами."
+    ,"reports": "Скарги"
+    ,"reportsDesc": "Перегляд і опрацювання скарг користувачів."
+    ,"forumModeration": "Модерація форуму"
+    ,"noReports": "Скарг поки немає."
+    ,"createNews": "Створити новину"
+    ,"newsTitle": "Заголовок"
+    ,"content": "Текст"
+    ,"imageUrl": "URL зображення"
+    ,"newsImageFile": "Завантажити зображення з комп’ютера"
+    ,"newsImageFileHint": "JPEG, PNG, GIF або WebP, до 5 МБ. Якщо обрано файл, він використовується замість URL."
+    ,"adminNewsImageTooLarge": "Файл завеликий (максимум 5 МБ)."
+    ,"adminNewsImageType": "Дозволені лише зображення JPEG, PNG, GIF або WebP."
+    ,"create": "Створити"
+    ,"edit": "Редагувати"
+    ,"delete": "Видалити"
+    ,"save": "Зберегти"
+    ,"createFact": "Створити розбір"
+    ,"editFact": "Редагувати розбір"
+    ,"editNews": "Редагувати новину"
+    ,"modDeletePost": "Видалити повідомлення"
+    ,"modDeleteTopic": "Видалити тему"
+    ,"modDeleteTopicConfirm": "Видалити цю тему та всі відповіді? Це не можна скасувати."
+    ,"modDeleteCommentConfirm": "Видалити це повідомлення?"
+    ,"modCloseTopic": "Закрити тему"
+    ,"modOpenTopic": "Відкрити тему"
+    ,"modPinTopic": "Закріпити тему"
+    ,"modUnpinTopic": "Зняти закріплення"
+    ,"adminFactcheckSearchPlaceholder": "Пошук за твердженням, спростуванням або джерелами…"
+    ,"adminFactcheckEmpty": "Розборів ще немає. Створіть перший."
+    ,"adminForumSearchPlaceholder": "Пошук за назвою, текстом теми або розділом…"
+    ,"adminForumTopicsEmpty": "Тем на форумі ще немає."
+    ,"adminForumViewTopic": "Відкрити на форумі"
+    ,"adminForumStatusPinned": "Закріплена"
+    ,"adminForumStatusClosed": "Закрита"
+    ,"adminReportsSearchPlaceholder": "Пошук за темою, причиною або номером…"
+    ,"adminReportsEmpty": "Скарг поки немає."
+    ,"adminNewsSearchPlaceholder": "Пошук за заголовком або текстом…"
+    ,"adminNewsPerPage": "На сторінці:"
+    ,"adminNewsMeta": "Усього: {total} · Показано {from}–{to} · Сторінка {page} з {totalPages}"
+    ,"adminNewsEmpty": "Новин ще немає. Створіть першу."
+    ,"newsCategory": "Рубрика / група"
+    ,"newsCategoryHint": "Показується у списку новин і в статті."
+    ,"newsTags": "Теги"
+    ,"newsTagsPlaceholder": "тег1, тег2"
+    ,"newsTagsHint": "Через кому або крапку з комою."
+    ,"newsImportant": "Термінова / важлива новина"
+    ,"newsPublishedAt": "Дата і час публікації"
+    ,"newsPublishedAtHint": "Порожньо — поточний час."
+    ,"newsFeatured": "Головна тема (карусель на головній)"
+    ,"newsFeaturedHint": "У блоці «Головні теми», нові зверху. До 8 постів."
+    ,"adminNewsSaved": "Збережено"
+    ,"adminNewsSaveError": "Не вдалося зберегти"
+    ,"adminNewsDeleteConfirm": "Видалити цю новину?"
+    ,"adminFactSaved": "Збережено"
+    ,"adminFactSaveError": "Не вдалося зберегти"
+    ,"adminFactDeleteConfirm": "Видалити цей розбір?"
+    ,"adminUsersTitle": "Користувачі"
+    ,"adminUsersDesc": "Призначення ролей і скидання пароля. Логін не показується; відображуване ім’я лише для перегляду."
+    ,"adminUsersSearchPlaceholder": "Пошук за відображуваним ім’ям або внутрішнім id…"
+    ,"adminUsersPrivacyNote": "З міркувань приватності персонал не бачить логін — лише публічне ім’я та внутрішній id."
+    ,"adminUsersMeta": "Усього: {total} · Показано {from}–{to} · Сторінка {page} з {totalPages}"
+    ,"adminUsersEmpty": "Користувачів немає."
+    ,"adminUserEditTitle": "Редагувати користувача"
+    ,"adminUserUsername": "Логін (username)"
+    ,"adminUserUsernameHint": "Логін тут не змінюється — він використовується для входу."
+    ,"adminUserLoginHidden": "Персонал не бачить логін і дату реєстрації користувача — їх може показати лише сам користувач у своєму профілі на форумі після введення пароля."
+    ,"adminUserInternalId": "Внутрішній id"
+    ,"adminUserDisplayName": "Відображуване ім’я"
+    ,"adminUserDisplayNameReadonlyHint": "Змінює лише сам користувач у профілі на форумі; персонал лише переглядає."
+    ,"adminUserAvatarUrl": "URL аватара"
+    ,"adminUserAvatarPick": "Аватар (з набору)"
+    ,"adminUserInvalidAvatar": "Оберіть один із запропонованих аватарів."
+    ,"adminUserRole": "Роль / доступ"
+    ,"adminUserRoleHint": "Адміністратори відкривають панель редактора. Звичайні користувачі — лише форум."
+    ,"adminUserRoleHintRbac": "Права задає роль; налаштування — у «Ролях і доступі»."
+    ,"adminUserNewPassword": "Новий пароль"
+    ,"adminUserNewPasswordHint": "Залиште порожнім, щоб не змінювати пароль. Якщо задаєте — не менше 6 символів."
+    ,"adminUserSaved": "Збережено"
+    ,"adminUserSaveError": "Не вдалося зберегти користувача"
+    ,"adminUserLastAdmin": "Неможливо зняти роль останнього адміністратора. Спочатку призначте іншого."
+    ,"adminUserLastRolesManager": "Неможливо забрати право змінювати ролі в останнього користувача з ним. Спочатку видайте roles.update іншому."
+    ,"adminUserNotFound": "Користувача не знайдено"
+    ,"adminUserDisplayNameRequired": "Потрібне відображуване ім’я"
+    ,"adminUserPasswordShort": "Пароль не коротший за 6 символів"
+    ,"adminUserInvalidRole": "Недопустима роль"
+    ,"roleUser": "Користувач"
+    ,"roleAdmin": "Адміністратор"
+    ,"adminBreadcrumbHome": "Адмінка"
+    ,"adminBreadcrumbAriaLabel": "Навігаційний ланцюжок"
+    ,"adminRolesTitle": "Ролі та доступ"
+    ,"adminRolesDesc": "Створюйте ролі та обирайте, до яких розділів панелі вони допускають."
+    ,"adminRolesCreate": "Нова роль"
+    ,"adminRolesCreateHint": "Латинський slug (a–z, цифри, _ та -), 2–32 символи. Права — на наступному кроці."
+    ,"adminRolesSlug": "Slug (технічний id)"
+    ,"adminRolesSlugHint": "Пізніше не змінюється. Приклад: support_editor"
+    ,"adminRolesName": "Назва"
+    ,"adminRolesEditTitle": "Роль"
+    ,"adminRolesPermissions": "Права доступу"
+    ,"adminRolesUserCount": "Користувачів з роллю"
+    ,"adminRolesPermCount": "Прав"
+    ,"adminRolesLockedAdmin": "Роль «Адміністратор» завжди має всі права."
+    ,"adminRolesLockedUser": "Роль користувача форуму не має прав панелі."
+    ,"adminRolesSaveError": "Не вдалося зберегти"
+    ,"adminRolesInvalidSlug": "Некоректний slug (2–32 символи: a–z, 0–9, _ та -)."
+    ,"adminRolesSlugTaken": "Такий slug уже зайнятий."
+    ,"adminNoSectionPermissions": "Панель відкривається, але вашій ролі не призначено розділів. Зверніться до адміністратора."
+    ,"adminPerm_panel_access": "Вхід в адмін-панель (потрібно для будь-якої роботи в панелі)"
+    ,"adminPerm_content_news_read": "Новини: перегляд списку й статей"
+    ,"adminPerm_content_news_create": "Новини: створення"
+    ,"adminPerm_content_news_update": "Новини: редагування"
+    ,"adminPerm_content_news_delete": "Новини: видалення"
+    ,"adminPerm_content_factcheck_read": "Фактчекінг: перегляд"
+    ,"adminPerm_content_factcheck_create": "Фактчекінг: створення"
+    ,"adminPerm_content_factcheck_update": "Фактчекінг: редагування"
+    ,"adminPerm_content_factcheck_delete": "Фактчекінг: видалення"
+    ,"adminPerm_forum_moderate_read": "Форум: списки модерації та скарг"
+    ,"adminPerm_forum_moderate_delete_post": "Форум: видалення коментарів"
+    ,"adminPerm_forum_moderate_delete_topic": "Форум: видалення тем"
+    ,"adminPerm_forum_moderate_pin_topic": "Форум: закріплення тем"
+    ,"adminPerm_forum_moderate_unpin_topic": "Форум: зняття закріплення"
+    ,"adminPerm_forum_moderate_close_topic": "Форум: закриття тем"
+    ,"adminPerm_forum_moderate_open_topic": "Форум: відкриття тем"
+    ,"adminPerm_reports_read": "Скарги: перегляд"
+    ,"adminPerm_users_read": "Користувачі: перегляд списку"
+    ,"adminPerm_users_update": "Користувачі: ролі й скидання пароля (логін приховано)"
+    ,"adminPerm_roles_read": "Ролі: список"
+    ,"adminPerm_roles_create": "Ролі: створення"
+    ,"adminPerm_roles_update": "Ролі: зміна прав"
+    ,"adminPerm_roles_delete": "Ролі: видалення"
+  },
+  "Ui": {
+    "preloader0": "Завантаження даних…",
+    "preloader1": "Синхронізація коментарів…",
+    "preloader2": "Майже готово…",
+    "preloader3": "Перевіряємо останнє за темою…",
+    "preloader4": "Завантажуємо свіжі відповіді…",
+    "preloader5": "Збираємо карму та лайки…",
+    "fileAttach": "Прикріпити файл",
+    "fileUploading": "Завантаження…",
+    "fileUploadError": "Не вдалося завантажити файл.",
+    "fileMarkdownImageAlt": "Зображення",
+    "fileMarkdownLinkLabel": "Прикріплений файл",
+    "quoteTitle": "Цитувати"
   },
   "Privacy": {
     "title": "Політика конфіденційності",
@@ -164,5 +461,10 @@
     "desc": "Сталася непередбачена помилка на сервері. Ми вже працюємо над її усуненням.",
     "tryAgain": "Спробувати знову",
     "backHome": "Повернутися на головну"
+  },
+  "RssForum": {
+    "channelTitle": "Анонімний форум",
+    "channelDescription": "Останні теми та обговорення",
+    "feedError": "Помилка під час створення RSS"
   }
 }

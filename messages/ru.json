@@ -6,7 +6,8 @@
     "map": "Карта",
     "timeline": "Хронология",
     "forum": "Форум",
-    "share": "Поделиться историей"
+    "share": "Поделиться историей",
+    "signOut": "Выйти"
   },
   "Metadata": {
     "title": "Правда.Инфо | Проверенная информация и фактчекинг",
@@ -29,6 +30,7 @@
     "readNews": "Читать новости",
     "factcheck": "Разбор фейков",
     "mainTopics": "Главные темы",
+    "mainTopicsEmpty": "Пока нет новостей с пометкой «главная тема». Отметьте их в админке при редактировании новости.",
     "allNews": "Все новости",
     "toolsTitle": "Инструменты платформы",
     "toolsDesc": "Всё необходимое для поиска правды в одном месте.",
@@ -41,6 +43,7 @@
     "toolSubmitTitle": "Истории",
     "toolSubmitDesc": "Платформа для безопасной публикации личных историй с возможностью анонимности.",
     "latestEvents": "Последние события",
+    "latestEventsEmpty": "Новостей пока нет.",
     "important": "Важное",
     "ctaTitle": "Станьте частью сообщества",
     "ctaDesc": "Помогите нам собирать правдивую информацию. Если вы стали свидетелем важных событий, поделитесь своей историей анонимно.",
@@ -94,7 +97,144 @@
     "searchBtn": "Найти",
     "views": "Просмотры",
     "allTopics": "Все темы",
-    "allTopicsDesc": "Обсуждения на все темы"
+    "allTopicsDesc": "Обсуждения на все темы",
+    "profileAvatarTitle": "Аватар",
+    "profileAvatarError": "Не удалось обновить аватар.",
+    "profileLanguageTitle": "Язык интерфейса",
+    "profileLanguageHint": "Сохраняется в аккаунте — после входа откроется выбранный язык.",
+    "profileLanguageError": "Не удалось сохранить язык.",
+    "profilePasswordTitle": "Смена пароля",
+    "profilePasswordCurrent": "Текущий пароль",
+    "profilePasswordNew": "Новый пароль (не менее 6 символов)",
+    "profilePasswordSubmit": "Обновить пароль",
+    "profilePwdWrongCurrent": "Неверный текущий пароль.",
+    "profilePwdTooShort": "Пароль слишком короткий.",
+    "profilePwdError": "Не удалось сменить пароль.",
+    "profilePwdSuccess": "Пароль обновлён.",
+    "profileSaved": "Сохранено.",
+    "profileRevealTitle": "Данные аккаунта (конфиденциально)",
+    "profileRevealHint": "Логин и дата регистрации скрыты, пока вы не введёте текущий пароль. Администраторы эти данные не видят.",
+    "profileRevealPasswordLabel": "Ваш пароль",
+    "profileRevealSubmit": "Показать логин и дату",
+    "profileRevealWrongPassword": "Неверный пароль.",
+    "profileRevealError": "Не удалось проверить. Попробуйте снова.",
+    "profileRevealLogin": "Логин",
+    "profileRevealCreated": "Дата регистрации",
+    "profilePublicNameHint": "Публичное имя на форуме",
+    "profileBackToForum": "Вернуться на форум",
+    "profileKarma": "Карма",
+    "profilePostsLabel": "Публикаций",
+    "profileNotificationsTitle": "Мои уведомления",
+    "profileNotificationsNew": "Новые",
+    "profileNotificationsEmpty": "У вас пока нет уведомлений.",
+    "profileMyTopics": "Мои темы ({count})",
+    "profileCreateShort": "Создать",
+    "profileTopicsEmpty": "Вы ещё не создали ни одной темы.",
+    "profileMyReplies": "Мои ответы ({count})",
+    "profileRepliesEmpty": "Вы ещё не оставляли комментариев.",
+    "profileInTopic": "В теме:",
+    "profileBestAnswer": "Лучший ответ",
+    "profileSignOut": "Выйти из аккаунта",
+    "forumHeroYourCipher": "Ваш шифр",
+    "authLogin": "Войти",
+    "authRegister": "Регистрация",
+    "authLoginTitle": "Вход на форум",
+    "authRegisterTitle": "Регистрация на форуме",
+    "authUsername": "Логин",
+    "authPassword": "Пароль",
+    "authUsernamePlaceholderRegister": "Придумайте логин",
+    "authPasswordPlaceholderRegister": "Придумайте пароль",
+    "authUsernamePlaceholderLogin": "Ваш логин",
+    "authPasswordPlaceholderLogin": "Ваш пароль",
+    "authSubmitLogin": "Войти",
+    "authSubmittingLogin": "Вход…",
+    "authSubmitRegister": "Зарегистрироваться",
+    "authSubmittingRegister": "Регистрация…",
+    "authNoAccount": "Нет аккаунта?",
+    "authHasAccount": "Уже есть аккаунт?",
+    "authInvalidCredentials": "Неверный логин или пароль.",
+    "authErrorGeneric": "Ошибка входа.",
+    "authRegisterError": "Ошибка регистрации.",
+    "registerRequiredFields": "Логин и пароль обязательны.",
+    "registerUsernameShort": "Логин должен быть не менее 3 символов.",
+    "registerPasswordShort": "Пароль должен быть не менее 6 символов.",
+    "registerUsernameTaken": "Пользователь с таким логином уже существует.",
+    "registerServerError": "Внутренняя ошибка сервера.",
+    "authCreatedSignInManually": "Аккаунт создан. Войдите вручную на странице входа.",
+    "authPickAvatar": "Выберите аватарку",
+    "authAvatarAuto": "Или она сгенерируется автоматически",
+    "forumSortNewest": "Новые",
+    "forumSortPopular": "Популярные",
+    "forumSortLikes": "Оценённые",
+    "forumPerPageLabel": "Показывать:",
+    "forumSelected": "Выбрано",
+    "forumPageOf": "Страница {page} из {totalPages}",
+    "forumPrev": "Назад",
+    "forumNext": "Вперёд",
+    "forumUsersOnline": "Пользователей онлайн:",
+    "forumRssLink": "RSS лента форума",
+    "threadTopicNotFound": "Тема не найдена",
+    "threadMetaSuffix": "Анонимный форум",
+    "markdownSupported": " (поддерживается Markdown)",
+    "threadCrumbForum": "Форум",
+    "threadNotifyUnsubscribeTitle": "Отписаться от уведомлений",
+    "threadNotifySubscribeTitle": "Подписаться на уведомления",
+    "threadSubscribedLabel": "Вы подписаны",
+    "threadSubscribeLabel": "Подписаться",
+    "threadPinToggleTitle": "Закрепить / снять закрепление",
+    "threadCloseToggleTitle": "Закрыть / открыть",
+    "threadEditTitle": "Редактировать тему",
+    "threadMoveTitle": "Перенести тему",
+    "threadMoveToLabel": "Перенести в:",
+    "threadMoveSubmit": "Перенести",
+    "threadPinned": "Закреплено",
+    "threadClosed": "Закрыто",
+    "threadPollTotalVotes": "Всего голосов: {count}",
+    "threadKarmaTitle": "Карма",
+    "threadReportTopicLabel": "Жалоба на тему:",
+    "threadReportReasonPlaceholder": "Причина жалобы…",
+    "threadReportSubmit": "Отправить жалобу",
+    "threadSortCommentsOldest": "Сначала старые",
+    "threadSortCommentsNewest": "Сначала новые",
+    "threadSortCommentsPopular": "Популярные",
+    "threadBestAnswer": "Лучший ответ",
+    "threadSolutionBadge": "Решение",
+    "threadMarkSolution": "Отметить как решение",
+    "threadReportCommentLabel": "Жалоба на комментарий:",
+    "threadReportReplyLabel": "Жалоба на ответ:",
+    "threadIgnoreUser": "Заблокировать пользователя",
+    "threadDeleteTitle": "Удалить",
+    "threadReplyToggle": "Ответить",
+    "threadReplyPlaceholder": "Ваш ответ…",
+    "threadLoginLink": "Войдите",
+    "threadLoginToReplySuffix": ", чтобы ответить.",
+    "threadLoginToComment": "Войдите, чтобы оставить комментарий",
+    "threadSignIn": "Войти",
+    "threadTopicClosedReplies": "Тема закрыта для новых ответов.",
+    "newTopicTagsLabel": "Теги (через запятую)",
+    "newTopicTagsPlaceholder": "новости, обсуждение, вопрос",
+    "newTopicPollSection": "Опрос (необязательно)",
+    "newTopicPollQuestion": "Вопрос",
+    "newTopicPollQuestionPlaceholder": "например: Какой фреймворк лучше?",
+    "newTopicPollOptions": "Варианты ответов (по одному в строке)",
+    "newTopicPollOptionsPlaceholder": "React\nVue\nAngular",
+    "editTopicBack": "К теме",
+    "editTopicTitle": "Редактирование темы",
+    "editTopicHeading": "Заголовок",
+    "editTopicBody": "Текст",
+    "editTopicContent": "Содержание",
+    "editTopicTags": "Теги (через запятую)",
+    "editTopicSave": "Сохранить изменения"
+  },
+  "Common": {
+    "showAs": "Показывать:",
+    "viewList": "Список",
+    "viewGrid": "Плитка",
+    "viewCompact": "Компактно",
+    "perPage": "На странице:",
+    "paginationPrev": "Назад",
+    "paginationNext": "Вперёд",
+    "paginationPage": "Страница {page} из {totalPages}"
   },
   "Timeline": {
     "title": "Хронология событий",
@@ -126,14 +266,171 @@
     "noFactchecks": "Разборов пока нет.",
     "fake": "Фейк",
     "refutation": "Опровержение",
-    "sources": "Источники:"
+    "sources": "Источники:",
+    "searchPlaceholder": "Поиск по разборам…",
+    "searchBtn": "Найти"
   },
   "Admin": {
     "title": "Панель редактора",
     "desc": "Доступ только для верифицированных авторов и фактчекеров.",
+    "adminLogin": "Вход для редакторов",
+    "adminLoginError": "Неверный логин, пароль или нет прав редактора.",
+    "adminUsername": "Логин",
+    "adminPassword": "Пароль",
+    "adminLoginHint": "Тот же логин, что на форуме. Нужно право «доступ к панели» (обычно через роль Администратор).",
     "loginTitle": "Вход в систему",
     "passwordPlaceholder": "Пароль",
-    "loginBtn": "Войти (Supabase Auth)"
+    "loginBtn": "Войти (Supabase Auth)",
+    "login": "Войти"
+    ,"news": "Управление новостями"
+    ,"newsDesc": "Создавайте, редактируйте и удаляйте новости."
+    ,"factcheck": "Управление фактчекингом"
+    ,"factcheckDesc": "Добавляйте и редактируйте разборы фейков."
+    ,"forum": "Модерация форума"
+    ,"forumDesc": "Просмотр жалоб и управление темами."
+    ,"reports": "Жалобы и отчёты"
+    ,"reportsDesc": "Просмотр и обработка жалоб от пользователей."
+    ,"forumModeration": "Модерация форума"
+    ,"noReports": "Жалоб пока нет."
+    ,"createNews": "Создать новость"
+    ,"newsTitle": "Заголовок"
+    ,"content": "Текст"
+    ,"imageUrl": "URL изображения"
+    ,"newsImageFile": "Загрузить изображение с компьютера"
+    ,"newsImageFileHint": "JPEG, PNG, GIF или WebP, до 5 МБ. Если выбран файл, он используется вместо URL."
+    ,"adminNewsImageTooLarge": "Файл слишком большой (максимум 5 МБ)."
+    ,"adminNewsImageType": "Допустимы только изображения JPEG, PNG, GIF или WebP."
+    ,"create": "Создать"
+    ,"edit": "Редактировать"
+    ,"delete": "Удалить"
+    ,"save": "Сохранить"
+    ,"createFact": "Создать разбор"
+    ,"editFact": "Редактировать разбор"
+    ,"editNews": "Редактировать новость"
+    ,"modDeletePost": "Удалить сообщение"
+    ,"modDeleteTopic": "Удалить тему"
+    ,"modDeleteTopicConfirm": "Удалить эту тему и все ответы? Это нельзя отменить."
+    ,"modDeleteCommentConfirm": "Удалить это сообщение?"
+    ,"modCloseTopic": "Закрыть тему"
+    ,"modOpenTopic": "Открыть тему"
+    ,"modPinTopic": "Закрепить тему"
+    ,"modUnpinTopic": "Снять закрепление"
+    ,"adminFactcheckSearchPlaceholder": "Поиск по утверждению, опровержению или источникам…"
+    ,"adminFactcheckEmpty": "Разборов пока нет. Создайте первый."
+    ,"adminForumSearchPlaceholder": "Поиск по названию, тексту темы или разделу…"
+    ,"adminForumTopicsEmpty": "Тем на форуме пока нет."
+    ,"adminForumViewTopic": "Открыть на форуме"
+    ,"adminForumStatusPinned": "Закреплена"
+    ,"adminForumStatusClosed": "Закрыта"
+    ,"adminReportsSearchPlaceholder": "Поиск по теме, причине или номеру…"
+    ,"adminReportsEmpty": "Жалоб пока нет."
+    ,"adminNewsSearchPlaceholder": "Поиск по заголовку или тексту…"
+    ,"adminNewsPerPage": "На странице:"
+    ,"adminNewsMeta": "Всего: {total} · Показано {from}–{to} · Страница {page} из {totalPages}"
+    ,"adminNewsEmpty": "Новостей пока нет. Создайте первую."
+    ,"newsCategory": "Рубрика / группа"
+    ,"newsCategoryHint": "Показывается на списке новостей и в статье."
+    ,"newsTags": "Теги"
+    ,"newsTagsPlaceholder": "тег1, тег2"
+    ,"newsTagsHint": "Через запятую или точку с запятой."
+    ,"newsImportant": "Срочная / важная новость"
+    ,"newsPublishedAt": "Дата и время публикации"
+    ,"newsPublishedAtHint": "Пусто — будет текущее время."
+    ,"newsFeatured": "Главная тема (карусель на главной)"
+    ,"newsFeaturedHint": "Показывается в блоке «Главные темы», новые сверху. До 8 постов."
+    ,"adminNewsSaved": "Сохранено"
+    ,"adminNewsSaveError": "Не удалось сохранить"
+    ,"adminNewsDeleteConfirm": "Удалить эту новость?"
+    ,"adminFactSaved": "Сохранено"
+    ,"adminFactSaveError": "Не удалось сохранить"
+    ,"adminFactDeleteConfirm": "Удалить этот разбор?"
+    ,"adminUsersTitle": "Пользователи"
+    ,"adminUsersDesc": "Назначение ролей и сброс пароля. Логин не показывается; отображаемое имя только для просмотра."
+    ,"adminUsersSearchPlaceholder": "Поиск по отображаемому имени или внутреннему id…"
+    ,"adminUsersPrivacyNote": "Ради приватности персонал не видит логин учётной записи — только публичное имя и внутренний id."
+    ,"adminUsersMeta": "Всего: {total} · Показано {from}–{to} · Страница {page} из {totalPages}"
+    ,"adminUsersEmpty": "Пользователей нет."
+    ,"adminUserEditTitle": "Редактировать пользователя"
+    ,"adminUserUsername": "Логин (username)"
+    ,"adminUserUsernameHint": "Логин здесь не меняется — по нему выполняется вход."
+    ,"adminUserLoginHidden": "Персонал не видит логин и дату регистрации пользователя — их может показать только сам пользователь в своём профиле на форуме после ввода пароля."
+    ,"adminUserInternalId": "Внутренний id"
+    ,"adminUserDisplayName": "Отображаемое имя"
+    ,"adminUserDisplayNameReadonlyHint": "Меняет только сам пользователь в профиле на форуме; персонал только просматривает."
+    ,"adminUserAvatarUrl": "URL аватара"
+    ,"adminUserAvatarPick": "Аватар (из набора)"
+    ,"adminUserInvalidAvatar": "Выберите один из предложенных аватаров."
+    ,"adminUserRole": "Роль / доступ"
+    ,"adminUserRoleHint": "Администраторы открывают панель редактора и управляют контентом. Обычные пользователи — только форум."
+    ,"adminUserRoleHintRbac": "Набор прав задаётся ролью; сами права — в разделе «Роли и доступ»."
+    ,"adminUserNewPassword": "Новый пароль"
+    ,"adminUserNewPasswordHint": "Оставьте пустым, чтобы не менять пароль. Если задаёте — не менее 6 символов."
+    ,"adminUserSaved": "Сохранено"
+    ,"adminUserSaveError": "Не удалось сохранить пользователя"
+    ,"adminUserLastAdmin": "Нельзя снять роль администратора с последнего админа. Сначала назначьте другого."
+    ,"adminUserLastRolesManager": "Нельзя лишить последнего пользователя с правом изменять роли. Сначала выдайте roles.update другому."
+    ,"adminUserNotFound": "Пользователь не найден"
+    ,"adminUserDisplayNameRequired": "Укажите отображаемое имя"
+    ,"adminUserPasswordShort": "Пароль не короче 6 символов"
+    ,"adminUserInvalidRole": "Недопустимая роль"
+    ,"roleUser": "Пользователь"
+    ,"roleAdmin": "Администратор"
+    ,"adminBreadcrumbHome": "Админка"
+    ,"adminBreadcrumbAriaLabel": "Навигационная цепочка"
+    ,"adminRolesTitle": "Роли и доступ"
+    ,"adminRolesDesc": "Создавайте роли и выбирайте, к каким разделам панели они допускают."
+    ,"adminRolesCreate": "Новая роль"
+    ,"adminRolesCreateHint": "Латинский slug (a–z, цифры, _ и -), 2–32 символа. Права задаются на следующем шаге."
+    ,"adminRolesSlug": "Slug (технический id)"
+    ,"adminRolesSlugHint": "Потом не меняется. Пример: support_editor"
+    ,"adminRolesName": "Название"
+    ,"adminRolesEditTitle": "Роль"
+    ,"adminRolesPermissions": "Права доступа"
+    ,"adminRolesUserCount": "Пользователей с ролью"
+    ,"adminRolesPermCount": "Прав"
+    ,"adminRolesLockedAdmin": "Роль «Администратор» всегда имеет все права."
+    ,"adminRolesLockedUser": "Роль пользователя форума не имеет прав панели."
+    ,"adminRolesSaveError": "Не удалось сохранить"
+    ,"adminRolesInvalidSlug": "Неверный slug (2–32 символа: a–z, 0–9, _ и -)."
+    ,"adminRolesSlugTaken": "Такой slug уже занят."
+    ,"adminNoSectionPermissions": "Панель открывается, но вашей роли не назначены разделы. Попросите администратора настроить права."
+    ,"adminPerm_panel_access": "Вход в админ-панель (нужно для любой работы в панели)"
+    ,"adminPerm_content_news_read": "Новости: просмотр списка и статей"
+    ,"adminPerm_content_news_create": "Новости: создание"
+    ,"adminPerm_content_news_update": "Новости: редактирование"
+    ,"adminPerm_content_news_delete": "Новости: удаление"
+    ,"adminPerm_content_factcheck_read": "Фактчекинг: просмотр"
+    ,"adminPerm_content_factcheck_create": "Фактчекинг: создание"
+    ,"adminPerm_content_factcheck_update": "Фактчекинг: редактирование"
+    ,"adminPerm_content_factcheck_delete": "Фактчекинг: удаление"
+    ,"adminPerm_forum_moderate_read": "Форум: списки модерации и жалоб"
+    ,"adminPerm_forum_moderate_delete_post": "Форум: удаление комментариев"
+    ,"adminPerm_forum_moderate_delete_topic": "Форум: удаление тем"
+    ,"adminPerm_forum_moderate_pin_topic": "Форум: закрепление тем"
+    ,"adminPerm_forum_moderate_unpin_topic": "Форум: снятие закрепления"
+    ,"adminPerm_forum_moderate_close_topic": "Форум: закрытие тем"
+    ,"adminPerm_forum_moderate_open_topic": "Форум: открытие тем"
+    ,"adminPerm_reports_read": "Жалобы: просмотр"
+    ,"adminPerm_users_read": "Пользователи: просмотр списка"
+    ,"adminPerm_users_update": "Пользователи: роли и сброс пароля (логин скрыт)"
+    ,"adminPerm_roles_read": "Роли: список"
+    ,"adminPerm_roles_create": "Роли: создание"
+    ,"adminPerm_roles_update": "Роли: изменение прав"
+    ,"adminPerm_roles_delete": "Роли: удаление"
+  },
+  "Ui": {
+    "preloader0": "Загрузка данных…",
+    "preloader1": "Синхронизация комментариев…",
+    "preloader2": "Почти готово…",
+    "preloader3": "Проверяем последнее по теме…",
+    "preloader4": "Загружаем свежие ответы…",
+    "preloader5": "Собираем карму и лайки…",
+    "fileAttach": "Прикрепить файл",
+    "fileUploading": "Загрузка…",
+    "fileUploadError": "Не удалось загрузить файл.",
+    "fileMarkdownImageAlt": "Изображение",
+    "fileMarkdownLinkLabel": "Прикреплённый файл",
+    "quoteTitle": "Цитировать"
   },
   "Privacy": {
     "title": "Политика конфиденциальности",
@@ -164,5 +461,10 @@
     "desc": "Произошла непредвиденная ошибка на сервере. Мы уже работаем над её устранением.",
     "tryAgain": "Попробовать снова",
     "backHome": "Вернуться на главную"
+  },
+  "RssForum": {
+    "channelTitle": "Анонимный форум",
+    "channelDescription": "Последние темы и обсуждения",
+    "feedError": "Ошибка при генерации RSS"
   }
 }

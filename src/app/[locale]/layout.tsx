@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { SessionProviderClient } from "@/components/SessionProviderClient";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -84,11 +85,13 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            <main className="flex-1 w-full flex flex-col">
-              {children}
-            </main>
-            <Footer />
+            <SessionProviderClient>
+              <Navbar />
+              <main className="flex-1 w-full flex flex-col">
+                {children}
+              </main>
+              <Footer />
+            </SessionProviderClient>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

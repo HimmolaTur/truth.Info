@@ -4,28 +4,43 @@ import { ArrowRight, Shield, AlertTriangle, MapPin, Clock } from "lucide-react";
 import { NewsCarousel } from "@/components/NewsCarousel";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { getTranslations } from "next-intl/server";
+import { rowToHomeNewsCard } from "@/lib/newsAdmin";
 
 const IMG_HERO =
-  "/images/photo-1451187580459-43490279c0fa.svg";
+  "/images/photo-1451187580459-43490279c0fa.jpg";
 const IMG_FEATURES =
-  "/images/photo-1529245005535-6af5195155f1.svg";
+  "/images/photo-1518770660439-4636190af475.jpg";
 const IMG_CTA =
-  "/images/photo-1532375810709-75b1da00537c.svg";
+  "/images/photo-1532375810709-75b1da00537c.jpg";
 
-type HomeNewsRow = {
-  id: number;
-  title: string;
-  content: string;
-  category: string | null;
-  is_important: boolean;
-  image_url: string | null;
-  created_at: Date | string;
-};
+const HOME_LATEST_COUNT = 3;
+const HOME_FEATURED_COUNT = 8;
+const PLACEHOLDER_NEWS_IMAGE =
+  "/images/photo-1504711434969-e33886168f5c.jpg";
 
 export default async function Home() {
   const t = await getTranslations("Home");
-  const latestNewsResult = await query('SELECT * FROM news ORDER BY created_at DESC LIMIT 3');
-  const latestNews = latestNewsResult.rows as HomeNewsRow[];
+
+  const [latestRes, featuredRes] = await Promise.all([
+    query(
+      `SELECT * FROM news ORDER BY created_at DESC LIMIT $1`,
+      [HOME_LATEST_COUNT]
+    ),
+    query(
+      `SELECT * FROM news
+       WHERE COALESCE(is_featured, false) = true
+       ORDER BY created_at DESC
+       LIMIT $1`,
+      [HOME_FEATURED_COUNT]
+    ),
+  ]);
+
+  const latestNews = latestRes.rows.map((row) =>
+    rowToHomeNewsCard(row as Record<string, unknown>, 200)
+  );
+  const featuredNews = featuredRes.rows.map((row) =>
+    rowToHomeNewsCard(row as Record<string, unknown>, 320)
+  );
 
   return (
     <div className="flex flex-col w-full">
@@ -53,7 +68,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Full-width Carousel Section */}
+      {/* Главные темы: только посты с is_featured, новые сверху */}
       <section className="w-full bg-gray-50 dark:bg-neutral-950 py-20 border-b dark:border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-10">
@@ -62,7 +77,21 @@ export default async function Home() {
               {t("allNews")} <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
-          <NewsCarousel news={latestNews} />
+          {featuredNews.length > 0 ? (
+            <NewsCarousel news={featuredNews} placeholderImage={PLACEHOLDER_NEWS_IMAGE} />
+          ) : (
+            <div className="rounded-2xl border border-dashed border-gray-300 dark:border-neutral-700 bg-white/50 dark:bg-neutral-900/50 px-8 py-14 text-center">
+              <p className="text-gray-600 dark:text-gray-400 text-lg max-w-xl mx-auto">
+                {t("mainTopicsEmpty")}
+              </p>
+              <Link
+                href="/news"
+                className="inline-flex items-center gap-2 mt-6 text-blue-600 hover:text-blue-700 font-bold"
+              >
+                {t("allNews")} <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -118,7 +147,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Full-width Latest News Grid */}
+      {/* Последние события: три последних поста по дате */}
       <section className="w-full py-24 bg-white dark:bg-neutral-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end border-b-2 border-gray-100 dark:border-neutral-800 pb-6 mb-12">
@@ -127,37 +156,49 @@ export default async function Home() {
               {t("allNews")} <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
-            {latestNews.map((item) => (
-              <Link href={`/news/${item.id}`} key={item.id} className="bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-neutral-800 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer flex flex-col">
-                <div className="h-64 bg-gray-200 dark:bg-neutral-800 w-full relative overflow-hidden">
-                  <img 
-                    src={item.image_url || '/images/photo-1504711434969-e33886168f5c.svg'} 
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  {item.is_important && (
-                    <div className="absolute top-5 left-5 bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg uppercase tracking-wider">
-                      {t("important")}
-                    </div>
-                  )}
-                </div>
-                <div className="p-8 flex-1 flex flex-col">
-                  <div className="flex justify-between items-center mb-5">
-                    <div className="text-sm text-gray-500 font-medium">{new Date(item.created_at).toLocaleDateString('ru-RU')}</div>
-                    <div className="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-3 py-1.5 rounded-full uppercase tracking-wider">{item.category}</div>
+          {latestNews.length === 0 ? (
+            <p className="text-center text-gray-500 py-12">{t("latestEventsEmpty")}</p>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-10">
+              {latestNews.map((item) => (
+                <Link
+                  href={`/news/${item.id}`}
+                  key={item.id}
+                  className="bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-neutral-800 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer flex flex-col"
+                >
+                  <div className="h-64 bg-gray-200 dark:bg-neutral-800 w-full relative overflow-hidden">
+                    <img
+                      src={item.image_url || PLACEHOLDER_NEWS_IMAGE}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {item.is_important && (
+                      <div className="absolute top-5 left-5 bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg uppercase tracking-wider">
+                        {t("important")}
+                      </div>
+                    )}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-600 transition-colors line-clamp-2 text-gray-900 dark:text-white">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-base line-clamp-3 leading-relaxed">
-                    {item.content}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+                  <div className="p-8 flex-1 flex flex-col">
+                    <div className="flex justify-between items-center mb-5">
+                      <div className="text-sm text-gray-500 font-medium">
+                        {new Date(item.created_at).toLocaleDateString("ru-RU")}
+                      </div>
+                      <div className="text-xs font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-3 py-1.5 rounded-full uppercase tracking-wider">
+                        {item.category}
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-600 transition-colors line-clamp-2 text-gray-900 dark:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-base line-clamp-3 leading-relaxed">
+                      {item.content_preview}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

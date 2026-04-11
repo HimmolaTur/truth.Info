@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Link } from "@/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { newsImageUrlFromRow, newsTagsForDisplay } from "@/lib/newsAdmin";
 
 export default async function NewsArticlePage({ params }: { params: { id: string } }) {
   const t = await getTranslations("News");
@@ -13,6 +14,10 @@ export default async function NewsArticlePage({ params }: { params: { id: string
   }
   
   const article = result.rows[0];
+  const displayTags = newsTagsForDisplay(article.tags);
+  const articleImage =
+    newsImageUrlFromRow(article as Record<string, unknown>) ||
+    "/images/photo-1504711434969-e33886168f5c.jpg";
 
   return (
     <div className="max-w-3xl mx-auto w-full py-8">
@@ -35,7 +40,7 @@ export default async function NewsArticlePage({ params }: { params: { id: string
         
         <div className="w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-10 shadow-lg">
           <img 
-            src={article.image_url || '/images/photo-1504711434969-e33886168f5c.svg'} 
+            src={articleImage} 
             alt={article.title}
             className="w-full h-full object-cover"
           />
@@ -45,11 +50,11 @@ export default async function NewsArticlePage({ params }: { params: { id: string
           {article.content}
         </div>
         
-        {article.tags && article.tags.length > 0 && (
+        {displayTags.length > 0 && (
           <div className="pt-6 border-t dark:border-neutral-800">
             <div className="text-sm text-gray-500 mb-2">{t("tags")}</div>
             <div className="flex flex-wrap gap-2">
-              {article.tags.map((tag: string, idx: number) => (
+              {displayTags.map((tag: string, idx: number) => (
                 <span key={idx} className="bg-gray-100 dark:bg-neutral-800 text-sm px-3 py-1 rounded-full">
                   #{tag}
                 </span>

@@ -6,7 +6,8 @@
     "map": "Karte",
     "timeline": "Chronik",
     "forum": "Forum",
-    "share": "Geschichte teilen"
+    "share": "Geschichte teilen",
+    "signOut": "Abmelden"
   },
   "Metadata": {
     "title": "Wahrheit.Info | Verifizierte Informationen und Faktencheck",
@@ -29,6 +30,7 @@
     "readNews": "Nachrichten lesen",
     "factcheck": "Faktencheck",
     "mainTopics": "Hauptthemen",
+    "mainTopicsEmpty": "Noch keine Nachrichten als Hauptthema markiert. Aktivieren Sie dies in der Admin-Ansicht.",
     "allNews": "Alle Nachrichten",
     "toolsTitle": "Plattform-Tools",
     "toolsDesc": "Alles, was Sie brauchen, um die Wahrheit an einem Ort zu finden.",
@@ -41,6 +43,7 @@
     "toolSubmitTitle": "Geschichten",
     "toolSubmitDesc": "Eine Plattform zur sicheren Veröffentlichung persönlicher Geschichten mit der Option auf Anonymität.",
     "latestEvents": "Neueste Ereignisse",
+    "latestEventsEmpty": "Noch keine Nachrichten.",
     "important": "Wichtig",
     "ctaTitle": "Werden Sie Teil der Gemeinschaft",
     "ctaDesc": "Helfen Sie uns, wahrheitsgemäße Informationen zu sammeln. Wenn Sie Zeuge wichtiger Ereignisse wurden, teilen Sie Ihre Geschichte anonym.",
@@ -94,7 +97,144 @@
     "searchBtn": "Suchen",
     "views": "Aufrufe",
     "allTopics": "Alle Themen",
-    "allTopicsDesc": "Diskussionen zu allen Themen"
+    "allTopicsDesc": "Diskussionen zu allen Themen",
+    "profileAvatarTitle": "Profilbild",
+    "profileAvatarError": "Avatar konnte nicht aktualisiert werden.",
+    "profileLanguageTitle": "Oberflächensprache",
+    "profileLanguageHint": "Wird im Konto gespeichert — nach der Anmeldung erscheint diese Sprache.",
+    "profileLanguageError": "Sprache konnte nicht gespeichert werden.",
+    "profilePasswordTitle": "Passwort ändern",
+    "profilePasswordCurrent": "Aktuelles Passwort",
+    "profilePasswordNew": "Neues Passwort (mind. 6 Zeichen)",
+    "profilePasswordSubmit": "Passwort aktualisieren",
+    "profilePwdWrongCurrent": "Aktuelles Passwort ist falsch.",
+    "profilePwdTooShort": "Neues Passwort ist zu kurz.",
+    "profilePwdError": "Passwort konnte nicht geändert werden.",
+    "profilePwdSuccess": "Passwort aktualisiert.",
+    "profileSaved": "Gespeichert.",
+    "profileRevealTitle": "Kontodaten (vertraulich)",
+    "profileRevealHint": "Login und Registrierungsdatum sind verborgen, bis Sie Ihr aktuelles Passwort eingeben. Mitarbeitende sehen diese Daten nicht.",
+    "profileRevealPasswordLabel": "Ihr Passwort",
+    "profileRevealSubmit": "Login und Datum anzeigen",
+    "profileRevealWrongPassword": "Falsches Passwort.",
+    "profileRevealError": "Prüfung fehlgeschlagen. Bitte erneut versuchen.",
+    "profileRevealLogin": "Login",
+    "profileRevealCreated": "Registriert am",
+    "profilePublicNameHint": "Öffentlicher Name im Forum",
+    "profileBackToForum": "Zurück zum Forum",
+    "profileKarma": "Karma",
+    "profilePostsLabel": "Beiträge",
+    "profileNotificationsTitle": "Meine Benachrichtigungen",
+    "profileNotificationsNew": "Neu",
+    "profileNotificationsEmpty": "Sie haben noch keine Benachrichtigungen.",
+    "profileMyTopics": "Meine Themen ({count})",
+    "profileCreateShort": "Erstellen",
+    "profileTopicsEmpty": "Sie haben noch keine Themen erstellt.",
+    "profileMyReplies": "Meine Antworten ({count})",
+    "profileRepliesEmpty": "Sie haben noch keine Kommentare geschrieben.",
+    "profileInTopic": "Im Thema:",
+    "profileBestAnswer": "Beste Antwort",
+    "profileSignOut": "Abmelden",
+    "forumHeroYourCipher": "Ihr Anzeigename",
+    "authLogin": "Anmelden",
+    "authRegister": "Registrieren",
+    "authLoginTitle": "Forum-Anmeldung",
+    "authRegisterTitle": "Forum-Registrierung",
+    "authUsername": "Benutzername",
+    "authPassword": "Passwort",
+    "authUsernamePlaceholderRegister": "Benutzername wählen",
+    "authPasswordPlaceholderRegister": "Passwort wählen",
+    "authUsernamePlaceholderLogin": "Ihr Benutzername",
+    "authPasswordPlaceholderLogin": "Ihr Passwort",
+    "authSubmitLogin": "Anmelden",
+    "authSubmittingLogin": "Anmeldung…",
+    "authSubmitRegister": "Registrieren",
+    "authSubmittingRegister": "Registrierung…",
+    "authNoAccount": "Noch kein Konto?",
+    "authHasAccount": "Bereits ein Konto?",
+    "authInvalidCredentials": "Ungültiger Benutzername oder Passwort.",
+    "authErrorGeneric": "Anmeldung fehlgeschlagen.",
+    "authRegisterError": "Registrierung fehlgeschlagen.",
+    "registerRequiredFields": "Benutzername und Passwort sind erforderlich.",
+    "registerUsernameShort": "Der Benutzername muss mindestens 3 Zeichen haben.",
+    "registerPasswordShort": "Das Passwort muss mindestens 6 Zeichen haben.",
+    "registerUsernameTaken": "Dieser Benutzername ist bereits vergeben.",
+    "registerServerError": "Serverfehler. Bitte später erneut versuchen.",
+    "authCreatedSignInManually": "Konto erstellt. Bitte melden Sie sich manuell auf der Anmeldeseite an.",
+    "authPickAvatar": "Avatar wählen",
+    "authAvatarAuto": "Oder es wird automatisch einer zugewiesen",
+    "forumSortNewest": "Neueste",
+    "forumSortPopular": "Beliebt",
+    "forumSortLikes": "Top bewertet",
+    "forumPerPageLabel": "Pro Seite:",
+    "forumSelected": "Ausgewählt",
+    "forumPageOf": "Seite {page} von {totalPages}",
+    "forumPrev": "Zurück",
+    "forumNext": "Weiter",
+    "forumUsersOnline": "Nutzer online:",
+    "forumRssLink": "Forum-RSS-Feed",
+    "threadTopicNotFound": "Thema nicht gefunden",
+    "threadMetaSuffix": "Anonymes Forum",
+    "markdownSupported": " (Markdown wird unterstützt)",
+    "threadCrumbForum": "Forum",
+    "threadNotifyUnsubscribeTitle": "Benachrichtigungen abbestellen",
+    "threadNotifySubscribeTitle": "Benachrichtigungen abonnieren",
+    "threadSubscribedLabel": "Abonniert",
+    "threadSubscribeLabel": "Abonnieren",
+    "threadPinToggleTitle": "Anheften / lösen",
+    "threadCloseToggleTitle": "Schließen / wieder öffnen",
+    "threadEditTitle": "Thema bearbeiten",
+    "threadMoveTitle": "Thema verschieben",
+    "threadMoveToLabel": "Verschieben nach:",
+    "threadMoveSubmit": "Verschieben",
+    "threadPinned": "Angeheftet",
+    "threadClosed": "Geschlossen",
+    "threadPollTotalVotes": "Stimmen gesamt: {count}",
+    "threadKarmaTitle": "Karma",
+    "threadReportTopicLabel": "Thema melden:",
+    "threadReportReasonPlaceholder": "Grund der Meldung…",
+    "threadReportSubmit": "Meldung senden",
+    "threadSortCommentsOldest": "Älteste zuerst",
+    "threadSortCommentsNewest": "Neueste zuerst",
+    "threadSortCommentsPopular": "Beliebt",
+    "threadBestAnswer": "Beste Antwort",
+    "threadSolutionBadge": "Lösung",
+    "threadMarkSolution": "Als Lösung markieren",
+    "threadReportCommentLabel": "Kommentar melden:",
+    "threadReportReplyLabel": "Antwort melden:",
+    "threadIgnoreUser": "Nutzer blockieren",
+    "threadDeleteTitle": "Löschen",
+    "threadReplyToggle": "Antworten",
+    "threadReplyPlaceholder": "Ihre Antwort…",
+    "threadLoginLink": "Anmelden",
+    "threadLoginToReplySuffix": ", um zu antworten.",
+    "threadLoginToComment": "Melden Sie sich an, um zu kommentieren",
+    "threadSignIn": "Anmelden",
+    "threadTopicClosedReplies": "Dieses Thema ist für neue Antworten geschlossen.",
+    "newTopicTagsLabel": "Tags (kommagetrennt)",
+    "newTopicTagsPlaceholder": "news, diskussion, frage",
+    "newTopicPollSection": "Optionale Umfrage",
+    "newTopicPollQuestion": "Frage",
+    "newTopicPollQuestionPlaceholder": "z. B.: Welches Framework ist am besten?",
+    "newTopicPollOptions": "Antwortoptionen (eine pro Zeile)",
+    "newTopicPollOptionsPlaceholder": "React\nVue\nAngular",
+    "editTopicBack": "Zurück zum Thema",
+    "editTopicTitle": "Thema bearbeiten",
+    "editTopicHeading": "Titel",
+    "editTopicBody": "Text",
+    "editTopicContent": "Inhalt",
+    "editTopicTags": "Tags (kommagetrennt)",
+    "editTopicSave": "Änderungen speichern"
+  },
+  "Common": {
+    "showAs": "Anzeige:",
+    "viewList": "Listenansicht",
+    "viewGrid": "Rasteransicht",
+    "viewCompact": "Kompaktansicht",
+    "perPage": "Pro Seite:",
+    "paginationPrev": "Zurück",
+    "paginationNext": "Weiter",
+    "paginationPage": "Seite {page} von {totalPages}"
   },
   "Timeline": {
     "title": "Ereignischronik",
@@ -126,14 +266,171 @@
     "noFactchecks": "Noch keine Faktenchecks.",
     "fake": "Fake",
     "refutation": "Widerlegung",
-    "sources": "Quellen:"
+    "sources": "Quellen:",
+    "searchPlaceholder": "Faktenchecks durchsuchen…",
+    "searchBtn": "Suchen"
   },
   "Admin": {
     "title": "Redakteurs-Panel",
     "desc": "Zugang nur für verifizierte Autoren und Faktenchecker.",
+    "adminLogin": "Redakteurs-Login",
+    "adminLoginError": "Ungültiger Benutzername, Passwort oder keine Redakteursrechte.",
+    "adminUsername": "Benutzername",
+    "adminPassword": "Passwort",
+    "adminLoginHint": "Derselbe Benutzername wie im Forum. Sie brauchen die Berechtigung „Panel-Zugang“ (meist über die Rolle Administrator).",
     "loginTitle": "Anmeldung",
     "passwordPlaceholder": "Passwort",
     "loginBtn": "Anmelden (Supabase Auth)"
+    ,"login": "Anmelden"
+    ,"news": "Nachrichten verwalten"
+    ,"newsDesc": "Erstellen, bearbeiten und löschen von Nachrichten."
+    ,"factcheck": "Faktenprüfung verwalten"
+    ,"factcheckDesc": "Hinzufügen und Bearbeiten von Faktenchecks."
+    ,"forum": "Forenmoderation"
+    ,"forumDesc": "Meldungen ansehen und Themen verwalten."
+    ,"reports": "Berichte"
+    ,"reportsDesc": "Benutzerberichte ansehen und bearbeiten."
+    ,"forumModeration": "Forenmoderation"
+    ,"noReports": "Noch keine Meldungen."
+    ,"createNews": "Nachricht erstellen"
+    ,"newsTitle": "Titel"
+    ,"content": "Inhalt"
+    ,"imageUrl": "Bild-URL"
+    ,"newsImageFile": "Bild vom Computer hochladen"
+    ,"newsImageFileHint": "JPEG, PNG, GIF oder WebP, bis 5 MB. Wenn eine Datei gewählt ist, ersetzt sie die URL."
+    ,"adminNewsImageTooLarge": "Datei ist zu groß (maximal 5 MB)."
+    ,"adminNewsImageType": "Nur JPEG-, PNG-, GIF- oder WebP-Bilder sind erlaubt."
+    ,"create": "Erstellen"
+    ,"edit": "Bearbeiten"
+    ,"delete": "Löschen"
+    ,"save": "Speichern"
+    ,"createFact": "Faktencheck erstellen"
+    ,"editFact": "Faktencheck bearbeiten"
+    ,"editNews": "Nachricht bearbeiten"
+    ,"modDeletePost": "Beitrag löschen"
+    ,"modDeleteTopic": "Thema löschen"
+    ,"modDeleteTopicConfirm": "Dieses Thema und alle Antworten löschen? Das kann nicht rückgängig gemacht werden."
+    ,"modDeleteCommentConfirm": "Diesen Kommentar löschen?"
+    ,"modCloseTopic": "Thema schließen"
+    ,"modOpenTopic": "Thema öffnen"
+    ,"modPinTopic": "Thema anheften"
+    ,"modUnpinTopic": "Anheften aufheben"
+    ,"adminFactcheckSearchPlaceholder": "Suche nach Behauptung, Widerlegung oder Quellen…"
+    ,"adminFactcheckEmpty": "Noch keine Faktenchecks. Erstellen Sie den ersten."
+    ,"adminForumSearchPlaceholder": "Suche nach Titel, Text oder Kategorie…"
+    ,"adminForumTopicsEmpty": "Noch keine Forenthemen."
+    ,"adminForumViewTopic": "Im Forum öffnen"
+    ,"adminForumStatusPinned": "Angeheftet"
+    ,"adminForumStatusClosed": "Geschlossen"
+    ,"adminReportsSearchPlaceholder": "Suche nach Thema, Grund oder Nummer…"
+    ,"adminReportsEmpty": "Noch keine Meldungen."
+    ,"adminNewsSearchPlaceholder": "Suche nach Titel oder Text…"
+    ,"adminNewsPerPage": "Pro Seite:"
+    ,"adminNewsMeta": "Gesamt: {total} · Angezeigt {from}–{to} · Seite {page} von {totalPages}"
+    ,"adminNewsEmpty": "Noch keine Nachrichten. Erstellen Sie die erste."
+    ,"newsCategory": "Rubrik / Kategorie"
+    ,"newsCategoryHint": "Wird in der Liste und im Artikel angezeigt."
+    ,"newsTags": "Tags"
+    ,"newsTagsPlaceholder": "tag1, tag2"
+    ,"newsTagsHint": "Mit Komma oder Semikolon trennen."
+    ,"newsImportant": "Dringend / wichtig"
+    ,"newsPublishedAt": "Veröffentlichungsdatum und -zeit"
+    ,"newsPublishedAtHint": "Leer lassen für die aktuelle Zeit."
+    ,"newsFeatured": "Hauptthema (Karussell auf der Startseite)"
+    ,"newsFeaturedHint": "Im Bereich „Hauptthemen“, neueste zuerst. Bis zu 8 Beiträge."
+    ,"adminNewsSaved": "Gespeichert"
+    ,"adminNewsSaveError": "Speichern fehlgeschlagen"
+    ,"adminNewsDeleteConfirm": "Diese Meldung löschen?"
+    ,"adminFactSaved": "Gespeichert"
+    ,"adminFactSaveError": "Speichern fehlgeschlagen"
+    ,"adminFactDeleteConfirm": "Diese Faktenprüfung löschen?"
+    ,"adminUsersTitle": "Benutzer"
+    ,"adminUsersDesc": "Rollen zuweisen und Passwörter zurücksetzen. Anmeldename wird nicht angezeigt; Anzeigename nur lesbar."
+    ,"adminUsersSearchPlaceholder": "Suche nach Anzeigename oder interner ID…"
+    ,"adminUsersPrivacyNote": "Aus Datenschutzgründen sehen Mitarbeitende den Kontologin nicht—nur den öffentlichen Namen und die interne ID."
+    ,"adminUsersMeta": "Gesamt: {total} · Zeige {from}–{to} · Seite {page} von {totalPages}"
+    ,"adminUsersEmpty": "Keine Benutzer gefunden."
+    ,"adminUserEditTitle": "Benutzer bearbeiten"
+    ,"adminUserUsername": "Anmeldename (Username)"
+    ,"adminUserUsernameHint": "Der Anmeldename kann hier nicht geändert werden."
+    ,"adminUserLoginHidden": "Mitarbeitende können Login und Registrierungsdatum dieses Nutzers nicht einsehen — nur der Kontoinhaber in seinem Forum-Profil nach Passworteingabe."
+    ,"adminUserInternalId": "Interne ID"
+    ,"adminUserDisplayName": "Anzeigename"
+    ,"adminUserDisplayNameReadonlyHint": "Nur der Nutzer ändert dies im Forumprofil; Personal sieht nur die Anzeige."
+    ,"adminUserAvatarUrl": "Avatar-Bild-URL"
+    ,"adminUserAvatarPick": "Avatar (Vorlagen)"
+    ,"adminUserInvalidAvatar": "Bitte einen der vorgegebenen Avatare wählen."
+    ,"adminUserRole": "Rolle / Zugriff"
+    ,"adminUserRoleHint": "Admins öffnen das Redaktionspanel. Normale Nutzer nutzen nur das Forum."
+    ,"adminUserRoleHintRbac": "Rechte kommen von der Rolle; bearbeiten unter „Rollen & Zugriff“."
+    ,"adminUserNewPassword": "Neues Passwort"
+    ,"adminUserNewPasswordHint": "Leer lassen, um das Passwort nicht zu ändern. Mindestens 6 Zeichen, falls gesetzt."
+    ,"adminUserSaved": "Gespeichert"
+    ,"adminUserSaveError": "Benutzer konnte nicht gespeichert werden"
+    ,"adminUserLastAdmin": "Der letzte Administrator kann nicht herabgestuft werden. Zuerst einen anderen befördern."
+    ,"adminUserLastRolesManager": "Der letzte Account mit Rollenbearbeitung darf nicht entzogen werden. Weisen Sie zuerst jemand anderem roles.update zu."
+    ,"adminUserNotFound": "Benutzer nicht gefunden"
+    ,"adminUserDisplayNameRequired": "Anzeigename ist erforderlich"
+    ,"adminUserPasswordShort": "Passwort mindestens 6 Zeichen"
+    ,"adminUserInvalidRole": "Ungültige Rolle"
+    ,"roleUser": "Nutzer"
+    ,"roleAdmin": "Administrator"
+    ,"adminBreadcrumbHome": "Admin"
+    ,"adminBreadcrumbAriaLabel": "Brotkrümelnavigation"
+    ,"adminRolesTitle": "Rollen & Zugriff"
+    ,"adminRolesDesc": "Rollen anlegen und festlegen, welche Panelbereiche erlaubt sind."
+    ,"adminRolesCreate": "Neue Rolle"
+    ,"adminRolesCreateHint": "Lateinischer Slug (a–z, Ziffern, _ und -), 2–32 Zeichen. Rechte auf dem nächsten Bildschirm."
+    ,"adminRolesSlug": "Slug (technische ID)"
+    ,"adminRolesSlugHint": "Später nicht änderbar. Beispiel: support_editor"
+    ,"adminRolesName": "Titel"
+    ,"adminRolesEditTitle": "Rolle"
+    ,"adminRolesPermissions": "Berechtigungen"
+    ,"adminRolesUserCount": "Nutzer mit dieser Rolle"
+    ,"adminRolesPermCount": "Berechtigungen"
+    ,"adminRolesLockedAdmin": "Die Rolle Administrator hat immer alle Rechte."
+    ,"adminRolesLockedUser": "Die Forum-Nutzerrolle hat keine Panelrechte."
+    ,"adminRolesSaveError": "Speichern fehlgeschlagen"
+    ,"adminRolesInvalidSlug": "Ungültiger Slug (2–32 Zeichen: a–z, 0–9, _ und -)."
+    ,"adminRolesSlugTaken": "Dieser Slug ist bereits vergeben."
+    ,"adminNoSectionPermissions": "Sie können das Panel öffnen, aber Ihrer Rolle sind keine Bereiche zugewiesen. Bitte einen Administrator."
+    ,"adminPerm_panel_access": "Adminpanel öffnen (für alle Panelarbeit nötig)"
+    ,"adminPerm_content_news_read": "News: Liste und Artikel ansehen"
+    ,"adminPerm_content_news_create": "News: anlegen"
+    ,"adminPerm_content_news_update": "News: bearbeiten"
+    ,"adminPerm_content_news_delete": "News: löschen"
+    ,"adminPerm_content_factcheck_read": "Faktenprüfung: Liste ansehen"
+    ,"adminPerm_content_factcheck_create": "Faktenprüfung: anlegen"
+    ,"adminPerm_content_factcheck_update": "Faktenprüfung: bearbeiten"
+    ,"adminPerm_content_factcheck_delete": "Faktenprüfung: löschen"
+    ,"adminPerm_forum_moderate_read": "Forum: Moderations- und Meldelisten"
+    ,"adminPerm_forum_moderate_delete_post": "Forum: Kommentare löschen"
+    ,"adminPerm_forum_moderate_delete_topic": "Forum: Themen löschen"
+    ,"adminPerm_forum_moderate_pin_topic": "Forum: Themen anheften"
+    ,"adminPerm_forum_moderate_unpin_topic": "Forum: Anheften aufheben"
+    ,"adminPerm_forum_moderate_close_topic": "Forum: Themen schließen"
+    ,"adminPerm_forum_moderate_open_topic": "Forum: Themen wieder öffnen"
+    ,"adminPerm_reports_read": "Meldungen: ansehen"
+    ,"adminPerm_users_read": "Nutzer: Verzeichnis ansehen"
+    ,"adminPerm_users_update": "Nutzer: Rollen & Passwort (Login verborgen)"
+    ,"adminPerm_roles_read": "Rollen: Liste"
+    ,"adminPerm_roles_create": "Rollen: anlegen"
+    ,"adminPerm_roles_update": "Rollen: Rechte bearbeiten"
+    ,"adminPerm_roles_delete": "Rollen: löschen"
+  },
+  "Ui": {
+    "preloader0": "Daten werden geladen…",
+    "preloader1": "Kommentare werden synchronisiert…",
+    "preloader2": "Fast fertig…",
+    "preloader3": "Neuestes zum Thema wird geladen…",
+    "preloader4": "Frische Antworten werden geladen…",
+    "preloader5": "Karma und Likes werden gesammelt…",
+    "fileAttach": "Datei anhängen",
+    "fileUploading": "Wird hochgeladen…",
+    "fileUploadError": "Datei konnte nicht hochgeladen werden.",
+    "fileMarkdownImageAlt": "Bild",
+    "fileMarkdownLinkLabel": "Angehängte Datei",
+    "quoteTitle": "Zitieren"
   },
   "Privacy": {
     "title": "Datenschutzrichtlinie",
@@ -164,5 +461,10 @@
     "desc": "Ein unerwarteter Fehler ist auf dem Server aufgetreten. Wir arbeiten bereits an der Behebung.",
     "tryAgain": "Erneut versuchen",
     "backHome": "Zurück zur Startseite"
+  },
+  "RssForum": {
+    "channelTitle": "Anonymes Forum",
+    "channelDescription": "Neueste Themen und Diskussionen",
+    "feedError": "Fehler beim Erzeugen des RSS-Feeds"
   }
 }

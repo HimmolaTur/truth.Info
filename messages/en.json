@@ -6,7 +6,8 @@
     "map": "Map",
     "timeline": "Timeline",
     "forum": "Forum",
-    "share": "Share Story"
+    "share": "Share Story",
+    "signOut": "Sign out"
   },
   "Metadata": {
     "title": "Truth.Info | Verified Information and Factchecking",
@@ -29,6 +30,7 @@
     "readNews": "Read News",
     "factcheck": "Factcheck",
     "mainTopics": "Main Topics",
+    "mainTopicsEmpty": "No news marked as a main topic yet. Enable it in the admin when editing a post.",
     "allNews": "All News",
     "toolsTitle": "Platform Tools",
     "toolsDesc": "Everything you need to find the truth in one place.",
@@ -41,6 +43,7 @@
     "toolSubmitTitle": "Stories",
     "toolSubmitDesc": "A platform for safely publishing personal stories with the option of anonymity.",
     "latestEvents": "Latest Events",
+    "latestEventsEmpty": "No news yet.",
     "important": "Important",
     "ctaTitle": "Become part of the community",
     "ctaDesc": "Help us gather truthful information. If you witnessed important events, share your story anonymously.",
@@ -94,7 +97,144 @@
     "searchBtn": "Search",
     "views": "Views",
     "allTopics": "All topics",
-    "allTopicsDesc": "Discussions on all topics"
+    "allTopicsDesc": "Discussions on all topics",
+    "profileAvatarTitle": "Profile picture",
+    "profileAvatarError": "Could not update avatar.",
+    "profileLanguageTitle": "Interface language",
+    "profileLanguageHint": "Saved to your account — you will see this language after sign-in.",
+    "profileLanguageError": "Could not save language.",
+    "profilePasswordTitle": "Change password",
+    "profilePasswordCurrent": "Current password",
+    "profilePasswordNew": "New password (min. 6 characters)",
+    "profilePasswordSubmit": "Update password",
+    "profilePwdWrongCurrent": "Current password is incorrect.",
+    "profilePwdTooShort": "New password is too short.",
+    "profilePwdError": "Could not change password.",
+    "profilePwdSuccess": "Password updated.",
+    "profileSaved": "Saved.",
+    "profileRevealTitle": "Account details (private)",
+    "profileRevealHint": "Your login and registration date are hidden until you enter your current password. Staff cannot see this data.",
+    "profileRevealPasswordLabel": "Your password",
+    "profileRevealSubmit": "Show login and date",
+    "profileRevealWrongPassword": "Wrong password.",
+    "profileRevealError": "Could not verify. Try again.",
+    "profileRevealLogin": "Login",
+    "profileRevealCreated": "Registered",
+    "profilePublicNameHint": "Public name on the forum",
+    "profileBackToForum": "Back to forum",
+    "profileKarma": "Karma",
+    "profilePostsLabel": "Posts",
+    "profileNotificationsTitle": "My notifications",
+    "profileNotificationsNew": "New",
+    "profileNotificationsEmpty": "You have no notifications yet.",
+    "profileMyTopics": "My topics ({count})",
+    "profileCreateShort": "Create",
+    "profileTopicsEmpty": "You have not created any topics yet.",
+    "profileMyReplies": "My replies ({count})",
+    "profileRepliesEmpty": "You have not posted any replies yet.",
+    "profileInTopic": "In topic:",
+    "profileBestAnswer": "Best answer",
+    "profileSignOut": "Sign out",
+    "forumHeroYourCipher": "Your display name",
+    "authLogin": "Log in",
+    "authRegister": "Register",
+    "authLoginTitle": "Forum sign-in",
+    "authRegisterTitle": "Forum registration",
+    "authUsername": "Username",
+    "authPassword": "Password",
+    "authUsernamePlaceholderRegister": "Choose a username",
+    "authPasswordPlaceholderRegister": "Choose a password",
+    "authUsernamePlaceholderLogin": "Your username",
+    "authPasswordPlaceholderLogin": "Your password",
+    "authSubmitLogin": "Log in",
+    "authSubmittingLogin": "Signing in…",
+    "authSubmitRegister": "Register",
+    "authSubmittingRegister": "Registering…",
+    "authNoAccount": "No account?",
+    "authHasAccount": "Already have an account?",
+    "authInvalidCredentials": "Invalid username or password.",
+    "authErrorGeneric": "Something went wrong.",
+    "authRegisterError": "Registration failed.",
+    "registerRequiredFields": "Username and password are required.",
+    "registerUsernameShort": "Username must be at least 3 characters.",
+    "registerPasswordShort": "Password must be at least 6 characters.",
+    "registerUsernameTaken": "This username is already taken.",
+    "registerServerError": "Server error. Please try again later.",
+    "authCreatedSignInManually": "Account created. Please sign in manually on the login page.",
+    "authPickAvatar": "Choose an avatar",
+    "authAvatarAuto": "Or one will be assigned automatically",
+    "forumSortNewest": "Newest",
+    "forumSortPopular": "Popular",
+    "forumSortLikes": "Top rated",
+    "forumPerPageLabel": "Per page:",
+    "forumSelected": "Selected",
+    "forumPageOf": "Page {page} of {totalPages}",
+    "forumPrev": "Previous",
+    "forumNext": "Next",
+    "forumUsersOnline": "Users online:",
+    "forumRssLink": "Forum RSS feed",
+    "threadTopicNotFound": "Topic not found",
+    "threadMetaSuffix": "Anonymous forum",
+    "markdownSupported": " (Markdown supported)",
+    "threadCrumbForum": "Forum",
+    "threadNotifyUnsubscribeTitle": "Unsubscribe from notifications",
+    "threadNotifySubscribeTitle": "Subscribe to notifications",
+    "threadSubscribedLabel": "Subscribed",
+    "threadSubscribeLabel": "Subscribe",
+    "threadPinToggleTitle": "Pin / unpin",
+    "threadCloseToggleTitle": "Close / reopen",
+    "threadEditTitle": "Edit topic",
+    "threadMoveTitle": "Move topic",
+    "threadMoveToLabel": "Move to:",
+    "threadMoveSubmit": "Move",
+    "threadPinned": "Pinned",
+    "threadClosed": "Closed",
+    "threadPollTotalVotes": "Total votes: {count}",
+    "threadKarmaTitle": "Karma",
+    "threadReportTopicLabel": "Report topic:",
+    "threadReportReasonPlaceholder": "Reason for report…",
+    "threadReportSubmit": "Submit report",
+    "threadSortCommentsOldest": "Oldest",
+    "threadSortCommentsNewest": "Newest",
+    "threadSortCommentsPopular": "Popular",
+    "threadBestAnswer": "Best answer",
+    "threadSolutionBadge": "Solution",
+    "threadMarkSolution": "Mark as solution",
+    "threadReportCommentLabel": "Report comment:",
+    "threadReportReplyLabel": "Report reply:",
+    "threadIgnoreUser": "Block user (ignore)",
+    "threadDeleteTitle": "Delete",
+    "threadReplyToggle": "Reply",
+    "threadReplyPlaceholder": "Your reply…",
+    "threadLoginLink": "Sign in",
+    "threadLoginToReplySuffix": " to reply.",
+    "threadLoginToComment": "Sign in to post a comment",
+    "threadSignIn": "Sign in",
+    "threadTopicClosedReplies": "This topic is closed for new replies.",
+    "newTopicTagsLabel": "Tags (comma-separated)",
+    "newTopicTagsPlaceholder": "news, discussion, question",
+    "newTopicPollSection": "Optional poll",
+    "newTopicPollQuestion": "Question",
+    "newTopicPollQuestionPlaceholder": "e.g. Which framework is best?",
+    "newTopicPollOptions": "Answer options (one per line)",
+    "newTopicPollOptionsPlaceholder": "React\nVue\nAngular",
+    "editTopicBack": "Back to topic",
+    "editTopicTitle": "Edit topic",
+    "editTopicHeading": "Title",
+    "editTopicBody": "Body",
+    "editTopicContent": "Content",
+    "editTopicTags": "Tags (comma-separated)",
+    "editTopicSave": "Save changes"
+  },
+  "Common": {
+    "showAs": "Show as:",
+    "viewList": "List view",
+    "viewGrid": "Grid view",
+    "viewCompact": "Compact view",
+    "perPage": "Per page:",
+    "paginationPrev": "Previous",
+    "paginationNext": "Next",
+    "paginationPage": "Page {page} of {totalPages}"
   },
   "Timeline": {
     "title": "Event Timeline",
@@ -126,14 +266,171 @@
     "noFactchecks": "No factchecks yet.",
     "fake": "Fake",
     "refutation": "Refutation",
-    "sources": "Sources:"
+    "sources": "Sources:",
+    "searchPlaceholder": "Search factchecks…",
+    "searchBtn": "Search"
   },
   "Admin": {
     "title": "Editor Panel",
     "desc": "Access only for verified authors and factcheckers.",
+    "adminLogin": "Editor Login",
+    "adminLoginError": "Invalid username, password, or no editor access.",
+    "adminUsername": "Username",
+    "adminPassword": "Password",
+    "adminLoginHint": "Same username as on the forum. You need the “panel access” permission (usually via the Administrator role).",
     "loginTitle": "Login",
     "passwordPlaceholder": "Password",
     "loginBtn": "Login (Supabase Auth)"
+    ,"login": "Login"
+    ,"news": "Manage News"
+    ,"newsDesc": "Create, edit and delete news items."
+    ,"factcheck": "Manage Factchecks"
+    ,"factcheckDesc": "Add and edit factchecks."
+    ,"forum": "Forum Moderation"
+    ,"forumDesc": "View reports and manage topics."
+    ,"reports": "Reports"
+    ,"reportsDesc": "View and handle user reports."
+    ,"forumModeration": "Forum moderation"
+    ,"noReports": "No reports yet."
+    ,"createNews": "Create news"
+    ,"newsTitle": "Title"
+    ,"content": "Content"
+    ,"imageUrl": "Image URL"
+    ,"newsImageFile": "Upload image from computer"
+    ,"newsImageFileHint": "JPEG, PNG, GIF, or WebP, up to 5 MB. If a file is selected, it replaces the URL."
+    ,"adminNewsImageTooLarge": "File is too large (maximum 5 MB)."
+    ,"adminNewsImageType": "Only JPEG, PNG, GIF, or WebP images are allowed."
+    ,"create": "Create"
+    ,"edit": "Edit"
+    ,"delete": "Delete"
+    ,"save": "Save"
+    ,"createFact": "Create factcheck"
+    ,"editFact": "Edit factcheck"
+    ,"editNews": "Edit news"
+    ,"modDeletePost": "Delete post"
+    ,"modDeleteTopic": "Delete thread"
+    ,"modDeleteTopicConfirm": "Delete this thread and all replies? This cannot be undone."
+    ,"modDeleteCommentConfirm": "Delete this comment?"
+    ,"modCloseTopic": "Close topic"
+    ,"modOpenTopic": "Open topic"
+    ,"modPinTopic": "Pin topic"
+    ,"modUnpinTopic": "Unpin topic"
+    ,"adminFactcheckSearchPlaceholder": "Search by claim, refutation or sources…"
+    ,"adminFactcheckEmpty": "No factchecks yet. Create the first one."
+    ,"adminForumSearchPlaceholder": "Search by topic title, body or category…"
+    ,"adminForumTopicsEmpty": "No forum topics yet."
+    ,"adminForumViewTopic": "Open on forum"
+    ,"adminForumStatusPinned": "Pinned"
+    ,"adminForumStatusClosed": "Closed"
+    ,"adminReportsSearchPlaceholder": "Search by topic, reason or id…"
+    ,"adminReportsEmpty": "No reports yet."
+    ,"adminNewsSearchPlaceholder": "Search by title or text…"
+    ,"adminNewsPerPage": "Per page:"
+    ,"adminNewsMeta": "Total: {total} · Showing {from}–{to} · Page {page} of {totalPages}"
+    ,"adminNewsEmpty": "No news yet. Create the first one."
+    ,"newsCategory": "Category / section"
+    ,"newsCategoryHint": "Shown on the news list and article page."
+    ,"newsTags": "Tags"
+    ,"newsTagsPlaceholder": "tag1, tag2"
+    ,"newsTagsHint": "Separate with commas or semicolons."
+    ,"newsImportant": "Breaking / important"
+    ,"newsPublishedAt": "Publication date and time"
+    ,"newsPublishedAtHint": "Leave empty to use the current time."
+    ,"newsFeatured": "Main topic (home carousel)"
+    ,"newsFeaturedHint": "Shown in “Main topics”, newest first. Up to 8 items."
+    ,"adminNewsSaved": "Saved"
+    ,"adminNewsSaveError": "Could not save"
+    ,"adminNewsDeleteConfirm": "Delete this news item?"
+    ,"adminFactSaved": "Saved"
+    ,"adminFactSaveError": "Could not save"
+    ,"adminFactDeleteConfirm": "Delete this fact check?"
+    ,"adminUsersTitle": "Users"
+    ,"adminUsersDesc": "Assign roles and reset passwords. Logins are hidden; display names are read-only."
+    ,"adminUsersSearchPlaceholder": "Search by display name or internal id…"
+    ,"adminUsersPrivacyNote": "For privacy, staff never see the account login—only the public display name and internal id."
+    ,"adminUsersMeta": "Total: {total} · Showing {from}–{to} · Page {page} of {totalPages}"
+    ,"adminUsersEmpty": "No users found."
+    ,"adminUserEditTitle": "Edit user"
+    ,"adminUserUsername": "Login (username)"
+    ,"adminUserUsernameHint": "The login cannot be changed here; it is used to sign in."
+    ,"adminUserLoginHidden": "Staff cannot view this user's login or registration date — only the account owner can see them in their forum profile after entering their password."
+    ,"adminUserInternalId": "Internal id"
+    ,"adminUserDisplayName": "Display name"
+    ,"adminUserDisplayNameReadonlyHint": "Only the user can change this on the forum; staff can only view it."
+    ,"adminUserAvatarUrl": "Avatar image URL"
+    ,"adminUserAvatarPick": "Avatar (preset)"
+    ,"adminUserInvalidAvatar": "Choose one of the preset avatars."
+    ,"adminUserRole": "Role / access"
+    ,"adminUserRoleHint": "Admins can open the editor panel and change content. Ordinary users only use the forum."
+    ,"adminUserRoleHintRbac": "Rights depend on the role: edit permissions under Roles & access."
+    ,"adminUserNewPassword": "New password"
+    ,"adminUserNewPasswordHint": "Leave empty to keep the current password. Minimum 6 characters if set."
+    ,"adminUserSaved": "Saved"
+    ,"adminUserSaveError": "Could not save user"
+    ,"adminUserLastAdmin": "You cannot remove the last administrator. Promote another user first."
+    ,"adminUserLastRolesManager": "You cannot remove the last account that may update roles. Assign roles.update to someone else first."
+    ,"adminUserNotFound": "User not found"
+    ,"adminUserDisplayNameRequired": "Display name is required"
+    ,"adminUserPasswordShort": "Password must be at least 6 characters"
+    ,"adminUserInvalidRole": "Invalid role"
+    ,"roleUser": "User"
+    ,"roleAdmin": "Administrator"
+    ,"adminBreadcrumbHome": "Admin"
+    ,"adminBreadcrumbAriaLabel": "Breadcrumb"
+    ,"adminRolesTitle": "Roles & access"
+    ,"adminRolesDesc": "Create roles and choose which sections of the panel each role may use."
+    ,"adminRolesCreate": "New role"
+    ,"adminRolesCreateHint": "Latin slug (a–z, digits, _ and -), 2–32 characters. Then assign permissions on the next screen."
+    ,"adminRolesSlug": "Slug (machine id)"
+    ,"adminRolesSlugHint": "Cannot be changed later. Example: support_editor"
+    ,"adminRolesName": "Title"
+    ,"adminRolesEditTitle": "Role"
+    ,"adminRolesPermissions": "Permissions"
+    ,"adminRolesUserCount": "Users with this role"
+    ,"adminRolesPermCount": "Permissions"
+    ,"adminRolesLockedAdmin": "The Administrator role always has every permission."
+    ,"adminRolesLockedUser": "The forum User role has no panel permissions."
+    ,"adminRolesSaveError": "Could not save"
+    ,"adminRolesInvalidSlug": "Invalid slug (use 2–32 characters: a–z, 0–9, _ and -)."
+    ,"adminRolesSlugTaken": "This slug is already in use."
+    ,"adminNoSectionPermissions": "You can open the panel but no sections are assigned to your role. Ask an administrator to adjust your permissions."
+    ,"adminPerm_panel_access": "Open admin panel (required for any panel work)"
+    ,"adminPerm_content_news_read": "News: view list and articles"
+    ,"adminPerm_content_news_create": "News: create"
+    ,"adminPerm_content_news_update": "News: edit"
+    ,"adminPerm_content_news_delete": "News: delete"
+    ,"adminPerm_content_factcheck_read": "Factchecks: view list"
+    ,"adminPerm_content_factcheck_create": "Factchecks: create"
+    ,"adminPerm_content_factcheck_update": "Factchecks: edit"
+    ,"adminPerm_content_factcheck_delete": "Factchecks: delete"
+    ,"adminPerm_forum_moderate_read": "Forum: open moderation / reports tools"
+    ,"adminPerm_forum_moderate_delete_post": "Forum: delete comments"
+    ,"adminPerm_forum_moderate_delete_topic": "Forum: delete topics"
+    ,"adminPerm_forum_moderate_pin_topic": "Forum: pin topics"
+    ,"adminPerm_forum_moderate_unpin_topic": "Forum: unpin topics"
+    ,"adminPerm_forum_moderate_close_topic": "Forum: close topics"
+    ,"adminPerm_forum_moderate_open_topic": "Forum: reopen topics"
+    ,"adminPerm_reports_read": "Reports: view"
+    ,"adminPerm_users_read": "Users: view directory"
+    ,"adminPerm_users_update": "Users: assign roles and reset passwords (login hidden)"
+    ,"adminPerm_roles_read": "Roles: list"
+    ,"adminPerm_roles_create": "Roles: create"
+    ,"adminPerm_roles_update": "Roles: edit permissions"
+    ,"adminPerm_roles_delete": "Roles: delete"
+  },
+  "Ui": {
+    "preloader0": "Loading data…",
+    "preloader1": "Syncing comments…",
+    "preloader2": "Almost there…",
+    "preloader3": "Checking the latest on this topic…",
+    "preloader4": "Loading fresh replies…",
+    "preloader5": "Gathering karma and likes…",
+    "fileAttach": "Attach file",
+    "fileUploading": "Uploading…",
+    "fileUploadError": "Failed to upload file.",
+    "fileMarkdownImageAlt": "Image",
+    "fileMarkdownLinkLabel": "Attached file",
+    "quoteTitle": "Quote"
   },
   "Privacy": {
     "title": "Privacy Policy",
@@ -164,5 +461,10 @@
     "desc": "An unexpected error occurred on the server. We are already working on fixing it.",
     "tryAgain": "Try again",
     "backHome": "Return to Home"
+  },
+  "RssForum": {
+    "channelTitle": "Anonymous forum",
+    "channelDescription": "Latest topics and discussions",
+    "feedError": "Error generating RSS feed"
   }
 }

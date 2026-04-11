@@ -1,15 +1,16 @@
 import { Link } from "@/navigation";
 import { MessageSquare, Users, AlertCircle, HelpCircle, Plus, Search, Eye, ThumbsUp, Pin, Lock, Activity, Rss, Layers, User } from "lucide-react";
-import { query } from "@/lib/db";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
-import { getTranslations } from "next-intl/server";
+import { LocaleGetSearchForm } from "@/components/LocaleGetSearchForm";
+import { query } from "@/lib/db";
+import { getLocale, getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
 import { slugify } from "@/lib/utils";
 import { getSession } from "@/lib/auth";
 import Image from "next/image";
 
 const FORUM_HERO_IMG =
-  "/images/photo-1580130281320-0ef0754f2bf7.svg";
+  "/images/photo-1580130281320-0ef0754f2bf7.jpg";
 
 type ForumCategoryRow = {
   id: number;
@@ -48,6 +49,7 @@ export default async function ForumPage({
   searchParams: { category?: string; q?: string; sort?: string; tag?: string; page?: string; limit?: string };
 }) {
   const t = await getTranslations("Forum");
+  const uiLocale = await getLocale();
   const categoryId = searchParams.category;
   const q = searchParams.q || "";
   const sort = searchParams.sort || "newest";
@@ -167,21 +169,21 @@ export default async function ForumPage({
                 <div className="relative">
                   <Image 
                     src={userSession.avatar_url || `/avatars/avatar1.svg`} 
-                    alt={userSession.username} 
+                    alt={userSession.display_name || userSession.username}
                     width={48} 
                     height={48} 
                     className="rounded-full bg-white/20 border-2 border-transparent group-hover:border-white transition"
                   />
                 </div>
                 <div className="text-left">
-                  <div className="text-sm text-gray-300">Ваш шифр</div>
+                  <div className="text-sm text-gray-300">{t("forumHeroYourCipher")}</div>
                   <div className="font-bold text-lg">{userSession.display_name}</div>
                 </div>
               </Link>
               <div className="flex gap-2 w-full sm:w-auto">
                 <Link href="/forum/new" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl font-bold hover:bg-blue-500 transition">
                   <Plus className="w-5 h-5" />
-                  Создать
+                  {t("profileCreateShort")}
                 </Link>
                 <Link href="/forum/profile" className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-white/10 text-white px-4 py-2 rounded-xl font-bold hover:bg-white/20 transition border border-white/20">
                   <User className="w-5 h-5" />
@@ -191,10 +193,10 @@ export default async function ForumPage({
           ) : (
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/forum/login" className="inline-flex items-center gap-2 sm:gap-3 bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-blue-500 transition shadow-2xl">
-                Войти
+                {t("authLogin")}
               </Link>
               <Link href="/forum/register" className="inline-flex items-center gap-2 sm:gap-3 bg-white/10 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-white/20 transition shadow-2xl border border-white/20">
-                Регистрация
+                {t("authRegister")}
               </Link>
             </div>
           )}
@@ -213,17 +215,17 @@ export default async function ForumPage({
           >
             {!categoryId && (
               <div className="absolute top-2 right-2 bg-blue-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
-                Выбрано
+                {t("forumSelected")}
               </div>
             )}
             <div className={`p-2.5 rounded-full inline-flex mb-2 transition-transform duration-200 group-hover:scale-110 ${!categoryId ? 'bg-blue-100 dark:bg-blue-800/40' : 'bg-gray-50 dark:bg-neutral-800'}`}>
               <Layers className={`w-5 h-5 sm:w-6 sm:h-6 ${!categoryId ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'}`} />
             </div>
             <h3 className={`text-sm sm:text-base font-bold mb-1 w-full truncate ${!categoryId ? 'text-blue-700 dark:text-blue-300' : 'text-gray-900 dark:text-white'}`}>
-              {t("allTopics") || "Все темы"}
+              {t("allTopics")}
             </h3>
             <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1 w-full mt-auto">
-              {t("allTopicsDesc") || "Все обсуждения"}
+              {t("allTopicsDesc")}
             </p>
           </Link>
 
@@ -241,7 +243,7 @@ export default async function ForumPage({
               >
                 {isActive && (
                   <div className="absolute top-2 right-2 bg-blue-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
-                    Выбрано
+                    {t("forumSelected")}
                   </div>
                 )}
                 <div className={`p-2.5 rounded-full inline-flex mb-2 transition-transform duration-200 group-hover:scale-110 ${isActive ? 'bg-blue-100 dark:bg-blue-800/40' : 'bg-gray-50 dark:bg-neutral-800'}`}>
@@ -259,7 +261,7 @@ export default async function ForumPage({
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 mb-10">
-          <form method="GET" action="/forum" className="flex-1 flex flex-col sm:flex-row gap-3">
+          <LocaleGetSearchForm basePath="/forum" className="flex-1 flex flex-col sm:flex-row gap-3">
             {categoryId && <input type="hidden" name="category" value={categoryId} />}
             {sort && <input type="hidden" name="sort" value={sort} />}
             {tag && <input type="hidden" name="tag" value={tag} />}
@@ -279,11 +281,11 @@ export default async function ForumPage({
             >
               {t("searchBtn")}
             </button>
-          </form>
+          </LocaleGetSearchForm>
           <div className="flex flex-wrap gap-2 shrink-0">
-            <Link href={buildUrl({ sort: 'newest', page: 1 })} className={`px-4 py-3 border rounded-md text-sm font-medium ${sort === 'newest' ? 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400' : 'bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800'}`}>Новые</Link>
-            <Link href={buildUrl({ sort: 'popular', page: 1 })} className={`px-4 py-3 border rounded-md text-sm font-medium ${sort === 'popular' ? 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400' : 'bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800'}`}>Популярные</Link>
-            <Link href={buildUrl({ sort: 'likes', page: 1 })} className={`px-4 py-3 border rounded-md text-sm font-medium ${sort === 'likes' ? 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400' : 'bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800'}`}>Оцененные</Link>
+            <Link href={buildUrl({ sort: 'newest', page: 1 })} className={`px-4 py-3 border rounded-md text-sm font-medium ${sort === 'newest' ? 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400' : 'bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800'}`}>{t("forumSortNewest")}</Link>
+            <Link href={buildUrl({ sort: 'popular', page: 1 })} className={`px-4 py-3 border rounded-md text-sm font-medium ${sort === 'popular' ? 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400' : 'bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800'}`}>{t("forumSortPopular")}</Link>
+            <Link href={buildUrl({ sort: 'likes', page: 1 })} className={`px-4 py-3 border rounded-md text-sm font-medium ${sort === 'likes' ? 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400' : 'bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800'}`}>{t("forumSortLikes")}</Link>
           </div>
         </div>
 
@@ -292,7 +294,7 @@ export default async function ForumPage({
             <span>{t("latestTopics")} {tag && <span className="ml-2 font-normal text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 px-2 py-1 rounded-full">#{tag}</span>}</span>
             <div className="flex flex-wrap items-center gap-4">
               <div className="text-sm font-normal text-gray-500 flex items-center gap-2">
-                Показывать:
+                {t("forumPerPageLabel")}
                 {[10, 20, 50].map(l => (
                   <Link 
                     key={l} 
@@ -332,7 +334,7 @@ export default async function ForumPage({
                         {topic.category_name}
                       </span>
                       <span>{t("author", { name: topic.author_display_name || topic.author_name })}</span>
-                      <span>{new Date(topic.created_at).toLocaleDateString('ru-RU', { hour: '2-digit', minute: '2-digit' })}</span>
+                      <span>{new Date(topic.created_at).toLocaleString(uiLocale, { hour: "2-digit", minute: "2-digit" })}</span>
                       <span className="flex items-center gap-1 ml-0 sm:ml-2"><Eye className="w-3 h-3"/> {topic.views || 0}</span>
                       <span className="flex items-center gap-1"><ThumbsUp className="w-3 h-3"/> {topic.likes || 0}</span>
                     </div>
@@ -361,20 +363,20 @@ export default async function ForumPage({
           <div className="flex justify-center items-center gap-4 mt-8">
             {page > 1 ? (
               <Link href={buildUrl({ page: page - 1 })} className="px-4 py-2 border rounded-md hover:bg-gray-50 dark:hover:bg-neutral-800 transition font-medium">
-                Назад
+                {t("forumPrev")}
               </Link>
             ) : (
-              <div className="px-4 py-2 border rounded-md opacity-50 cursor-not-allowed font-medium">Назад</div>
+              <div className="px-4 py-2 border rounded-md opacity-50 cursor-not-allowed font-medium">{t("forumPrev")}</div>
             )}
             <span className="text-sm font-medium text-gray-500">
-              Страница {page} из {totalPages}
+              {t("forumPageOf", { page, totalPages })}
             </span>
             {page < totalPages ? (
               <Link href={buildUrl({ page: page + 1 })} className="px-4 py-2 border rounded-md hover:bg-gray-50 dark:hover:bg-neutral-800 transition font-medium">
-                Вперед
+                {t("forumNext")}
               </Link>
             ) : (
-              <div className="px-4 py-2 border rounded-md opacity-50 cursor-not-allowed font-medium">Вперед</div>
+              <div className="px-4 py-2 border rounded-md opacity-50 cursor-not-allowed font-medium">{t("forumNext")}</div>
             )}
           </div>
         )}
@@ -386,11 +388,14 @@ export default async function ForumPage({
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
-            <span>Пользователей онлайн: <span className="font-bold text-gray-900 dark:text-white">{onlineCount}</span></span>
+            <span>
+              {t("forumUsersOnline")}{" "}
+              <span className="font-bold text-gray-900 dark:text-white">{onlineCount}</span>
+            </span>
           </div>
-          <a href="/api/rss" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-600 transition font-medium">
+          <a href={`/api/rss?locale=${encodeURIComponent(uiLocale)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-600 transition font-medium">
             <Rss className="w-4 h-4" />
-            RSS Лента форума
+            {t("forumRssLink")}
           </a>
         </div>
       </div>

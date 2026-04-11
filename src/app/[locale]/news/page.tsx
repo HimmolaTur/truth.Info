@@ -1,10 +1,12 @@
+import { LocaleGetSearchForm } from "@/components/LocaleGetSearchForm";
 import { query } from "@/lib/db";
 import { Link } from "@/navigation";
 import { Search, ChevronLeft, ChevronRight, LayoutList, LayoutGrid, AlignJustify } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { newsImageUrlFromRow, newsTagsForDisplay } from "@/lib/newsAdmin";
 
 const NEWS_HERO_IMAGE =
-  "/images/photo-1584483766114-2cea6facdf57.svg";
+  "/images/photo-1504711434969-e33886168f5c.jpg";
 
 type NewsRow = {
   id: number;
@@ -23,6 +25,8 @@ export default async function NewsPage({
   searchParams: { q?: string; page?: string; limit?: string; view?: string };
 }) {
   const t = await getTranslations("News");
+  const tc = await getTranslations("Common");
+  const locale = await getLocale();
   const q = searchParams.q || "";
   const page = parseInt(searchParams.page || "1", 10);
   const limit = parseInt(searchParams.limit || "5", 10);
@@ -93,7 +97,7 @@ export default async function NewsPage({
 
       <div className="max-w-5xl mx-auto w-full py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-4 mb-10">
-          <form method="GET" action="/news" className="flex-1 flex flex-col sm:flex-row gap-3">
+          <LocaleGetSearchForm basePath="/news" className="flex-1 flex flex-col sm:flex-row gap-3">
             {limit !== 5 && <input type="hidden" name="limit" value={limit} />}
             {view !== "list" && <input type="hidden" name="view" value={view} />}
             <div className="relative flex-1">
@@ -112,7 +116,7 @@ export default async function NewsPage({
             >
               {t("searchBtn")}
             </button>
-          </form>
+          </LocaleGetSearchForm>
 
           <div className="flex flex-wrap items-center gap-4 shrink-0">
             {/* View Toggle */}
@@ -120,21 +124,21 @@ export default async function NewsPage({
               <Link 
                 href={buildUrl({ view: 'list', page: 1 })}
                 className={`p-2 rounded-md transition ${view === 'list' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
-                title="Список"
+                title={tc("viewList")}
               >
                 <AlignJustify className="w-5 h-5" />
               </Link>
               <Link 
                 href={buildUrl({ view: 'grid', page: 1 })}
                 className={`p-2 rounded-md transition ${view === 'grid' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
-                title="Сетка"
+                title={tc("viewGrid")}
               >
                 <LayoutGrid className="w-5 h-5" />
               </Link>
               <Link 
                 href={buildUrl({ view: 'compact', page: 1 })}
                 className={`p-2 rounded-md transition ${view === 'compact' ? 'bg-white dark:bg-neutral-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'}`}
-                title="Компактный"
+                title={tc("viewCompact")}
               >
                 <LayoutList className="w-5 h-5" />
               </Link>
@@ -142,7 +146,7 @@ export default async function NewsPage({
 
             {/* Limit Selector */}
             <div className="flex items-center gap-3 bg-white dark:bg-neutral-900 border rounded-md px-4 py-2 shadow-sm h-full">
-              <span className="text-sm text-gray-500 hidden sm:inline">Показывать:</span>
+              <span className="text-sm text-gray-500 hidden sm:inline">{tc("showAs")}</span>
               <div className="flex gap-2">
                 {[5, 10, 20].map(l => (
                   <Link 
@@ -170,14 +174,16 @@ export default async function NewsPage({
               {t("noResults")}
             </div>
           ) : (
-            news.map((item) => (
+            news.map((item) => {
+              const rowTags = newsTagsForDisplay(item.tags);
+              return (
               <article
                 key={item.id}
                 className={`bg-white dark:bg-neutral-900 rounded-xl border shadow-sm ${view === 'grid' ? 'flex flex-col h-full' : ''} ${view === 'compact' ? 'p-4' : 'p-6'}`}
               >
                 <div className={`flex justify-between items-center ${view === 'compact' ? 'mb-1' : 'mb-2'}`}>
                   <div className="text-sm text-gray-500 font-medium">
-                    {new Date(item.created_at).toLocaleDateString("ru-RU")} •{" "}
+                    {new Date(item.created_at).toLocaleDateString(locale)} •{" "}
                     <span className="text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-full text-xs uppercase tracking-wider">
                       {item.category}
                     </span>
@@ -193,8 +199,8 @@ export default async function NewsPage({
                     <div className="h-64 w-full mb-6 rounded-xl overflow-hidden relative">
                       <img
                         src={
-                          item.image_url ||
-                          "/images/photo-1504711434969-e33886168f5c.svg"
+                          newsImageUrlFromRow(item as Record<string, unknown>) ||
+                          "/images/photo-1504711434969-e33886168f5c.jpg"
                         }
                         alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -208,9 +214,9 @@ export default async function NewsPage({
                     {item.content}
                   </p>
                 </Link>
-                {view !== 'compact' && item.tags && item.tags.length > 0 && (
+                {view !== "compact" && rowTags.length > 0 && (
                   <div className="flex gap-2 mt-auto pt-4">
-                    {item.tags.map((tag: string, idx: number) => (
+                    {rowTags.map((tag: string, idx: number) => (
                       <span
                         key={idx}
                         className="bg-gray-100 dark:bg-neutral-800 text-xs px-2 py-1 rounded"
@@ -221,7 +227,8 @@ export default async function NewsPage({
                   </div>
                 )}
               </article>
-            ))
+            );
+            })
           )}
         </div>
 

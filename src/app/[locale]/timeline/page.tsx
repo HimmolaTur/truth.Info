@@ -3,7 +3,7 @@ import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { getTranslations } from "next-intl/server";
 
 const TIMELINE_HERO_IMG =
-  "/images/photo-1557426272-fc759fdf7a8d.svg";
+  "/images/photo-1557426272-fc759fdf7a8d.jpg";
 
 type TimelineEventRow = {
   id: number;
