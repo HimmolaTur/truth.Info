@@ -31,6 +31,7 @@ function loadEnvLocal() {
 }
 
 const ORDER = [
+  "ensure_supabase_migrations_meta.sql",
   "create_news_table.sql",
   "add_users_role.sql",
   "create_forum_bans.sql",
