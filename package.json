@@ -13,7 +13,9 @@
     "db:random-featured": "node scripts/mark-random-featured-news.cjs",
     "supabase:link": "npx supabase link --project-ref fsfiegnvwhvllpnvrflz",
     "supabase:push": "npx supabase db push",
-    "supabase:migration:new": "npx supabase migration new"
+    "supabase:migration:new": "npx supabase migration new",
+    "supabase:wipe": "node scripts/supabase-wipe-public.cjs",
+    "supabase:rebuild": "node scripts/supabase-wipe-public.cjs && npx supabase db push"
   },
   "dependencies": {
     "@dicebear/collection": "^9.4.2",

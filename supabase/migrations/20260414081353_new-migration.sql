@@ -1,25 +1,7 @@
--- Первая миграция приложения (дубликат логики /migrations для `supabase db push`).
--- Не создаём supabase_migrations вручную — этим занимается Supabase CLI.
+-- Первая миграция приложения (после supabase:wipe + supabase db push).
+-- Порядок: forum_bans → RBAC → users → news → детальные права.
 
--- --- create_news_table.sql ---
-CREATE TABLE IF NOT EXISTS news (
-  id SERIAL PRIMARY KEY,
-  title TEXT NOT NULL,
-  content TEXT NOT NULL DEFAULT '',
-  image_url TEXT,
-  category TEXT DEFAULT 'Общее',
-  tags TEXT[] DEFAULT ARRAY[]::TEXT[],
-  is_important BOOLEAN NOT NULL DEFAULT false,
-  is_featured BOOLEAN NOT NULL DEFAULT false,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- --- add_users_role.sql ---
-ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT NOT NULL DEFAULT 'user';
-COMMENT ON COLUMN users.role IS 'user — обычный пользователь форума; admin — доступ к /admin';
-
--- --- create_forum_bans.sql ---
+-- --- forum_bans ---
 CREATE TABLE IF NOT EXISTS forum_bans (
   id SERIAL PRIMARY KEY,
   session_id TEXT NOT NULL,
@@ -27,37 +9,7 @@ CREATE TABLE IF NOT EXISTS forum_bans (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
--- --- news_admin_fields.sql ---
-ALTER TABLE news ADD COLUMN IF NOT EXISTS image_url TEXT;
-ALTER TABLE news ADD COLUMN IF NOT EXISTS category TEXT DEFAULT 'Общее';
-ALTER TABLE news ADD COLUMN IF NOT EXISTS tags TEXT[] DEFAULT ARRAY[]::TEXT[];
-ALTER TABLE news ADD COLUMN IF NOT EXISTS is_important BOOLEAN DEFAULT false;
-ALTER TABLE news ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ;
-ALTER TABLE news ADD COLUMN IF NOT EXISTS is_featured BOOLEAN DEFAULT false;
-
-DO $$
-BEGIN
-  IF EXISTS (
-    SELECT 1 FROM information_schema.columns
-    WHERE table_schema = 'public' AND table_name = 'news' AND column_name = 'image'
-  ) THEN
-    UPDATE news
-    SET image_url = NULLIF(TRIM(image::text), '')
-    WHERE (image_url IS NULL OR TRIM(image_url) = '')
-      AND image IS NOT NULL
-      AND TRIM(image::text) <> '';
-  END IF;
-END $$;
-
--- --- news_image_url_local.sql ---
-UPDATE news
-SET image_url = '/images/photo-' || (regexp_match(image_url, 'photo-(\d+-[a-zA-Z0-9]+)'))[1] || '.jpg'
-WHERE image_url IS NOT NULL
-  AND TRIM(image_url) <> ''
-  AND image_url ~* 'unsplash\.com'
-  AND regexp_match(image_url, 'photo-(\d+-[a-zA-Z0-9]+)') IS NOT NULL;
-
--- --- roles_permissions.sql ---
+-- --- roles_permissions: таблицы и базовые вставки ---
 CREATE TABLE IF NOT EXISTS permissions (
   key TEXT PRIMARY KEY,
   sort_order INT NOT NULL DEFAULT 0
@@ -123,7 +75,19 @@ CROSS JOIN (VALUES
 WHERE r.slug = 'moderator'
 ON CONFLICT DO NOTHING;
 
-ALTER TABLE users ADD COLUMN IF NOT EXISTS role_id INTEGER REFERENCES roles(id);
+-- --- users (после roles, до news) ---
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  username TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  avatar_url TEXT,
+  display_name TEXT,
+  role TEXT NOT NULL DEFAULT 'user',
+  role_id INTEGER REFERENCES roles(id),
+  preferred_locale VARCHAR(8)
+);
+
+COMMENT ON COLUMN users.role IS 'user — обычный пользователь форума; admin — доступ к /admin';
 
 UPDATE users SET role_id = (SELECT id FROM roles WHERE slug = 'admin' LIMIT 1)
 WHERE role_id IS NULL
@@ -139,6 +103,48 @@ FROM roles r
 WHERE r.id = u.role_id;
 
 CREATE INDEX IF NOT EXISTS idx_users_role_id ON users(role_id);
+
+-- --- news ---
+CREATE TABLE IF NOT EXISTS news (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  content TEXT NOT NULL DEFAULT '',
+  image_url TEXT,
+  category TEXT DEFAULT 'Общее',
+  tags TEXT[] DEFAULT ARRAY[]::TEXT[],
+  is_important BOOLEAN NOT NULL DEFAULT false,
+  is_featured BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE news ADD COLUMN IF NOT EXISTS image_url TEXT;
+ALTER TABLE news ADD COLUMN IF NOT EXISTS category TEXT DEFAULT 'Общее';
+ALTER TABLE news ADD COLUMN IF NOT EXISTS tags TEXT[] DEFAULT ARRAY[]::TEXT[];
+ALTER TABLE news ADD COLUMN IF NOT EXISTS is_important BOOLEAN DEFAULT false;
+ALTER TABLE news ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ;
+ALTER TABLE news ADD COLUMN IF NOT EXISTS is_featured BOOLEAN DEFAULT false;
+
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_schema = 'public' AND table_name = 'news' AND column_name = 'image'
+  ) THEN
+    UPDATE news
+    SET image_url = NULLIF(TRIM(image::text), '')
+    WHERE (image_url IS NULL OR TRIM(image_url) = '')
+      AND image IS NOT NULL
+      AND TRIM(image::text) <> '';
+  END IF;
+END $$;
+
+UPDATE news
+SET image_url = '/images/photo-' || (regexp_match(image_url, 'photo-(\d+-[a-zA-Z0-9]+)'))[1] || '.jpg'
+WHERE image_url IS NOT NULL
+  AND TRIM(image_url) <> ''
+  AND image_url ~* 'unsplash\.com'
+  AND regexp_match(image_url, 'photo-(\d+-[a-zA-Z0-9]+)') IS NOT NULL;
 
 -- --- roles_granular_permissions.sql ---
 DELETE FROM role_permissions;
@@ -221,6 +227,5 @@ CROSS JOIN (VALUES
 WHERE r.slug = 'moderator'
 ON CONFLICT DO NOTHING;
 
--- --- user_preferred_locale.sql ---
 ALTER TABLE users
   ADD COLUMN IF NOT EXISTS preferred_locale VARCHAR(8) DEFAULT NULL;
