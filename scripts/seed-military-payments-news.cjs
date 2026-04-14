@@ -199,6 +199,7 @@ async function main() {
     ssl: { rejectUnauthorized: false },
   });
   await client.connect();
+  await client.query("SET statement_timeout = '300s'");
 
   try {
     await client.query("BEGIN");

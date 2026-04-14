@@ -31,6 +31,7 @@ function loadEnvLocal() {
 }
 
 const ORDER = [
+  "create_news_table.sql",
   "add_users_role.sql",
   "create_forum_bans.sql",
   "news_admin_fields.sql",
@@ -53,6 +54,7 @@ async function main() {
     ssl: { rejectUnauthorized: false },
   });
   await client.connect();
+  await client.query("SET statement_timeout = '300s'");
   const dir = path.join(__dirname, "..", "migrations");
 
   for (const name of ORDER) {
