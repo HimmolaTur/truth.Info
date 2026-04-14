@@ -21,7 +21,8 @@ const pool = new Pool({
   max: 10,
   idleTimeoutMillis: 30_000,
   connectionTimeoutMillis: 15_000,
-  allowExitOnIdle: true,
+  // true закрывает пул после простоя — в Next.js dev/prod следующий query может зависнуть или не отработать
+  allowExitOnIdle: false,
 });
 
 export const query = (text: string, params?: any[]) => pool.query(text, params);

@@ -10,13 +10,13 @@
     "signOut": "Sign out"
   },
   "Metadata": {
-    "title": "Truth.Info | Verified Information and Factchecking",
-    "description": "Platform for getting verified information about events, timeline, geography, and factchecking."
+    "title": "Truth.Info | Military pay, promises, and recruiting claims",
+    "description": "Coverage of financial promises during mobilization and contract service, payment delays, and inflated income claims in recruiting. Aggregation and rewrite from open media sources are planned."
   },
   "Footer": {
     "copyright": "© 2026 Truth.Info.",
     "adminLogin": "Editor Login",
-    "description": "Platform for getting verified information about events, timeline, geography, and factchecking. We help you see the real picture of what is happening.",
+    "description": "Materials on contract and mobilization pay, broken promises, and military-service advertising. A parser-based news flow from major outlets is in development.",
     "navigation": "Navigation",
     "legal": "Legal Information",
     "privacy": "Privacy Policy",
@@ -24,9 +24,9 @@
     "cookie": "Cookie Usage"
   },
   "Home": {
-    "heroTitle1": "Verified Information",
-    "heroTitle2": "without fakes and censorship",
-    "heroDesc": "A platform for gathering facts, event timelines, and exposing disinformation. We help you see the real picture.",
+    "heroTitle1": "Money and military service",
+    "heroTitle2": "promises, pay, recruiting",
+    "heroDesc": "We focus on financial promises during mobilization and contract service, payment delays, and inflated income claims in ads. Soon: automated collection and editorial rewrite of major independent media.",
     "readNews": "Read News",
     "factcheck": "Factcheck",
     "mainTopics": "Main Topics",
@@ -54,8 +54,8 @@
     "readMore": "Read more"
   },
   "News": {
-    "title": "News Feed",
-    "desc": "Up-to-date and verified information about events in real-time.",
+    "title": "Feed: service and pay",
+    "desc": "Promises on duty, contract pay, mobilization, and recruiting. Seed articles are placeholders ahead of a parser and rewrite pipeline.",
     "searchPlaceholder": "Search news by title or text...",
     "searchBtn": "Search",
     "noResults": "Nothing found for your query.",
@@ -227,6 +227,7 @@
     "editTopicSave": "Save changes"
   },
   "Common": {
+    "dataLoadError": "Could not load data from the database. Check DATABASE_URL and your network. If the site was idle for a while, try refreshing.",
     "showAs": "Show as:",
     "viewList": "List view",
     "viewGrid": "Grid view",

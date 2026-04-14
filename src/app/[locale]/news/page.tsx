@@ -1,5 +1,5 @@
 import { LocaleGetSearchForm } from "@/components/LocaleGetSearchForm";
-import { query } from "@/lib/db";
+import { queryWithTimeout } from "@/lib/db";
 import { Link } from "@/navigation";
 import { Search, ChevronLeft, ChevronRight, LayoutList, LayoutGrid, AlignJustify } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -48,14 +48,22 @@ export default async function NewsPage({
   const countParams = [...params];
   params.push(limit, offset);
 
-  const [newsResult, countResult] = await Promise.all([
-    query(newsQuery, params),
-    query(countQuery, countParams),
-  ]);
+  let news: NewsRow[] = [];
+  let totalItems = 0;
+  let totalPages = 0;
+  let dbError = false;
 
-  const news = newsResult.rows as NewsRow[];
-  const totalItems = parseInt(String(countResult.rows[0].count), 10);
-  const totalPages = Math.ceil(totalItems / limit);
+  try {
+    const [newsResult, countResult] = await Promise.all([
+      queryWithTimeout(newsQuery, params, 18_000),
+      queryWithTimeout(countQuery, countParams, 18_000),
+    ]);
+    news = newsResult.rows as NewsRow[];
+    totalItems = parseInt(String(countResult.rows[0].count), 10);
+    totalPages = Math.ceil(totalItems / limit);
+  } catch {
+    dbError = true;
+  }
 
   const buildUrl = (newParams: Record<string, string | number | null>) => {
     const urlParams = new URLSearchParams();
@@ -96,6 +104,14 @@ export default async function NewsPage({
       </section>
 
       <div className="max-w-5xl mx-auto w-full py-12 px-4 sm:px-6 lg:px-8">
+        {dbError && (
+          <div
+            role="alert"
+            className="mb-8 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/30 px-4 py-3 text-red-800 dark:text-red-200"
+          >
+            {tc("dataLoadError")}
+          </div>
+        )}
         <div className="flex flex-col md:flex-row gap-4 mb-10">
           <LocaleGetSearchForm basePath="/news" className="flex-1 flex flex-col sm:flex-row gap-3">
             {limit !== 5 && <input type="hidden" name="limit" value={limit} />}
@@ -171,7 +187,7 @@ export default async function NewsPage({
         }>
           {news.length === 0 ? (
             <div className="text-center text-gray-500 py-8 border rounded-xl bg-white dark:bg-neutral-900 shadow-sm col-span-full">
-              {t("noResults")}
+              {dbError ? tc("dataLoadError") : t("noResults")}
             </div>
           ) : (
             news.map((item) => {

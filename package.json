@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db:migrate": "node scripts/apply-migrations.cjs",
+    "db:seed-news": "node scripts/seed-military-payments-news.cjs",
     "db:random-featured": "node scripts/mark-random-featured-news.cjs"
   },
   "dependencies": {

@@ -10,13 +10,13 @@
     "signOut": "Abmelden"
   },
   "Metadata": {
-    "title": "Wahrheit.Info | Verifizierte Informationen und Faktencheck",
-    "description": "Plattform für verifizierte Informationen über Ereignisse, Chronologie, Geografie und Faktencheck."
+    "title": "Wahrheit.Info | Militärbezüge, Versprechen, Werbung",
+    "description": "Themen zu finanziellen Zusagen bei Mobilisierung und Vertragsdienst, ausbleibenden Zahlungen und überhöhten Einkommensversprechen in der Werbung. Aggregation und redaktionelle Aufarbeitung öffentlicher Medien ist geplant."
   },
   "Footer": {
     "copyright": "© 2026 Wahrheit.Info.",
     "adminLogin": "Redakteurs-Login",
-    "description": "Plattform für verifizierte Informationen über Ereignisse, Chronologie, Geografie und Faktencheck. Wir helfen Ihnen, das wahre Bild der Geschehnisse zu sehen.",
+    "description": "Inhalte zu Vertrags- und Mobilisierungszahlungen, gebrochenen Versprechen und Rekrutierungswerbung. Ein News-Flow per Parser aus großen Medien ist in Arbeit.",
     "navigation": "Navigation",
     "legal": "Rechtliche Informationen",
     "privacy": "Datenschutzrichtlinie",
@@ -24,9 +24,9 @@
     "cookie": "Cookie-Nutzung"
   },
   "Home": {
-    "heroTitle1": "Verifizierte Informationen",
-    "heroTitle2": "ohne Fakes und Zensur",
-    "heroDesc": "Eine Plattform zum Sammeln von Fakten, Ereignischroniken und zur Aufdeckung von Desinformation. Wir helfen Ihnen, das wahre Bild zu sehen.",
+    "heroTitle1": "Geld und Militärdienst",
+    "heroTitle2": "Versprechen, Zahlungen, Rekrutierung",
+    "heroDesc": "Schwerpunkt: finanzielle Zusagen bei Mobilisierung und Vertragsdienst, Zahlungsverzögerungen und überhöhte Einkommensangaben in Anzeigen. Bald: automatisierte Sammlung und redaktionelle Aufarbeitung unabhängiger Medien.",
     "readNews": "Nachrichten lesen",
     "factcheck": "Faktencheck",
     "mainTopics": "Hauptthemen",
@@ -54,8 +54,8 @@
     "readMore": "Mehr lesen"
   },
   "News": {
-    "title": "Nachrichten-Feed",
-    "desc": "Aktuelle und verifizierte Informationen über Ereignisse in Echtzeit.",
+    "title": "Feed: Dienst und Bezüge",
+    "desc": "Versprechen im Dienst, Vertragsbezüge, Mobilisierung und Rekrutierung. Startartikel als Platzhalter vor Parser und Rewrite-Pipeline.",
     "searchPlaceholder": "Nachrichten nach Titel oder Text durchsuchen...",
     "searchBtn": "Suchen",
     "noResults": "Nichts zu Ihrer Anfrage gefunden.",
@@ -227,6 +227,7 @@
     "editTopicSave": "Änderungen speichern"
   },
   "Common": {
+    "dataLoadError": "Daten konnten nicht aus der Datenbank geladen werden. Prüfen Sie DATABASE_URL und die Verbindung. Seite ggf. neu laden.",
     "showAs": "Anzeige:",
     "viewList": "Listenansicht",
     "viewGrid": "Rasteransicht",

@@ -1,4 +1,4 @@
-import { query } from "@/lib/db";
+import { queryWithTimeout } from "@/lib/db";
 import { Link } from "@/navigation";
 import { ArrowRight, Shield, AlertTriangle, MapPin, Clock } from "lucide-react";
 import { NewsCarousel } from "@/components/NewsCarousel";
@@ -20,27 +20,37 @@ const PLACEHOLDER_NEWS_IMAGE =
 
 export default async function Home() {
   const t = await getTranslations("Home");
+  const tc = await getTranslations("Common");
 
-  const [latestRes, featuredRes] = await Promise.all([
-    query(
-      `SELECT * FROM news ORDER BY created_at DESC LIMIT $1`,
-      [HOME_LATEST_COUNT]
-    ),
-    query(
-      `SELECT * FROM news
-       WHERE COALESCE(is_featured, false) = true
-       ORDER BY created_at DESC
-       LIMIT $1`,
-      [HOME_FEATURED_COUNT]
-    ),
-  ]);
+  let latestNews: ReturnType<typeof rowToHomeNewsCard>[] = [];
+  let featuredNews: ReturnType<typeof rowToHomeNewsCard>[] = [];
+  let newsLoadError = false;
 
-  const latestNews = latestRes.rows.map((row) =>
-    rowToHomeNewsCard(row as Record<string, unknown>, 200)
-  );
-  const featuredNews = featuredRes.rows.map((row) =>
-    rowToHomeNewsCard(row as Record<string, unknown>, 320)
-  );
+  try {
+    const [latestRes, featuredRes] = await Promise.all([
+      queryWithTimeout(
+        `SELECT * FROM news ORDER BY created_at DESC LIMIT $1`,
+        [HOME_LATEST_COUNT],
+        18_000
+      ),
+      queryWithTimeout(
+        `SELECT * FROM news
+         WHERE COALESCE(is_featured, false) = true
+         ORDER BY created_at DESC
+         LIMIT $1`,
+        [HOME_FEATURED_COUNT],
+        18_000
+      ),
+    ]);
+    latestNews = latestRes.rows.map((row) =>
+      rowToHomeNewsCard(row as Record<string, unknown>, 200)
+    );
+    featuredNews = featuredRes.rows.map((row) =>
+      rowToHomeNewsCard(row as Record<string, unknown>, 320)
+    );
+  } catch {
+    newsLoadError = true;
+  }
 
   return (
     <div className="flex flex-col w-full">
@@ -68,6 +78,14 @@ export default async function Home() {
         </div>
       </section>
 
+      {newsLoadError && (
+        <div className="bg-amber-50 dark:bg-amber-950/40 border-b border-amber-200 dark:border-amber-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-amber-900 dark:text-amber-100 text-sm sm:text-base">
+            {tc("dataLoadError")}
+          </div>
+        </div>
+      )}
+
       {/* Главные темы: только посты с is_featured, новые сверху */}
       <section className="w-full bg-gray-50 dark:bg-neutral-950 py-20 border-b dark:border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,7 +95,11 @@ export default async function Home() {
               {t("allNews")} <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
-          {featuredNews.length > 0 ? (
+          {newsLoadError ? (
+            <div className="rounded-2xl border border-red-200 dark:border-red-900/50 bg-red-50/80 dark:bg-red-950/20 px-8 py-10 text-center text-red-800 dark:text-red-200">
+              {tc("dataLoadError")}
+            </div>
+          ) : featuredNews.length > 0 ? (
             <NewsCarousel news={featuredNews} placeholderImage={PLACEHOLDER_NEWS_IMAGE} />
           ) : (
             <div className="rounded-2xl border border-dashed border-gray-300 dark:border-neutral-700 bg-white/50 dark:bg-neutral-900/50 px-8 py-14 text-center">
@@ -156,7 +178,9 @@ export default async function Home() {
               {t("allNews")} <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
-          {latestNews.length === 0 ? (
+          {newsLoadError ? (
+            <p className="text-center text-red-700 dark:text-red-300 py-12 max-w-2xl mx-auto">{tc("dataLoadError")}</p>
+          ) : latestNews.length === 0 ? (
             <p className="text-center text-gray-500 py-12">{t("latestEventsEmpty")}</p>
           ) : (
             <div className="grid md:grid-cols-3 gap-10">
