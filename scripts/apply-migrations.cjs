@@ -56,6 +56,7 @@ async function main() {
   });
   await client.connect();
   await client.query("SET statement_timeout = '300s'");
+  await client.query("SET lock_timeout = '120s'");
   const dir = path.join(__dirname, "..", "migrations");
 
   for (const name of ORDER) {

@@ -11,5 +11,4 @@ CREATE TABLE IF NOT EXISTS news (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
-
-CREATE INDEX IF NOT EXISTS news_created_at_idx ON news (created_at DESC);
+-- Индекс отдельно не создаём здесь: на занятой таблице CREATE INDEX может долго ждать блокировку при открытом dev-сервере.

@@ -10,7 +10,10 @@
     "db:migrate": "node scripts/apply-migrations.cjs",
     "db:seed-news": "node scripts/seed-military-payments-news.cjs",
     "db:setup-news": "node scripts/apply-migrations.cjs && node scripts/seed-military-payments-news.cjs",
-    "db:random-featured": "node scripts/mark-random-featured-news.cjs"
+    "db:random-featured": "node scripts/mark-random-featured-news.cjs",
+    "supabase:link": "npx supabase link --project-ref fsfiegnvwhvllpnvrflz",
+    "supabase:push": "npx supabase db push",
+    "supabase:migration:new": "npx supabase migration new"
   },
   "dependencies": {
     "@dicebear/collection": "^9.4.2",
