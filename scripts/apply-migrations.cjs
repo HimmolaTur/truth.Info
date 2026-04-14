@@ -35,11 +35,13 @@ const ORDER = [
   "create_news_table.sql",
   "add_users_role.sql",
   "create_forum_bans.sql",
+  "create_forum_tables.sql",
   "news_admin_fields.sql",
   "news_image_url_local.sql",
   "roles_permissions.sql",
   "roles_granular_permissions.sql",
   "user_preferred_locale.sql",
+  "create_meduza_import_table.sql",
 ];
 
 async function main() {

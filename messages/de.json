@@ -26,9 +26,10 @@
   "Home": {
     "heroTitle1": "Geld und Militärdienst",
     "heroTitle2": "Versprechen, Zahlungen, Rekrutierung",
-    "heroDesc": "Schwerpunkt: finanzielle Zusagen bei Mobilisierung und Vertragsdienst, Zahlungsverzögerungen und überhöhte Einkommensangaben in Anzeigen. Bald: automatisierte Sammlung und redaktionelle Aufarbeitung unabhängiger Medien.",
+    "heroDesc": "Vertragsdienst, Mobilisierung, Bezüge und Rekrutierungswerbung — wo Versprechen und Realität auseinanderlaufen.",
     "readNews": "Nachrichten lesen",
     "factcheck": "Faktencheck",
+    "heroSecondaryCta": "Zahlungsproblem melden",
     "mainTopics": "Hauptthemen",
     "mainTopicsEmpty": "Noch keine Nachrichten als Hauptthema markiert. Aktivieren Sie dies in der Admin-Ansicht.",
     "allNews": "Alle Nachrichten",

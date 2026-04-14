@@ -6,17 +6,13 @@ import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { getTranslations } from "next-intl/server";
 import { rowToHomeNewsCard } from "@/lib/newsAdmin";
 
-const IMG_HERO =
-  "/images/photo-1451187580459-43490279c0fa.jpg";
-const IMG_FEATURES =
-  "/images/photo-1518770660439-4636190af475.jpg";
-const IMG_CTA =
-  "/images/photo-1532375810709-75b1da00537c.jpg";
+const IMG_FEATURES = "/images/photo-1554224155-6726b3ff858f.jpg";
+const IMG_CTA = "/images/photo-1454165804606-c3d57bc86b40.jpg";
 
 const HOME_LATEST_COUNT = 3;
 const HOME_FEATURED_COUNT = 8;
 const PLACEHOLDER_NEWS_IMAGE =
-  "/images/photo-1504711434969-e33886168f5c.jpg";
+  "/images/photo-1554224155-6726b3ff858f.jpg";
 
 export default async function Home() {
   const t = await getTranslations("Home");
@@ -54,30 +50,6 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* Full-width Hero Section */}
-      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden bg-black text-white">
-        <HeroBackdrop imageUrl={IMG_HERO} className="opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 drop-shadow-2xl">
-            {t("heroTitle1")} <br className="hidden sm:block" />
-            <span className="text-blue-400">{t("heroTitle2")}</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-12 drop-shadow-lg font-medium">
-            {t("heroDesc")}
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link href="/news" className="bg-blue-600 text-white px-10 py-5 rounded-xl font-bold hover:bg-blue-500 transition shadow-[0_0_40px_-10px_rgba(37,99,235,0.7)] flex items-center justify-center gap-3 text-lg">
-              {t("readNews")}
-              <ArrowRight className="w-6 h-6" />
-            </Link>
-            <Link href="/factcheck" className="bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-10 py-5 rounded-xl font-bold hover:bg-white/20 transition text-lg flex items-center justify-center">
-              {t("factcheck")}
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {newsLoadError && (
         <div className="bg-amber-50 dark:bg-amber-950/40 border-b border-amber-200 dark:border-amber-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-amber-900 dark:text-amber-100 text-sm sm:text-base">
@@ -86,21 +58,54 @@ export default async function Home() {
         </div>
       )}
 
-      {/* Главные темы: только посты с is_featured, новые сверху */}
-      <section className="w-full bg-gray-50 dark:bg-neutral-950 py-20 border-b dark:border-neutral-900">
+      {/* Главный слайдер (избранные новости) + тематический заголовок без описания «функций» сайта */}
+      <section
+        className="w-full bg-gray-50 dark:bg-neutral-950 pt-10 sm:pt-14 pb-16 sm:pb-20 border-b dark:border-neutral-900"
+        aria-label={t("mainTopics")}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-10">
-            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white">{t("mainTopics")}</h2>
-            <Link href="/news" className="hidden sm:flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold text-lg">
-              {t("allNews")} <ArrowRight className="w-5 h-5" />
-            </Link>
+          <div className="mb-8 lg:mb-10">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                {t("heroTitle1")}{" "}
+                <span className="text-blue-600 dark:text-blue-400">{t("heroTitle2")}</span>
+              </h1>
+              <p className="mt-4 text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t("heroDesc")}
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4">
+                <Link
+                  href="/news"
+                  className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500 transition shadow-lg text-base"
+                >
+                  {t("readNews")}
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="/submit"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-gray-300 dark:border-neutral-600 text-gray-900 dark:text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-100 dark:hover:bg-neutral-800 transition text-base"
+                >
+                  {t("heroSecondaryCta")}
+                </Link>
+                <Link
+                  href="/news"
+                  className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-bold text-base sm:ps-2"
+                >
+                  {t("allNews")} <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
           </div>
           {newsLoadError ? (
             <div className="rounded-2xl border border-red-200 dark:border-red-900/50 bg-red-50/80 dark:bg-red-950/20 px-8 py-10 text-center text-red-800 dark:text-red-200">
               {tc("dataLoadError")}
             </div>
           ) : featuredNews.length > 0 ? (
-            <NewsCarousel news={featuredNews} placeholderImage={PLACEHOLDER_NEWS_IMAGE} />
+            <NewsCarousel
+              news={featuredNews}
+              placeholderImage={PLACEHOLDER_NEWS_IMAGE}
+              variant="hero"
+            />
           ) : (
             <div className="rounded-2xl border border-dashed border-gray-300 dark:border-neutral-700 bg-white/50 dark:bg-neutral-900/50 px-8 py-14 text-center">
               <p className="text-gray-600 dark:text-gray-400 text-lg max-w-xl mx-auto">

@@ -26,9 +26,10 @@
   "Home": {
     "heroTitle1": "Money and military service",
     "heroTitle2": "promises, pay, recruiting",
-    "heroDesc": "We focus on financial promises during mobilization and contract service, payment delays, and inflated income claims in ads. Soon: automated collection and editorial rewrite of major independent media.",
+    "heroDesc": "Contract service, mobilization, pay, and recruiting ads — where promise and reality diverge.",
     "readNews": "Read News",
     "factcheck": "Factcheck",
+    "heroSecondaryCta": "Report a pay issue",
     "mainTopics": "Main Topics",
     "mainTopicsEmpty": "No news marked as a main topic yet. Enable it in the admin when editing a post.",
     "allNews": "All News",

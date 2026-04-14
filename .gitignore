@@ -39,6 +39,9 @@ yarn-error.log*
 # Supabase CLI (токен линка)
 .supabase/
 
+# выгрузки парсера Meduza (локально)
+/data/meduza-*.jsonl
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

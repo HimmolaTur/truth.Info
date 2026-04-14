@@ -9,13 +9,19 @@ import type { HomeNewsCard } from "@/lib/newsAdmin";
 type Props = {
   news: HomeNewsCard[];
   placeholderImage: string;
+  variant?: "default" | "hero";
 };
 
-export function NewsCarousel({ news, placeholderImage }: Props) {
+export function NewsCarousel({ news, placeholderImage, variant = "default" }: Props) {
   const t = useTranslations("NewsCarousel");
   const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
 
   if (!news || news.length === 0) return null;
+
+  const slideHeight =
+    variant === "hero"
+      ? "h-[min(78vh,820px)] min-h-[380px] md:h-[min(82vh,880px)]"
+      : "h-[400px] md:h-[500px]";
 
   return (
     <div
@@ -24,7 +30,7 @@ export function NewsCarousel({ news, placeholderImage }: Props) {
     >
       <div className="flex">
         {news.map((item) => (
-          <div key={item.id} className="flex-[0_0_100%] min-w-0 relative h-[400px] md:h-[500px]">
+          <div key={item.id} className={`flex-[0_0_100%] min-w-0 relative ${slideHeight}`}>
             <img
               src={item.image_url || placeholderImage}
               alt={item.title}
