@@ -48,10 +48,12 @@ async function main() {
     ssl: { rejectUnauthorized: false },
   });
   await client.connect();
-  await client.query("SET statement_timeout = '300s'");
-  await client.query("SET lock_timeout = '120s'");
+  /* DROP SCHEMA CASCADE ждёт блокировок; 0 = без таймаута в сессии */
+  await client.query("SET statement_timeout = 0");
+  await client.query("SET lock_timeout = 0");
 
   console.log("Running supabase/fresh_public_schema.sql …");
+  console.log("(Если висит долго — останови npm run dev и другие клиенты к БД.)");
   await client.query(sql);
   await client.end();
 

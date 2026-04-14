@@ -3,6 +3,24 @@
 -- После выполнения: npm run supabase:push
 -- В текущем supabase/migrations нет таблиц форума (forum_topics и т.д.) — при необходимости добавь отдельную миграцию или восстанови из бэкапа.
 
+-- Пытаемся снять чужие клиентские сессии (без прав на часть процессов — пропускаем)
+DO $$
+DECLARE r RECORD;
+BEGIN
+  FOR r IN
+    SELECT pid FROM pg_stat_activity
+    WHERE datname = current_database()
+      AND pid <> pg_backend_pid()
+      AND backend_type = 'client backend'
+  LOOP
+    BEGIN
+      PERFORM pg_terminate_backend(r.pid);
+    EXCEPTION WHEN OTHERS THEN
+      NULL;
+    END;
+  END LOOP;
+END $$;
+
 -- Сбросить историю миграций CLI, иначе db push не применит файлы заново
 DO $$
 BEGIN
