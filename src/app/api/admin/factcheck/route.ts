@@ -31,7 +31,15 @@ export async function POST(req: Request) {
       const claim = String(form.get("claim") || "");
       const truth = String(form.get("truth") || "");
       const sources = String(form.get("sources") || "");
-      await query("INSERT INTO factchecks (claim, truth, sources, created_at) VALUES ($1,$2,$3,NOW())", [claim, truth, sources]);
+      const newsIdRaw = form.get("news_id");
+      const newsId =
+        newsIdRaw != null && String(newsIdRaw).trim() !== ""
+          ? Number(newsIdRaw)
+          : null;
+      await query(
+        "INSERT INTO factchecks (claim, truth, sources, news_id, created_at) VALUES ($1,$2,$3,$4,NOW())",
+        [claim, truth, sources, Number.isFinite(newsId) ? newsId : null]
+      );
       return NextResponse.json({ ok: true });
     }
 
@@ -41,7 +49,15 @@ export async function POST(req: Request) {
       const claim = String(form.get("claim") || "");
       const truth = String(form.get("truth") || "");
       const sources = String(form.get("sources") || "");
-      await query("UPDATE factchecks SET claim=$1, truth=$2, sources=$3, updated_at=NOW() WHERE id=$4", [claim, truth, sources, Number(id)]);
+      const newsIdRaw = form.get("news_id");
+      const newsId =
+        newsIdRaw != null && String(newsIdRaw).trim() !== ""
+          ? Number(newsIdRaw)
+          : null;
+      await query(
+        "UPDATE factchecks SET claim=$1, truth=$2, sources=$3, news_id=$4, updated_at=NOW() WHERE id=$5",
+        [claim, truth, sources, Number.isFinite(newsId) ? newsId : null, Number(id)]
+      );
       return NextResponse.json({ ok: true });
     }
 

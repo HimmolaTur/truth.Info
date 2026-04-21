@@ -4,9 +4,20 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 
-export default function MapComponent({ events }: { events: any[] }) {
+export type MapEventRow = {
+  id: number;
+  lat: number;
+  lng: number;
+  title: string;
+  description: string;
+  news_id?: number | null;
+};
+
+export default function MapComponent({ events }: { events: MapEventRow[] }) {
   const t = useTranslations("Map");
+  const tc = useTranslations("Common");
   const [isMounted, setIsMounted] = useState(false);
   const [icon, setIcon] = useState<any>(null);
 
@@ -34,10 +45,18 @@ export default function MapComponent({ events }: { events: any[] }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {events.map((event) => (
-        <Marker key={event.id} position={[event.lat, event.lng]} icon={icon}>
+        <Marker key={event.id} position={[Number(event.lat), Number(event.lng)]} icon={icon}>
           <Popup>
             <div className="font-bold mb-1">{event.title}</div>
             <div className="text-sm">{event.description}</div>
+            {event.news_id != null ? (
+              <Link
+                href={`/news/${event.news_id}`}
+                className="text-blue-600 text-sm font-semibold mt-2 inline-block hover:underline"
+              >
+                {tc("relatedNews")}
+              </Link>
+            ) : null}
           </Popup>
         </Marker>
       ))}

@@ -1,6 +1,7 @@
-import { query } from "@/lib/db";
+import { queryWithTimeout } from "@/lib/db";
 import dynamic from "next/dynamic";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
+import type { MapEventRow } from "@/components/MapComponent";
 import { getTranslations } from "next-intl/server";
 
 const MAP_HERO_IMG =
@@ -18,8 +19,20 @@ const MapComponent = dynamic(() => import("@/components/MapComponent"), {
 
 export default async function MapPage() {
   const t = await getTranslations("Map");
-  const eventsResult = await query('SELECT * FROM map_events ORDER BY created_at DESC');
-  const events = eventsResult.rows;
+  const tc = await getTranslations("Common");
+  let events: MapEventRow[] = [];
+  let mapLoadError = false;
+  try {
+    const eventsResult = await queryWithTimeout(
+      "SELECT id, title, description, lat, lng, news_id FROM map_events ORDER BY created_at DESC",
+      [],
+      18_000
+    );
+    events = eventsResult.rows as MapEventRow[];
+  } catch {
+    mapLoadError = true;
+    events = [];
+  }
 
   return (
     <div className="flex flex-col w-full h-[calc(100vh-4rem)]">
@@ -33,9 +46,19 @@ export default async function MapPage() {
         </div>
       </section>
 
-      <div className="flex-1 w-full relative z-0">
-        <MapComponent events={events} />
-      </div>
+      {mapLoadError ? (
+        <div className="flex-1 flex items-center justify-center px-4 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-100 text-center text-sm sm:text-base">
+          {tc("dataLoadError")}
+        </div>
+      ) : events.length === 0 ? (
+        <div className="flex-1 flex items-center justify-center px-4 bg-gray-100 dark:bg-neutral-900 text-gray-600 dark:text-gray-400 text-center">
+          {t("noMarkers")}
+        </div>
+      ) : (
+        <div className="flex-1 w-full relative z-0 min-h-[400px]">
+          <MapComponent events={events} />
+        </div>
+      )}
     </div>
   );
 }

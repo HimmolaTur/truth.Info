@@ -65,7 +65,31 @@
     "forward": "Forward",
     "page": "Page {page} of {totalPages}",
     "backToNews": "Back to news",
-    "tags": "Tags:"
+    "tags": "Tags:",
+    "articleMenuTitle": "On this page",
+    "articleNavPost": "Article",
+    "articleNavTags": "Tags",
+    "articleNavFaq": "FAQ",
+    "articleNavFactcheck": "Fact-check",
+    "articleFactcheckTitle": "Fact-check for this topic",
+    "articleFactcheckLead": "A short check of a common misconception around this story. Not legal advice and not a ruling on any specific case.",
+    "articleFactcheckClaim": "Claim you often hear",
+    "articleFactcheckTruth": "Closer to facts and procedure",
+    "articleFactcheckSources": "Sources to verify",
+    "articleFactcheckDisclaimer": "This is editorial analysis. Confirm your entitlements using official documents and professionals when needed.",
+    "articleFactcheckAll": "All fact-checks →",
+    "articleTagsHeading": "Tags",
+    "articleTagsEmpty": "No tags were added to this article.",
+    "articleFaqTitle": "Frequently asked questions",
+    "articleFaqLead": "Short guidance on pay, contract service, and mobilization. Not legal advice.",
+    "articleFaq1Q": "Why compare verbal promises with the contract text?",
+    "articleFaq1A": "Signed documents and pay orders matter. Verbal assurances at a selection point are very hard to prove in a pay dispute if they are not reflected in paperwork.",
+    "articleFaq2Q": "What to do if contract pay is delayed?",
+    "articleFaq2A": "Record when you contacted finance, keep screenshots of pay statements and bank records. A formal request asking for timelines and reasons is the usual first step before escalating.",
+    "articleFaq3Q": "How is “income in ads” different from what I see in my account?",
+    "articleFaq3A": "Ads often show a notional maximum with many allowances combined. Your portal and pay slip show the actual calculation for your rank, seniority, and grounds on that date.",
+    "articleFaq4Q": "Where to check regional support during mobilization?",
+    "articleFaq4A": "Use your region’s official portals and local authority guidance. Neighbouring regions may have different rules and deadlines—rumours in chats are a poor guide."
   },
   "Forum": {
     "title": "Forum and Community",
@@ -228,6 +252,7 @@
     "editTopicSave": "Save changes"
   },
   "Common": {
+    "relatedNews": "Related news →",
     "dataLoadError": "Could not load data from the database. Check DATABASE_URL and your network. If the site was idle for a while, try refreshing.",
     "showAs": "Show as:",
     "viewList": "List view",
@@ -241,7 +266,8 @@
   "Timeline": {
     "title": "Event Timeline",
     "desc": "Structured feed of events to understand cause-and-effect relationships.",
-    "noEvents": "No events yet."
+    "noEvents": "No events yet.",
+    "noEventsHint": "After migrations run: npm run db:seed-news-map-timeline"
   },
   "Submit": {
     "successTitle": "Thank you for your story!",
@@ -260,7 +286,8 @@
   "Map": {
     "loading": "Loading map...",
     "title": "Interactive Map",
-    "desc": "Geography of events tied to locations"
+    "desc": "Geography of events tied to locations",
+    "noMarkers": "No map pins yet. After migrations run: npm run db:seed-news-map-timeline"
   },
   "Factcheck": {
     "title": "Factchecking",

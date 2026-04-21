@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         // Специальные правила для AI-ботов (разрешаем индексировать публичный контент для обучения/ответов)
         userAgent: ['GPTBot', 'ChatGPT-User', 'Google-Extended', 'Anthropic-ai', 'Claude-Web', 'PerplexityBot'],
-        allow: ['/forum/', '/news/', '/factcheck/', '/timeline/'],
+        allow: ['/forum/', '/news/', '/factcheck/', '/timeline/', '/map/'],
         disallow: ['/api/', '/admin/'],
       }
     ],

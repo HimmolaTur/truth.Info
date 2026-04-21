@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS map_events (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL DEFAULT '',
+  description TEXT NOT NULL DEFAULT '',
+  lat DOUBLE PRECISION NOT NULL,
+  lng DOUBLE PRECISION NOT NULL,
+  news_id INTEGER REFERENCES news(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_map_events_news_id ON map_events (news_id) WHERE news_id IS NOT NULL;

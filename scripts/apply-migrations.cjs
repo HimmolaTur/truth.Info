@@ -42,6 +42,10 @@ const ORDER = [
   "roles_granular_permissions.sql",
   "user_preferred_locale.sql",
   "create_meduza_import_table.sql",
+  "create_factchecks_table.sql",
+  "factchecks_news_id.sql",
+  "create_map_events_table.sql",
+  "create_timeline_events_table.sql",
 ];
 
 async function main() {

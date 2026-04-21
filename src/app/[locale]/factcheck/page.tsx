@@ -4,6 +4,7 @@ import { LocaleGetSearchForm } from "@/components/LocaleGetSearchForm";
 import { query } from "@/lib/db";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/navigation";
+import { normalizeFactcheckSources } from "@/lib/factcheckSources";
 
 const FACTCHECK_HERO_IMG =
   "/images/photo-1503694978374-8a2fa686963a.jpg";
@@ -12,7 +13,7 @@ type FactcheckRow = {
   id: number;
   claim: string;
   truth: string;
-  sources: string[] | null;
+  sources: string | string[] | null;
 };
 
 export default async function FactcheckPage({
@@ -160,7 +161,9 @@ export default async function FactcheckPage({
           {factchecks.length === 0 ? (
             <div className="text-center text-gray-500 py-8 col-span-full">{t("noFactchecks")}</div>
           ) : (
-            factchecks.map((item) => (
+            factchecks.map((item) => {
+              const sourcesList = normalizeFactcheckSources(item.sources);
+              return (
             <div key={item.id} className={`bg-white dark:bg-neutral-900 rounded-xl border overflow-hidden shadow-sm ${view === 'grid' ? 'flex flex-col h-full' : ''}`}>
               <div className={`bg-red-50 dark:bg-red-900/20 border-b border-red-100 dark:border-red-900/30 ${view === 'compact' ? 'p-4' : 'p-6'}`}>
                 <div className={`flex items-center gap-2 text-red-600 dark:text-red-400 font-bold ${view === 'compact' ? 'mb-1 text-sm' : 'mb-2'}`}>
@@ -179,11 +182,11 @@ export default async function FactcheckPage({
                 <p className={`text-gray-700 dark:text-gray-300 whitespace-pre-wrap ${view === 'compact' ? 'text-sm line-clamp-3 mb-0' : 'mb-4'} ${view === 'grid' ? 'flex-1' : ''}`}>
                   {item.truth}
                 </p>
-                {item.sources && item.sources.length > 0 && view !== 'compact' && (
+                {sourcesList.length > 0 && view !== 'compact' && (
                   <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-900/30">
                     <h4 className="font-bold text-sm mb-2">{t("sources")}</h4>
                     <ul className="list-disc list-inside text-sm text-blue-600 dark:text-blue-400 ml-4">
-                      {item.sources.map((source: string, idx: number) => (
+                      {sourcesList.map((source: string, idx: number) => (
                         <li key={idx} className="truncate">
                           {source.startsWith('http') ? (
                             <a href={source} target="_blank" rel="noreferrer" className="hover:underline">{source}</a>
@@ -197,7 +200,8 @@ export default async function FactcheckPage({
                 )}
               </div>
             </div>
-            ))
+            );
+            })
           )}
         </div>
 

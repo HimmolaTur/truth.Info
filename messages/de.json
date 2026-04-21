@@ -65,7 +65,31 @@
     "forward": "Vorwärts",
     "page": "Seite {page} von {totalPages}",
     "backToNews": "Zurück zu den Nachrichten",
-    "tags": "Tags:"
+    "tags": "Tags:",
+    "articleMenuTitle": "Auf dieser Seite",
+    "articleNavPost": "Zum Artikel",
+    "articleNavTags": "Schlagwörter",
+    "articleNavFaq": "Fragen und Antworten",
+    "articleNavFactcheck": "Faktencheck",
+    "articleFactcheckTitle": "Faktencheck zum Thema",
+    "articleFactcheckLead": "Kurze Einordnung eines verbreiteten Missverständnisses. Keine Rechtsberatung.",
+    "articleFactcheckClaim": "Häufig gehört",
+    "articleFactcheckTruth": "Näher an Fakten und Verfahren",
+    "articleFactcheckSources": "Quellen zur Prüfung",
+    "articleFactcheckDisclaimer": "Redaktionelle Einordnung. Ansprüche bitte anhand offizieller Unterlagen prüfen.",
+    "articleFactcheckAll": "Alle Faktenchecks →",
+    "articleTagsHeading": "Schlagwörter",
+    "articleTagsEmpty": "Diesem Beitrag sind keine Schlagwörter zugeordnet.",
+    "articleFaqTitle": "Häufig gestellte Fragen",
+    "articleFaqLead": "Kurze Orientierung zu Bezügen, Vertragsdienst und Mobilisierung. Keine Rechtsberatung.",
+    "articleFaq1Q": "Warum mündliche Zusagen mit dem Vertragstext abgleichen?",
+    "articleFaq1A": "Maßgeblich sind unterschriebene Unterlagen und Anweisungen zu Auszahlungen. Mündliche Versprechen ohne schriftliche Grundlage lassen sich in Streitfällen kaum beweisen.",
+    "articleFaq2Q": "Was tun bei verspäteter Vertragsvergütung?",
+    "articleFaq2A": "Notieren Sie das Datum der Anfrage bei der Finanzverwaltung, sichern Sie Screenshots von Abrechnungen und Kontoauszügen. Ein formelles Ersuchen um Fristen und Gründe ist der übliche erste Schritt.",
+    "articleFaq3Q": "Wie unterscheidet sich das „Einkommen in der Werbung“ vom Kontostand?",
+    "articleFaq3A": "In Anzeigen erscheint oft ein theoretisches Maximum aus vielen Zuschlägen. Portal und Abrechnung zeigen die tatsächliche Berechnung für Stand, Dienstzeit und konkrete Anspruchsgrundlagen.",
+    "articleFaq4Q": "Wo regionale Leistungen bei Mobilisierung nachlesen?",
+    "articleFaq4A": "Nutzen Sie offizielle Portale des Bundeslands und Hinweise der Behörden. Nachbarregionen können andere Fristen und Dokumente haben—Gerüchte in Chats sind unzuverlässig."
   },
   "Forum": {
     "title": "Forum und Gemeinschaft",
@@ -228,6 +252,7 @@
     "editTopicSave": "Änderungen speichern"
   },
   "Common": {
+    "relatedNews": "Zugehörige Meldung →",
     "dataLoadError": "Daten konnten nicht aus der Datenbank geladen werden. Prüfen Sie DATABASE_URL und die Verbindung. Seite ggf. neu laden.",
     "showAs": "Anzeige:",
     "viewList": "Listenansicht",
@@ -241,7 +266,8 @@
   "Timeline": {
     "title": "Ereignischronik",
     "desc": "Strukturierter Feed von Ereignissen, um Ursache-Wirkungs-Beziehungen zu verstehen.",
-    "noEvents": "Noch keine Ereignisse."
+    "noEvents": "Noch keine Ereignisse.",
+    "noEventsHint": "Nach Migrationen: npm run db:seed-news-map-timeline"
   },
   "Submit": {
     "successTitle": "Danke für Ihre Geschichte!",
@@ -260,7 +286,8 @@
   "Map": {
     "loading": "Karte wird geladen...",
     "title": "Interaktive Karte",
-    "desc": "Geografie der Ereignisse mit Ortsbezug"
+    "desc": "Geografie der Ereignisse mit Ortsbezug",
+    "noMarkers": "Noch keine Marker. Nach Migrationen: npm run db:seed-news-map-timeline"
   },
   "Factcheck": {
     "title": "Faktencheck",

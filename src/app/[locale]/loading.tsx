@@ -1,7 +1,6 @@
-"use client";
-
 import { RandomPreloader } from "@/components/ui/RandomPreloader";
 
+/** Серверный компонент: корневой `loading` не должен быть `"use client"` — иначе ломается Suspense/streaming (webpack «is not a function»). */
 export default function LocaleLoading() {
   return (
     <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 py-12" aria-busy="true" aria-label="Loading">
